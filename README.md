@@ -1,4 +1,4 @@
-# agent-ops-framework
+# agent-ops-framework — A Collection of Structural Crystals for Operating AI-Agent Projects
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Crystal verification](https://github.com/jinwookim0/agent-ops-framework/actions/workflows/verify.yml/badge.svg)](.github/workflows/verify.yml)
