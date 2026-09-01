@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:407a42314a84 own=sha256:a3e769427875 -->
+<!-- translated-from: ssot=sha256:e1e86028aa79 own=sha256:0f7bee01f972 -->
 # Glossary — What This Folder's Recurring Terms Mean
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/GLOSSARY.md)**
@@ -14,6 +14,12 @@ get conflated in practice (e.g., "story" and "domain knowledge"). This is
 useful for the same reason to a human reader and to an AI agent reading
 this folder — instead of reconstructing terminology from several documents
 every time, either can check here once.
+
+## AI agent (project)
+What this folder means by "AI agent": not a single AI call bolted onto
+an app, but a project where the AI runs **autonomously and repeatedly
+across multiple tasks** — narrower than "any project that uses AI
+somewhere." Defined in: [README.md](README.md) "What this is."
 
 ## Crystal
 The unit this folder is made of — not a finished spec, but a

@@ -16,6 +16,19 @@ AI 에이전트가 여러 작업을 관리하는 프로젝트는 대개 **도메
 검증하는가**", "**프롬프트에 비밀값이 새나가지 않게 어떻게 강제하는가**"
 같은 **프로세스 그 자체**만 남겼다.
 
+"AI 에이전트 프로젝트"가 정확히 가리키는 범위: AI를 한 번 호출하고 끝나는
+기능이 아니라, **자율적으로, 반복적으로, 여러 작업을 스스로 처리하는**
+프로젝트를 뜻한다 — "AI를 쓰는 프로젝트" 전반보다 좁다. 이 구분은 실제로
+갈린다: [05-autonomous-agent-operating-principles.md](05-autonomous-agent-operating-principles.md)·
+[06-self-improving-heuristics-loop.md](06-self-improving-heuristics-loop.md)·
+[19-chaos-engineering-for-agents.md](19-chaos-engineering-for-agents.md)·
+[20-decision-rights-raci.md](20-decision-rights-raci.md)·
+[29-agent-cost-and-budget-management.md](29-agent-cost-and-budget-management.md)·
+[36-execution-mode-escalation-ladder.md](36-execution-mode-escalation-ladder.md)은
+이 자율성·반복성이 없으면 애초에 성립하지 않는 크리스탈이다. 범위를
+"AI를 쓰는 프로젝트" 전반으로 넓히면 이런 크리스탈들이 왜 필요한지가
+흐려진다.
+
 ## 왜 "결정체(crystal)"인가
 
 이런 원칙들은 보통 실제 사고·정정·실전 경험을 근거로 자란다 — 그 서사

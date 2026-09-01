@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:7603bb94ea55 own=sha256:caa8dfa4d5f4 -->
+<!-- translated-from: ssot=sha256:6c12d38e1dd2 own=sha256:b6e69aca70e4 -->
 # agent-ops-framework — A Collection of Structural Crystals for Operating AI-Agent Projects
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/README.md)**
@@ -17,6 +17,20 @@ is **the process itself** — things like "how do you define when a task is
 done," "how do you accumulate and index directives," "how do you catch the
 pattern where an AI says something plausible but wrong," and "how do you
 enforce that secrets never leak into a prompt."
+
+What exactly "AI-agent project" means here: not a single AI call bolted
+onto an app, but a project where the AI runs **autonomously and
+repeatedly across multiple tasks** — narrower than "any project that
+uses AI somewhere." That distinction actually matters: crystals like
+[05-autonomous-agent-operating-principles.md](05-autonomous-agent-operating-principles.md),
+[06-self-improving-heuristics-loop.md](06-self-improving-heuristics-loop.md),
+[19-chaos-engineering-for-agents.md](19-chaos-engineering-for-agents.md),
+[20-decision-rights-raci.md](20-decision-rights-raci.md),
+[29-agent-cost-and-budget-management.md](29-agent-cost-and-budget-management.md),
+and [36-execution-mode-escalation-ladder.md](36-execution-mode-escalation-ladder.md)
+only make sense given that autonomy and repetition. Widen the scope to
+"any project that uses AI somewhere" and the reason these crystals exist
+gets blurry.
 
 ## Why "crystal"
 
