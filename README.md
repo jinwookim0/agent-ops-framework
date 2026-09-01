@@ -7,7 +7,7 @@
 
 > 🌐 **이 페이지를 한국어로 보기: [README.ko.md](README.ko.md)**
 
-**A free, copy-paste collection of "how to run an AI-agent project" rules — written so that anyone, from a curious high-schooler to a working AI engineer, can pick up exactly the piece they need.**
+**A copy-paste collection of "how to run an AI-agent project" rules, written so that anyone can pick up exactly the piece they need.**
 
 This page (and its [Korean translation](README.ko.md)) is a short landing page. The full, file-by-file map of all 37 crystals — with a description and a verification badge for each — lives one level deeper, in **[`en/README.md`](en/README.md)** (English) or **[`ko/README.md`](ko/README.md)** (Korean, the source of truth for that deeper content); both say the same thing, so read whichever you're comfortable in.
 

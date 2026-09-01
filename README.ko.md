@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:d82d375e1914 own=sha256:18601c73a800 -->
+<!-- translated-from: ssot=sha256:0f06601e4f59 own=sha256:8d662ba7aaaf -->
 # agent-ops-framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -8,7 +8,7 @@
 
 > 🌐 **Read this page in English: [README.md](README.md)**
 
-**"AI 에이전트 프로젝트를 어떻게 운영할 것인가"에 대한 규칙을 무료로 모아, 그대로 복사해 쓸 수 있게 만든 모음집 — 호기심 많은 고등학생부터 실무 AI 엔지니어까지, 누구나 자신에게 필요한 조각만 정확히 가져갈 수 있도록 썼다.**
+**"AI 에이전트 프로젝트를 어떻게 운영할 것인가"에 대한 규칙을 모아, 그대로 복사해 쓸 수 있게 만든 모음집 — 누구나 자신에게 필요한 조각만 정확히 가져갈 수 있도록 썼다.**
 
 이 페이지(와 그 [영문판](README.md))는 짧은 랜딩 페이지다. 37개 크리스탈 전체를 파일 단위로 설명·검증강도 배지와 함께 정리한 전체 지도는 한 단계 더 안쪽, **[`ko/README.md`](ko/README.md)**(한국어, 그 안쪽 콘텐츠의 SSOT) 또는 **[`en/README.md`](en/README.md)**(영어)에 있다 — 둘은 같은 내용이니 편한 쪽을 읽으면 된다.
 
