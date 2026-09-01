@@ -59,11 +59,50 @@ transition as informative, not as proof the underlying content was ever
 actually reconciled — when in doubt, diff the translation against its SSOT
 by hand rather than trusting the signal alone.
 
+BROKEN STAMP — a third signal, distinct from STALE/DIVERGED (added
+2026-09-01 after a real incident): a `translated-from` hash is only
+meaningful if it points at a commit actually reachable from the current
+history. History-rewriting operations (squash, rebase, filter-branch,
+BFG) orphan every commit that isn't the tip of the rewrite — any stamp
+still pointing at one of those old hashes is now referencing a commit
+that no fresh clone of this repo will ever have. This class of bug is
+dangerous specifically because it degrades **silently**: `git log -1
+--format=%ct <hash>` keeps "succeeding" (returning a plausible-looking
+timestamp) for a dangling-but-not-yet-garbage-collected commit object,
+so nothing looked wrong locally until the object was actually pruned —
+by which point the failure surfaces as a vague "commit lookup failed"
+with no indication *why*, long after the squash that caused it. Concretely:
+after two squashes in one session, 37 of this repo's 44 translation
+stamps were found pointing at a commit (`f50ae882...`, an orphaned
+"Initial public release" from a superseded squash) that `git
+merge-base --is-ancestor <hash> HEAD` correctly reports is NOT an
+ancestor of HEAD, despite `git log` on the same hash still "working."
+This checker now verifies reachability explicitly (`is_reachable()`)
+instead of trusting a successful `git log` call, and reports any broken
+stamp as its own loud, separate bucket rather than folding it into
+STALE/DIVERGED (whose timestamp math is meaningless against a stamp
+target that isn't real history) or into the quieter "unstamped" bucket
+(which reads as "never got a stamp," not "the stamp is now lying").
+Run with `--repair` to fix every broken stamp mechanically: each one is
+re-pointed at its SSOT file's own actual last-touch commit (verified
+reachable by construction, since it's read from `git log` on HEAD's own
+history) — see `repair_stamp()`. **Operational rule this incident
+established**: any time this repo's history is rewritten (squash/
+rebase), immediately run `--repair` as a follow-up commit before doing
+anything else — never assume existing stamps survived the rewrite.
+
 Usage:
   ./scripts/agent-ops-framework-translation-sync-check.py
+  ./scripts/agent-ops-framework-translation-sync-check.py --repair
+     (rewrites every broken stamp's `translated-from` hash to its SSOT
+     file's real last-touch commit; run the plain form again afterward
+     to see the resulting STALE/DIVERGED picture — --repair only fixes
+     broken stamps, it does not also recompute STALE/DIVERGED in the
+     same pass)
 
 Exit code: always 0 (advisory report).
 """
+import argparse
 import pathlib
 import re
 import subprocess
@@ -97,6 +136,51 @@ def last_touch_ts(relpath: str) -> int | None:
         text=True,
     ).stdout.strip()
     return int(out) if out else None
+
+
+def last_touch_hash(relpath: str) -> str | None:
+    """Hash of the most recent commit that touched this path — always
+    reachable by construction, since it comes from `git log` walking
+    HEAD's own history rather than from a stored, possibly-stale stamp.
+    This is what repair_stamp() re-points a broken translated-from stamp
+    at."""
+    out = subprocess.run(
+        ["git", "log", "-1", "--format=%H", "--", relpath],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    return out or None
+
+
+def is_reachable(rev: str) -> bool:
+    """True iff `rev` is an ancestor of (or equal to) HEAD — i.e. actually
+    part of the history a fresh clone would have. Deliberately NOT the
+    same check as "does `git log -1 <rev>` succeed": a commit orphaned by
+    a squash/rebase keeps satisfying that weaker check for as long as the
+    loose object survives locally (see module docstring's BROKEN STAMP
+    section) — `git merge-base --is-ancestor` is the check that actually
+    distinguishes real history from a not-yet-garbage-collected leftover."""
+    return (
+        subprocess.run(
+            ["git", "merge-base", "--is-ancestor", rev, "HEAD"],
+            cwd=ROOT,
+            capture_output=True,
+        ).returncode
+        == 0
+    )
+
+
+def repair_stamp(translation_relpath: str, old_hash: str, new_hash: str) -> None:
+    """Rewrites the translated-from line in translation_relpath from
+    old_hash to new_hash, touching nothing else in the file (same
+    surgical approach as version-stamp.py's header rewriting — replace
+    the exact matched line, leave every other byte untouched)."""
+    path = ROOT / translation_relpath
+    text = path.read_text(encoding="utf-8")
+    lines = text.split("\n")
+    lines[0] = lines[0].replace(old_hash, new_hash)
+    path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def stamp_last_set_ts(relpath: str) -> int | None:
@@ -135,13 +219,15 @@ EXTRA_PAIRS = [
 ]
 
 
-def process_pair(rel_a: str, rel_b: str, buckets: dict) -> None:
+def process_pair(rel_a: str, rel_b: str, buckets: dict, repair: bool = False) -> None:
     """Runs the STALE/DIVERGED check for one (path, path) pair -- order
     doesn't matter, since ownership (which side is the SSOT) is determined
     from which file actually carries the `translated-from` stamp, not from
     argument position. Appends results into the shared `buckets` dict so
     every pair (both the ko//en/ mirrored ones and EXTRA_PAIRS) reports
-    through the same STALE/DIVERGED/unstamped/missing_pair/ok accounting."""
+    through the same STALE/DIVERGED/broken_stamp/unstamped/missing_pair/ok
+    accounting. When repair=True, a broken stamp is rewritten in place
+    instead of only being reported (see repair_stamp())."""
     file_a, file_b = ROOT / rel_a, ROOT / rel_b
     text_a = (
         file_a.read_text(encoding="utf-8", errors="replace") if file_a.exists() else ""
@@ -169,6 +255,23 @@ def process_pair(rel_a: str, rel_b: str, buckets: dict) -> None:
 
     if not (ROOT / ssot_relpath).exists():
         buckets["missing_pair"].append((translation_relpath, ssot_relpath))
+        return
+
+    old_hash = stamp_match.group(1)
+    if not is_reachable(old_hash):
+        if repair:
+            new_hash = last_touch_hash(ssot_relpath)
+            if new_hash is None:
+                buckets["broken_stamp"].append((translation_relpath, old_hash, None))
+                return
+            repair_stamp(translation_relpath, old_hash, new_hash)
+            buckets["broken_stamp"].append((translation_relpath, old_hash, new_hash))
+        else:
+            buckets["broken_stamp"].append((translation_relpath, old_hash, None))
+        # Not falling through to STALE/DIVERGED below: their timestamp math
+        # is meaningless against a stamp target that isn't real history —
+        # re-run this script (without --repair) after repairing to get a
+        # trustworthy STALE/DIVERGED read on this pair.
         return
 
     ssot_ts = last_touch_ts(ssot_relpath)
@@ -204,6 +307,16 @@ def process_pair(rel_a: str, rel_b: str, buckets: dict) -> None:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    ap.add_argument(
+        "--repair",
+        action="store_true",
+        help="rewrite every broken (unreachable) translated-from stamp to point at its SSOT file's real last-touch commit",
+    )
+    args = ap.parse_args()
+
     if not EN_DIR.exists():
         print("=== agent-ops-framework-translation-sync-check ===")
         print(
@@ -214,6 +327,7 @@ def main() -> int:
     buckets = {
         "stale": [],
         "diverged": [],
+        "broken_stamp": [],
         "unstamped": [],
         "missing_pair": [],
         "ok": [],
@@ -221,13 +335,17 @@ def main() -> int:
 
     for en_file in sorted(EN_DIR.rglob("*.md")):
         rel_ko, rel_en = pair_relpaths(en_file)
-        process_pair(rel_ko, rel_en, buckets)
+        process_pair(rel_ko, rel_en, buckets, repair=args.repair)
 
     for rel_a, rel_b in EXTRA_PAIRS:
         if (ROOT / rel_a).exists() or (ROOT / rel_b).exists():
-            process_pair(rel_a, rel_b, buckets)
+            process_pair(rel_a, rel_b, buckets, repair=args.repair)
 
-    stale, diverged = buckets["stale"], buckets["diverged"]
+    stale, diverged, broken_stamp = (
+        buckets["stale"],
+        buckets["diverged"],
+        buckets["broken_stamp"],
+    )
     unstamped, missing_pair, ok = (
         buckets["unstamped"],
         buckets["missing_pair"],
@@ -235,6 +353,25 @@ def main() -> int:
     )
 
     print("=== agent-ops-framework-translation-sync-check ===")
+
+    if broken_stamp:
+        verb = "Repaired" if args.repair else "Found"
+        print(
+            f"\n🔴 BROKEN STAMP — {verb} {len(broken_stamp)} item(s) whose translated-from hash "
+            "is NOT reachable from HEAD (almost certainly orphaned by a squash/rebase — see "
+            "this script's module docstring's 'BROKEN STAMP' section):"
+        )
+        for translation_relpath, old_hash, new_hash in broken_stamp:
+            if new_hash:
+                print(
+                    f"  {translation_relpath}: {old_hash[:12]} -> {new_hash[:12]} (repaired)"
+                )
+            else:
+                print(
+                    f"  {translation_relpath}: {old_hash[:12]} (unreachable — re-run with --repair, or investigate manually if that fails)"
+                )
+        if not args.repair:
+            print("  -> run with --repair to fix these automatically.")
 
     if stale:
         print(

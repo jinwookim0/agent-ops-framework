@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
 # AI Red Team Checklist — Applying the OWASP Top 10 for LLM Applications (2025)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/14-ai-red-team-checklist.md)**
