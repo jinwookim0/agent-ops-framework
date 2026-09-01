@@ -1,52 +1,64 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:888d4c283b90 own=sha256:05d7e7a1db18 -->
 # AI Risk Management 4-Function Index — Reorganizing the Other Crystals Around the NIST AI RMF Skeleton
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/17-ai-risk-management-index.md)**
 
-**Version**: 1.1.0
-**Content hash**: sha256:ed44652ab65b (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.2.0
+**Content hash**: sha256:84eaf5a4fb98 (of the body below, excluding the stamp comment, this line, and the version line)
 
-This crystal doesn't add new content — instead, it's an index that
-reorganizes the other crystals according to **where each one falls
-within an internationally recognized risk-management framework**.
-Instead of consulting each document separately, the goal is to see at a
-glance "which of these four functions is currently empty in our
-project."
+This crystal adds no new content of its own. It's an index that sorts
+the other crystals by **where each one falls within an internationally
+recognized risk-management framework**, so you can see at a glance which
+of these four functions is currently empty in your project instead of
+checking each document one by one.
 
-**Scope of this index**: only crystals actually placed under the four
-functions below are covered — this is a subset of the full crystal list
-(README.md), not all of it. NIST AI RMF is a risk-focused skeleton, so
-crystals that would be distorted rather than clarified by forcing them
-into a risk-management function — the structure/reuse/documentation axis
-([08-module-format.md](08-module-format.md), [09-project-structure-template.md](09-project-structure-template.md),
+**Scope of this index**: it only covers crystals actually placed under
+one of the four functions below — a subset of the full crystal list
+(README.md), not all of it. NIST AI RMF is a risk-focused skeleton, and
+forcing some crystals into a risk-management function would distort them
+rather than clarify anything, so this index deliberately leaves out the
+structure/reuse/documentation axis:
+[08-module-format.md](08-module-format.md),
+[09-project-structure-template.md](09-project-structure-template.md),
 [16-context-engineering-principles.md](16-context-engineering-principles.md),
 [28-writing-craft-guardrails.md](28-writing-craft-guardrails.md),
 [30-shared-context-lifecycle-management.md](30-shared-context-lifecycle-management.md),
-[33-sandboxed-harness-duplication-sync.md](33-sandboxed-harness-duplication-sync.md)) —
-are deliberately left outside this index. [01-definition-of-done.md](01-definition-of-done.md)
-is left out for the same reason — "How to use this 4-function index"
-below already explains why ("is it done" vs. "is it done safely" are
-different axes). [24-application-deadline-rule.md](24-application-deadline-rule.md)
-is also left out — it's a research/application habit, not a
+and [33-sandboxed-harness-duplication-sync.md](33-sandboxed-harness-duplication-sync.md).
+[01-definition-of-done.md](01-definition-of-done.md) is left out for the
+same reason — "How to use this 4-function index" below already explains
+why ("is it done" and "is it done safely" are different axes).
+[24-application-deadline-rule.md](24-application-deadline-rule.md) is
+left out too, since it's a research/application habit rather than a
 risk-management function. **This out-of-scope list itself needs
-re-checking as more crystals are added** — see "This crystal's own
-limits" below for that re-check rule.
+re-checking as more crystals get added** — see "This crystal's own
+limits" below for that rule.
 
 ## Basis (primary source verified — stated honestly)
 
-🟢 **Verified**: That NIST's (the U.S. National Institute of Standards
-and Technology) AI Risk Management Framework (AI RMF 1.0) consists of
-four core functions — **Govern, Map, Measure, and Manage** — was
-verified directly against the original on the official nist.gov page.
+🟢 **Verified (scope widened by a 2026-09-01 re-verification)**: NIST
+(the U.S. National Institute of Standards and Technology) publishes an
+AI Risk Management Framework (AI RMF 1.0, official document NIST AI
+100-1) built around four core functions. Both that structure and each
+function's official one-line definition were checked directly against
+the original PDF at nvlpubs.nist.gov: **Govern** ("A culture of risk
+management is cultivated and present"), **Map** ("Context is recognized
+and risks related to context are identified"), **Measure** ("Identified
+risks are assessed, analyzed, or tracked"), **Manage** ("Risks are
+prioritized and acted upon based on a projected impact"). That each
+function further breaks down into categories and subcategories was also
+confirmed directly, via the Govern function's own table (Table 1 — e.g.
+GOVERN 1.1, "Legal and regulatory requirements involving AI are
+understood, managed, and documented").
 
-⚪ **Not verified**: The official detailed definitions of each function
-could not be viewed in the original within this session's tool-access
-scope at the time of writing (the document page moved/404'd). The
-"This document's interpretation" section below is **not NIST's official
-wording, but this document's own reconstruction, drawing on the four
-function names and generally known AI risk-management practice** —
-so as not to appear to quote NIST, the section title below is
-explicitly marked "This document's interpretation."
+🟡 **Only partially verified**: this re-verification didn't open the
+full subcategory lists for Map, Measure, and Manage (presumably their
+own Tables 2-4, mirroring Govern's) — having seen Govern's table
+structure, this document assumes the others follow the same format
+without having checked their actual content against the source. The
+"This document's interpretation" section below is, as its title says,
+an interpretation: it's not NIST's official subcategory wording, but
+this framework's own reorganization of its crystals under NIST's four
+function names.
 
 ## This document's interpretation — practical questions and related crystals mapped to the four functions
 
@@ -103,7 +115,9 @@ absolute-vs-relative framing), [26-grounding-validity-audit.md](26-grounding-val
 (periodically re-checking whether an already-written guide's citations
 still hold), [34-self-experiment-reporting-standard.md](34-self-experiment-reporting-standard.md)
 (honestly measuring and reporting a self-experiment that has no
-predefined test case).
+predefined test case), [37-target-metric-gaming-safeguards.md](37-target-metric-gaming-safeguards.md)
+(the risk that optimizing a measurement itself as the target diverges
+from the true goal — measurement reliability at metric-design time).
 
 ### Manage — "How do you actually reduce a risk once it's found?"
 Practical questions: In what order do you address discovered

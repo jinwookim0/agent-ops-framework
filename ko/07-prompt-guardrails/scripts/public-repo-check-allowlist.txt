@@ -1,0 +1,19 @@
+# public-repo-check.sh의 화이트리스트 — "검토했고 의도적으로 안전하다"고
+# 확정된 매치만 여기 올린다. 형식: 경로:줄번호  # 사유
+#
+# 이 파일에 없는 매치는 전부 그대로 빌드를 막는다(FOUND=1) — 화이트리스트는
+# "검토 안 해도 됨"이 아니라 "이미 사람이 직접 검토해서 안전하다고 확정함"의
+# 기록이다. 새 항목을 추가할 때마다 실제로 그 줄을 열어 확인하고 사유를
+# 적을 것 — 사유 없이 줄만 추가하는 건 이 파일의 존재 목적을 무너뜨린다.
+#
+# 2026-09-01 발견: 이 화이트리스트가 없던 예전 버전은 아래 항목 때문에
+# public-repo-check.sh가 항상 exit 1을 반환해서, CI(verify.yml)가 이
+# 스크립트를 유일한 실패 조건으로 쓰는 한 영원히 빨간불이었다 — "검토했고
+# 의도적으로 남긴 값"과 "실제로 새로 유출된 값"을 구분할 방법이 없었던
+# 게 원인. 이 메커니즘으로 그 구분을 명시적으로 만든다.
+
+examples/issue-triage-agent/skills/triage-incoming-issue/sample-tickets.json:4  # RFC 2606 예약 도메인(example.com) + NANPA 555-01XX 예약 대역(가상 용도) — sample-tickets.json 자신의 _pii_scanner_note 필드에 상세 근거 있음
+examples/issue-triage-agent/skills/triage-incoming-issue/sample-tickets.json:49  # 위와 동일한 검토 대상(같은 합성 티켓 데이터)
+examples/issue-triage-agent/skills/triage-incoming-issue/sample-tickets.json:51  # 위와 동일한 검토 대상(같은 합성 티켓 데이터)
+ko/07-prompt-guardrails/README.md:125  # public-repo-check.sh의 grep -I/-i 오탈자 버그를 설명하는 라이브 재현 예시 문구 — 실제 키 아님, 이 버그를 고친 뒤 이 스캐너가 정확히 그 문구를 잡아내는 걸로 수정 확인함
+en/07-prompt-guardrails/README.md:163  # 위와 동일 — 같은 재현 예시의 영문판

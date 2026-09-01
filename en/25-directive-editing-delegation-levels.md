@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:5011d83d6f02 own=sha256:102bfad3f269 -->
 # Authority to Edit the Directives Themselves — Explicitly Tiering How Much Is Delegated to AI
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/25-directive-editing-delegation-levels.md)**

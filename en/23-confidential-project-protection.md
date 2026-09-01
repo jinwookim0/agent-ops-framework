@@ -1,13 +1,14 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:0a4cb6bd140b own=sha256:a5eb84689faa -->
 # Project-Level Confidentiality Protection — What Pattern-Based Secret Detection Can't Catch
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/23-confidential-project-protection.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:4461c04da6b8 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:e2e5eb97f591 (of the body below, excluding the stamp comment, this line, and the version line)
 
 🟢 **Verification strength**: extracted from the original project's actual
-operational history, confirmed live-blocking an actual `git push` attempt.
+operational history, where live-blocking was confirmed via a real `git
+push` attempt.
 
 ## Why it's needed
 
@@ -59,8 +60,8 @@ If the local repository is several commits ahead of the remote, and even
 one of those commits touched a confidential path, **every subsequent push
 will fail to go through** — including the latest changes that didn't touch
 the confidential path (because the scope isn't per-commit, but "the entire
-range about to be pushed"). If this happens, history cleanup or a separate
-branch strategy needs to be discussed with a human — this mechanism itself
+range about to be pushed"). If this happens, discuss history cleanup or a separate
+branch strategy with a human — this mechanism itself
 doesn't make that call for you.
 
 ## Minimal implementation

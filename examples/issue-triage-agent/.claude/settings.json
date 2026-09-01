@@ -1,0 +1,16 @@
+{
+  "_comment": "Adapted from ko/07-prompt-guardrails/settings.json. This project has no local secret files to add to permissions.deny (it never touches API keys/SSH keys) — the guardrail need here is different: PII a reporter pastes into a ticket body must not leak into a public-facing tool call (posting a comment, applying a label whose text includes the ticket body). See hooks/guard-pii-leak.sh for that 3rd-layer defense, adapted from guard-secrets.sh's hook mechanism.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "PostTicketComment|ApplyTicketLabel",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-pii-leak.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

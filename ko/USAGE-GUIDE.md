@@ -133,6 +133,7 @@
 | "개인 프로젝트를 오픈소스로 공개하려는데 소속 조직의 기밀이 섞여 있을까 걱정된다" | [35-personal-oss-employer-confidentiality-separation.md](35-personal-oss-employer-confidentiality-separation.md) |
 | "정해진 케이스가 없는 즉흥 실험 결과를 어떻게 정직하게 보고해야 하나" | [34-self-experiment-reporting-standard.md](34-self-experiment-reporting-standard.md) |
 | "지금 이 작업을 혼자 순차로 할지, 병렬화/분리 실행으로 올릴지 매번 감으로 정하고 있다" | [36-execution-mode-escalation-ladder.md](36-execution-mode-escalation-ladder.md) |
+| "이 목표/완료 기준을 그대로 최적화하면, 진짜 원하는 결과 대신 지표만 채우는 결과가 나올 것 같다" | [37-target-metric-gaming-safeguards.md](37-target-metric-gaming-safeguards.md) |
 | "새 크리스탈을 추가하고 싶은데 기준을 모르겠다 / 다른 프로젝트 고도화를 어떻게 이 폴더에 반영하나?" | [BLUEPRINT.md](BLUEPRINT.md) |
 
 ## 관련 문서

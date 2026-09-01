@@ -1,10 +1,10 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:c616e3fa2a18 own=sha256:86aac6ee4e63 -->
 # Self-Experiment Reporting Standard — Qualitative + Quantitative + Confidence, plus Pre-registration and Process Tracing
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/34-self-experiment-reporting-standard.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:87af7ef4bf1e (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:fcfc5361491d (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟡 The sample-size principle (saturation curve) is confirmed against the primary source — 🟢. The five-tier confidence-marker scheme itself is this framework's own design, not a direct comparison against an external standard (e.g., the GRADE evidence-quality framework used in medical research) — marked 🟡 to avoid overstating it.
 
@@ -22,7 +22,7 @@ Explain in prose what was observed, why it matters, and what the numbers actuall
 ### 2. Quantitative measurement
 Express the observation as real numbers (sample size n, ratios/counts, confidence intervals where applicable) — compute these with an actual tool, don't eyeball them.
 
-**Principle for setting sample size (n) — observe the saturation curve directly**: Use the saturation pattern measured by the Self-Consistency paper (Wang et al. 2022, [arXiv:2203.11171](https://arxiv.org/abs/2203.11171)) — as the number of reasoning paths increases from 5→10→40, the improvement shrinks and eventually flattens out — as a reference principle for designing sample size. Instead of fixing n arbitrarily, increase it one step at a time and find the point where "the verdict stops changing." **This is not a mandatory rule** — it's overkill for a single binary check (does this work or not), and is recommended only for multi-stage, comparative experiments (comparing the effect size of A vs. B).
+**Principle for setting sample size (n) — observe the saturation curve directly**: The Self-Consistency paper (Wang et al. 2022, [arXiv:2203.11171](https://arxiv.org/abs/2203.11171)) measured a saturation pattern — as the number of reasoning paths increases from 5→10→40, the improvement shrinks and eventually flattens out. Use that pattern as a reference principle for designing sample size: instead of fixing n arbitrarily, increase it one step at a time and find the point where "the verdict stops changing." **This is not a mandatory rule** — it's overkill for a single binary check (does this work or not), and is recommended only for multi-stage, comparative experiments (comparing the effect size of A vs. B).
 
 ### 3. Confidence rating — must always be stated as a separate, explicit section
 
@@ -34,7 +34,7 @@ Express the observation as real numbers (sample size n, ratios/counts, confidenc
 | ⚪ Unrated | Confidence has not yet been assessed (left honestly blank, not invented) | |
 | N/A (exception) | An experiment intentionally meant to be a qualitative observation only (quantification is inherently inappropriate) | Should be rare — don't overuse |
 
-**Core principle**: whether "an effect exists or not" (the result) and "how much this result can be trusted" (confidence) are different axes. A null result can still have high confidence (if it came from a well-designed, large sample where there genuinely was no difference), and a strong effect can have low confidence (if n=1 and the observation wasn't controlled) — don't conflate the strength of a result with its confidence.
+**Core principle**: "does an effect exist" (the result) and "how much this result can be trusted" (confidence) are different axes. A null result can still have high confidence (if it came from a well-designed, large sample where there genuinely was no difference), and a strong effect can have low confidence (if n=1 and the observation wasn't controlled) — don't conflate the strength of a result with its confidence.
 
 ## Two extended elements — only for multi-stage experiments or ones whose design changed mid-run
 

@@ -1,0 +1,8 @@
+{
+  "ticket_id": "TICKET-E02",
+  "captured_at": "2026-09-01",
+  "raw_response_verbatim": "```json\n{\"category\": \"bug\", \"confidence\": 0.6, \"reasoning\": \"The user describes losing 45 minutes of dashboard work with no save prompt or warning, which points to a missing autosave/unsaved-changes-warning defect rather than a how-to question, though the sarcastic tone and lack of reproduction details (product area, browser, steps taken) keep this from being a high-confidence call.\", \"oversight_gate\": \"confirm\"}\n```",
+  "subagent_tokens": 20111,
+  "duration_ms": 13610,
+  "deviation_note": "Response was wrapped in a markdown ```json code fence despite the prompt saying 'Respond with ONLY a JSON object... No other text.' -- a real, unscripted instruction-following imperfection. Kept verbatim, not cleaned up before storage; harness/audit_capture.py has to actually handle this, not assume clean input."
+}

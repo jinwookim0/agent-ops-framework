@@ -1,10 +1,10 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:0c0d29b48282 own=sha256:e031612822f4 -->
 # Project Structure Template for AI-Agent-Managed Projects — A Five-Layer Architecture
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/09-project-structure-template.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:bbb8ea3fce95 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.3
+**Content hash**: sha256:84df0c54e6cb (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 Draws on the C4 model's (arc42) zoom-level
 concept, and the 5-layer structure/13-step order is a post-hoc write-up
@@ -13,9 +13,9 @@ grew in.
 
 This captures both the **overall view (what exists)** and **how to
 actually build it (schema and ordering)** — the starting premise of this
-template is that an overview alone doesn't let you reconstruct the thing.
-It borrows the "zoom levels" (Context → Container → Component) from the
-[C4 model](https://arc42.org/overview/).
+template is that an overview alone doesn't let you reconstruct the
+system — a structure that borrows the "zoom levels" (Context → Container
+→ Component) from the [C4 model](https://arc42.org/overview/).
 
 ## 1. Architecture — five layers
 
@@ -44,7 +44,7 @@ structure.
 
 | Axis | Values | Meaning |
 |---|---|---|
-| Actionability classification | has-an-end / ongoing / reference-material / on-hold | What kind of item this is (a PARA-style classification) |
+| Actionability classification | finite / ongoing / reference-material / on-hold | What kind of item this is (a PARA-style classification) |
 | Domain | work/life/meta/cross | Whether the task is about work, personal life, infrastructure, or deliberate integration |
 | Oversight grade (`oversight_gate`) | none/notify/confirm | Whether execution involves irreversible actions (the **action** axis) |
 | Confidence grade (`confidence_gate`) | none/flag/ask | How confident the content of the output is (the **content** axis — different from the action axis) |

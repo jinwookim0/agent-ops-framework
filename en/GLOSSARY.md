@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:e1e86028aa79 own=sha256:0f7bee01f972 -->
 # Glossary — What This Folder's Recurring Terms Mean
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/GLOSSARY.md)**
@@ -14,6 +14,12 @@ get conflated in practice (e.g., "story" and "domain knowledge"). This is
 useful for the same reason to a human reader and to an AI agent reading
 this folder — instead of reconstructing terminology from several documents
 every time, either can check here once.
+
+## AI agent (project)
+What this folder means by "AI agent": not a single AI call bolted onto
+an app, but a project where the AI runs **autonomously and repeatedly
+across multiple tasks** — narrower than "any project that uses AI
+somewhere." Defined in: [README.md](README.md) "What this is."
 
 ## Crystal
 The unit this folder is made of — not a finished spec, but a
@@ -88,10 +94,10 @@ extracted from — not this folder itself. When a crystal's body says
 "in the original project...," it always means this outside project.
 
 ## Reflection candidate
-A pattern an automated scanner flags, from the origin project's (or any
-project reusing this folder's own) ongoing evolution, as possibly worth
-turning into a new crystal here. Not a crystal itself — it still has to
-clear the gates. Defined in:
+A pattern an automated scanner spots during the origin project's ongoing
+evolution (or that of any project that has adopted this folder) and
+flags as possibly worth turning into a new crystal here. Not a crystal
+itself — it still has to clear the gates. Defined in:
 [REFLECTION-CANDIDATES.md](../ko/REFLECTION-CANDIDATES.md),
 [BLUEPRINT.md](BLUEPRINT.md) section 4.
 

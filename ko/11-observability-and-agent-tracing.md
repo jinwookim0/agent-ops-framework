@@ -2,12 +2,15 @@
 
 > 🌐 **[Read in English](../en/11-observability-and-agent-tracing.md)**
 
-**버전**: 1.0.3
-**콘텐츠 해시**: sha256:136035067683 (본문 기준, 이 두 줄 제외)
+**버전**: 1.1.0
+**콘텐츠 해시**: sha256:95c42f5ffd75 (본문 기준, 이 두 줄 제외)
 
-**검증 강도**: 🟡 자체 원칙(의도-관찰 분리, 구조화 로그)은 ReAct 패턴
-기반으로 확정했으나, 외부 표준(OpenTelemetry GenAI 시맨틱 컨벤션)은
-문서 이전 중이라 세부 대조에 실패해 검증 못함을 명시.
+**검증 강도**: 🟢 (2026-09-01 재검증) 자체 원칙(의도-관찰 분리, 구조화
+로그)은 ReAct 패턴 기반으로 확정했고, 외부 표준(OpenTelemetry GenAI
+시맨틱 컨벤션, github.com/open-telemetry/semantic-conventions-genai)도
+이번 재검증에서 실제 속성명(`gen_ai.operation.name`,
+`gen_ai.usage.input_tokens` 등)을 원문으로 직접 확인했다 — 이전 판은
+해당 저장소가 이전 중이라 접근 실패했었다.
 
 AI 에이전트가 "완료했다"고 말하는 것과 실제로 그 도구 호출이 있었는지는
 분리될 수 있다([03-epistemic-immunity-catalog.md](03-epistemic-immunity-catalog.md)
@@ -48,16 +51,28 @@ ReAct 패턴(Thought→Action→Observation)의 핵심은 "왜 이 행동을 하
 | 언제 | 타임스탬프 | 시간축 은폐 방지([03](03-epistemic-immunity-catalog.md) 10번) |
 | 비용(선택) | 토큰/시간/API 호출 수 | FinOps 관측 — [13-debt-and-quality-bar.md](13-debt-and-quality-bar.md)와 연결 |
 
-## 참고할 만한 신흥 표준 (정직하게 밝힘 — 세부는 검증 못 함)
+## 참고할 만한 신흥 표준 — OpenTelemetry GenAI 시맨틱 컨벤션
 
 OpenTelemetry가 생성형 AI(GenAI)/에이전트 실행을 위한 시맨틱 컨벤션
-(표준화된 로그 스키마)을 별도 저장소로 분리해 개발 중이다 — **이 문서는
-그 구체적 스팬(span) 이름·속성 목록까지 직접 열람해서 검증하지는
-못했다**(문서가 저장소 이전 중이라 접근 실패). 표준화된 관측가능성
-스키마가 필요하면, 위 세 가지 원칙을 먼저 자체 구현하고, OpenTelemetry
-GenAI 시맨틱 컨벤션의 최신 문서를 직접 확인해 필드명을 맞추는 걸 권한다
-— **이 문서의 필드명(위 표)은 그 표준과 일치한다고 주장하지 않는다**,
-독립적으로 도출한 원칙이다.
+(표준화된 로그 스키마)을 별도 저장소
+(github.com/open-telemetry/semantic-conventions-genai)로 개발하고
+있다 — 🟢 2026-09-01 재검증으로 실제 스팬·속성 원문을 확인했다:
+
+| 이 크리스탈의 필드 | OpenTelemetry 실제 속성명 |
+|---|---|
+| 어떤 작업/단계였는가 | `gen_ai.operation.name` (스팬 이름도 `"{operation.name} {request.model}"` 형식) |
+| 실제로 무엇을 했는가 | `gen_ai.request.model`, `gen_ai.provider.name` |
+| 결과가 무엇이었는가 | `gen_ai.response.finish_reasons`, `error.type` |
+| 비용(선택) | `gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens` |
+
+**정직한 한계**: 위 매핑은 이 크리스탈이 자체 도출한 필드를 사후적으로
+대응시킨 것이지, 이 크리스탈이 애초에 OpenTelemetry 표준을 따라
+설계됐다는 뜻은 아니다 — "무엇을 의도했는가"·"언제" 두 필드는
+OpenTelemetry의 표준 속성명과 정확히 대응하는 걸 이번 재검증에서 찾지
+못했다(더 깊은 문서 탐색이 필요할 수 있다). 표준화된 스키마가 실제로
+필요하면, 위 세 가지 원칙을 먼저 자체 구현한 뒤 이 저장소의 최신 문서를
+직접 열어 필드명을 맞추는 걸 권한다 — 이 크리스탈이 표준 문서 전체를
+대체하지는 않는다.
 
 ## 회귀 감지에 연결하기
 

@@ -1,10 +1,10 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:be0375637018 own=sha256:ec15a3e260e0 -->
 # Autonomous AI Agent Operating Principles (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/05-autonomous-agent-operating-principles.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:6aa43959b3d8 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.3
+**Content hash**: sha256:17a1ace542b9 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 The core claims of published papers — the
 Off-Switch Game (Hadfield-Menell 2017), Concrete Problems in AI Safety
@@ -29,8 +29,8 @@ are **never subject to autonomous judgment**:
 3. **Reliability**: never present a fabricated fact as verified (honestly
    label it "needs confirmation"); still ask first before any irreversible
    action (payment, an actual message being sent, etc. — anything hard to
-   undo) — this isn't a matter of being slow, it's an absolute, and is not
-   subject to expanded autonomy.
+   undo) — this isn't a matter of being slow, it's a non-negotiable
+   principle, and is not subject to expanded autonomy.
 
 Outside these three areas (judgment calls like which feature to build to
 what depth, or when to build what), proceed without waiting for confirmation
@@ -66,14 +66,27 @@ next action:
 not the same as re-securing external evidence (re-searching, re-querying) —
 these have different effects. What the original Self-Refine paper (Madaan et
 al. 2023, [arXiv:2303.17651](https://arxiv.org/abs/2303.17651)) actually
-measured is that a loop where the same model critiques and revises itself
-improves substantially on open-ended tasks, but **the stronger the model
-already is, the more sharply the improvement from self-critique alone
-shrinks (+4.8 points for a weaker model vs. +0.7 for a stronger one, on a
-5-point scale)**, and on tasks with a single correct answer, it barely
-helped at all (93 → 93, with that model responding "it's already fine" in
-94% of cases). By contrast, combining retrieval-based external evidence
-(RAG, Lewis et al. 2020,
+measured (main-text Table 1 plus Appendix H.1's Table 9, both checked
+directly — re-verified 2026-09-01) is that a loop where the same model
+critiques and revises itself improves substantially on open-ended tasks
+(dialogue generation, sentiment reversal, etc.), but **on tasks with a
+single correct answer (math problems), pure self-critique barely helped at
+all regardless of model size** — GPT-3.5 stayed flat at 64.1 → 64.1,
+ChatGPT went 74.8 → 75.0, GPT-4 went 92.9 → 93.1 (a 0-100 solve-rate
+scale, Table 1). ChatGPT's feedback itself said "it's already fine" in 94%
+of cases (main text, §3.3 — a separate observation from GPT-4's numbers).
+**The improvement gap only actually opened up once oracle feedback was
+added** — an external signal telling the model whether its current answer
+was correct — and under that condition the weaker model (the GPT-3.5
+tier, +4.8 points) improved more than the stronger one (GPT-4, +0.7
+points) (Table 9, Appendix H.1 — percentage-point deltas on a 0-100
+solve-rate scale, not a "5-point scale" as an earlier version of this
+document mis-stated). In other words, the real finding isn't "weaker
+models self-critique better" — it's that **pure self-critique barely
+helps on single-correct-answer tasks, and only actually re-securing
+external evidence (whether an oracle signal or retrieval) produces real
+improvement**. Consistent with that, combining retrieval-based external
+evidence (RAG, Lewis et al. 2020,
 [arXiv:2005.11401](https://arxiv.org/abs/2005.11401)) was strongly
 preferred over pure generation without retrieval on factuality evaluation
 (42.7% vs. 7.1%). **Conclusion**: where possible, don't let the
@@ -86,8 +99,8 @@ evidence is available, not the first choice.
 **type catalog** of reasoning errors that have already occurred, and
 [04-eval-engineering-methodology.md](04-eval-engineering-methodology.md)
 evaluates a **finished output** — both are applied after the fact, or in
-batch. This section is instead about stopping before continuing, **while a
-task is still in progress**, the moment the same kind of signal shows up.
+batch. This section is instead about stopping before continuing whenever
+the same kind of signal shows up **while a task is still in progress**.
 The trigger conditions differ, but the actual "stop" action itself reuses
 this document's other stop mechanism (Principle 0).
 
@@ -197,9 +210,9 @@ next action" and actually doing that every single time — the repeatedly
 observed pattern is that **this gap only becomes visible after the same root
 cause (an implicit stop) recurs multiple times.** The cause is "the rule
 existed, but there was no mechanism enforcing it" — this is itself an
-instance of the "documentation alone doesn't prevent recurrence" lesson that
-this document, and other crystals in this folder, share, applied to this
-very section.
+instance, applied to this very section, of the "documentation alone doesn't
+prevent recurrence" lesson shared by this document and other crystals in
+this folder.
 
 **Structural fix**: unless one of the 3 legitimate stop reasons applies,
 before ending the turn, **actually schedule a reawakening of yourself**

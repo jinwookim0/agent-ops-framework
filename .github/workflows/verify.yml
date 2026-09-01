@@ -28,7 +28,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # full history -- translation-sync-check.py needs git log
+          fetch-depth: 0 # full history -- sync-check.py needs git log for origin-doc
+          # timestamps; translation-sync-check.py's STALE/DIVERGED signals are
+          # content-hash based (git-independent by design, 2026-09-01) and work
+          # the same on a shallow clone -- full history only improves its
+          # best-effort "how many hours stale" cosmetic annotation
 
       - uses: actions/setup-python@v5
         with:

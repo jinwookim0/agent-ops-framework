@@ -1,10 +1,10 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:0d055e29f72b own=sha256:eafa82350247 -->
 # Blameless Postmortem Template — Based on Google SRE Practice
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/12-blameless-postmortem-template.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:875e23b68c96 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.1.0
+**Content hash**: sha256:d1568996420f (of the body below, excluding the stamp comment, this line, and the version line)
 
 It's inevitable that an AI agent will make mistakes (hallucination, a
 wrong judgment call, a safeguard malfunctioning, etc.). The problem isn't
@@ -26,6 +26,14 @@ principles directly:
    fix systems and processes to better support people."
 3. **Learning, not punishment**: Writing a postmortem is "not a
    punishment — it's a learning opportunity for the entire organization."
+
+**A copyright note, checked directly**: that site is licensed CC
+BY-NC-ND 4.0 (non-commercial, no derivatives) — confirmed. Read on its
+own, that license would put a translation itself on shaky ground as a
+derivative work. But the quotes above are three sentences or fewer,
+fully attributed, and subordinate to this crystal's own much longer
+discussion, which satisfies Korean copyright law's Article 28
+quotation exception independently of what the license itself allows.
 
 ## Why this matters especially for AI agent projects
 
@@ -74,8 +82,8 @@ verification steps — not naming a person or a specific AI run).
 | ... | ... | ... | not started/in progress/done |
 
 Each action item must actually contribute to "preventing recurrence" — a
-"we'll be more careful" style resolution of intent is not accepted as an
-action item (only structural, code, or process changes count).
+"we'll be more careful"-style pledge doesn't count as an action item
+(only structural, code, or process changes do).
 ```
 
 ## AI-agent-specific rules
@@ -85,7 +93,8 @@ action item (only structural, code, or process changes count).
    mistake through."
 2. **Record reproducibility** — note whether the same mistake reproduces
    with the same input (a deterministic failure) or occurs only
-   probabilistically (see the related determinism principle) — a mistake
+   probabilistically (see
+   [18-determinism-and-reproducibility.md](18-determinism-and-reproducibility.md)) — a mistake
    that doesn't reproduce needs a different kind of defense (sampled
    verification, after-the-fact audits).
 3. **The "reproduced twice" rule**: When an incident with the same root

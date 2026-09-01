@@ -1,19 +1,19 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:f85891b0fc18 own=sha256:58c06559924c -->
 # Eval Engineering Methodology (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/04-eval-engineering-methodology.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:9556140a86c7 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:538a98382af0 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 The core claims of published papers —
 LLM-as-judge (Zheng et al. 2023), self-consistency (Wang et al. 2022) —
 were checked against the source, and the pipeline itself was field-tested
 and repeatedly verified in the original project's real operation.
 
-Having a human manually eyeball whether the output an AI agent produces
-(a skill's execution result, a workflow's output) "turned out well" becomes
-a bottleneck once things scale up. This document lays out a multi-stage eval
+As the volume of output an AI agent produces — a skill's execution result, a
+workflow's output — grows, having a human manually eyeball whether each one
+"turned out well" becomes a bottleneck. This document lays out a multi-stage eval
 pipeline that organizes three parallel layers: **logic (what and why) /
 technical mechanism (how, concretely) / underlying knowledge (what academic
 basis it comes from).**
@@ -57,8 +57,8 @@ actually passes that case" are different things. **Technical mechanism**: if
 the target is a workflow, actually run it; if it's a skill/agent, prompt it
 to "read the instruction document and follow the procedure exactly," having
 it use real tools. Put a safeguard here — **only when the input itself
-demands an actually-hard-to-reverse real-world action (payment, sending a
-message, an account change, etc.)**, treat a response that asks for
+demands a real-world action that's genuinely hard to reverse (payment,
+sending a message, an account change, etc.)**, treat a response that asks for
 confirmation as the final output in its own right. If this scope is drawn
 too broadly (e.g. applying it just because a confirmation phrase appears
 anywhere in the document), the actor over-hedges even on unrelated cases —
@@ -78,7 +78,7 @@ bias** ("don't grade more generously just because it's long") and **guard
 against the halo effect** ("don't let unrelated items get graded more
 generously just because others scored well"). If the judgment depends on the
 date, inject "today's date" explicitly — without it, a documented failure
-mode is the judge guessing at today's date and mistakenly flagging actually-
+mode is the judge guessing at today's date and mistakenly flagging genuinely
 current data as a hallucination. **Underlying knowledge**: the LLM-as-judge
 pattern follows Zheng et al. 2023.
 

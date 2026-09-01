@@ -39,7 +39,7 @@ check() {
   # (e.g. "secret file.txt") silently dropped out of scanning via word
   # splitting (reproduced live). xargs -0 against the NUL-delimited list
   # keeps a filename with spaces/newlines as a single argument, always.
-  hits=$(xargs -0 grep -InE "$pattern" < "$FILELIST" 2>/dev/null || true)
+  hits=$(xargs -0 grep -inE "$pattern" < "$FILELIST" 2>/dev/null || true)
   # Terminal/ANSI escape-injection defense (found in a 2026-09-01 red-team
   # review): a matched line carries the scanned file's own content
   # verbatim — if an attacker-controlled file contains ESC bytes, this

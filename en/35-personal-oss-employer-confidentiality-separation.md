@@ -1,10 +1,10 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:744acb9a35cf own=sha256:9dd9692c9412 -->
 # Separating Personal OSS Work From Employer Confidentiality — What to Filter Out, and How
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/35-personal-oss-employer-confidentiality-separation.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:26e425dc225c (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:3fef63c653f4 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 The general legal frame (the definition of a
 trade secret, the two-part test) was verified against the primary source at
@@ -92,8 +92,8 @@ to my employer" — this doesn't complete a legal defense (a disclaimer alone
 doesn't excuse an actual confidentiality leak), but it honestly informs the
 reader of this content's nature, and it's a practical device that avoids
 re-deciding the wording every time. **This standard boilerplate belongs in a
-separate, unnumbered file** — not inside this methodology document (in this
-repo, `DISCLAIMER.md`) — because a methodology document (the why/how) and a
+separate, unnumbered file** (in this repo, `DISCLAIMER.md`) — not inside this
+methodology document — because a methodology document (the why/how) and a
 deliverable (text to be posted as-is) are found via different paths: the
 former is looked up and read when a judgment call is needed, while the latter
 needs to be copy-pasted right before publishing. Mixing them into one file
@@ -122,11 +122,11 @@ actually enforce this are put in place together:
    requiring a human to edit the list file (not the code) to unblock it
    prevents the AI from unilaterally deciding "this is now safe" and
    bypassing the gate (local commits are allowed; only the push to the remote
-   is blocked — there's no need to block version control itself). This is the
-   same design philosophy — the three-tier escalation of "primary guidelines →
-   secondary active masking → tertiary hook enforcement" already established
-   by [07-prompt-guardrails/](07-prompt-guardrails/) — applied to this domain
-   (Axis B judgment).
+   is blocked — there's no need to block version control itself). This
+   applies the same design philosophy that
+   [07-prompt-guardrails/](07-prompt-guardrails/) already established — a
+   three-tier escalation of primary guidelines → secondary active masking →
+   tertiary hook enforcement — to this domain (Axis B judgment).
 
 ## How This Differs From Crystal 23 (G3)
 

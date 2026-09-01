@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:9d4acf694edb own=sha256:01a341e7a5e3 -->
 # agent-ops-framework Blueprint — What It Is and How It Grows
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/BLUEPRINT.md)**
@@ -95,9 +95,9 @@ automated scanner at all — it was found because a user directly asked
 project's own directive history; it doesn't do active benchmarking
 against external frameworks (agentops.ai-style comparisons) or ask "what
 axis are we missing" on its own. This can be a structural source of
-confirmation bias — only checking what's asked about, while the
-axis meant to actively go looking stays limited to rehashing internal
-history. This is still too few observations to call a pervasive pattern,
+confirmation bias — it confirms only what's asked about, while active,
+self-initiated discovery stays limited to rehashing internal history.
+This is still too few observations to call a pervasive pattern,
 but it's left here as a candidate for the next round of expansion:
 whether to automate periodic comparison against external frameworks.
 
@@ -123,12 +123,12 @@ same.
 ## 5. Versioning & change management
 
 - Crystal numbers are permanent — even when a crystal is retired, its
-  number is never reused (the same "retired" principle
-  `02-directive-registry.md` already applies).
+  number is never reused (the same "retired" principle already used in
+  `02-directive-registry.md`).
 - When a crystal's content is updated (e.g., its verification strength
   moves from 🟡 to 🟢), the file is edited directly — this folder does not
   keep a "when and why it was changed" history inside itself (the
-  domain-knowledge-minimization principle, section 1, G2 above). That
+  domain-knowledge minimization principle, section 1, G2 above). That
   history lives instead in the change-history document on the side of the
   original project that adopts this folder.
 - When a category is split, the number stays fixed and only the category
@@ -254,7 +254,7 @@ into the SSOT**:
    "point precisely at where a conflict might be, so a human/AI doesn't
    have to diff two full documents from scratch every time."
 
-**A single file's SSOT can rarely be flipped.** For example, if a
+**In rare cases, a single file's SSOT can be flipped.** For example, if a
 particular crystal originated from an English-speaking contributor's
 own independent research, it's fine for that one file to have `en/` as
 its SSOT and `ko/` as the translation — just put the stamp on the other

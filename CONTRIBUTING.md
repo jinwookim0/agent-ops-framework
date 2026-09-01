@@ -73,6 +73,11 @@ before, here's the whole flow:
 git clone https://github.com/<your-username>/agent-ops-framework.git
 cd agent-ops-framework
 
+# First thing after cloning: `.git/hooks/` isn't version-controlled, so
+# every clone has to opt into this repo's pre-push safety checks by hand
+# once -- see ko/07-prompt-guardrails/README.md's "Installation" step 5.
+git config core.hooksPath .githooks
+
 # 2. Create a branch -- don't commit directly on main
 git checkout -b add-crystal-my-pattern   # or: fix-broken-link-in-09, etc.
 

@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:a033a9e93ef6 own=sha256:418c27ebb3f6 -->
 # Debt Classification Scheme and Quality Baseline — Applying the Technical Debt Framework
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/13-debt-and-quality-bar.md)**

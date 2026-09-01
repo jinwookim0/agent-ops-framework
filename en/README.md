@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:97f194798b37 own=sha256:08805af59755 -->
 # agent-ops-framework — A Collection of Structural Crystals for Operating AI-Agent Projects
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/README.md)**
@@ -17,6 +17,20 @@ is **the process itself** — things like "how do you define when a task is
 done," "how do you accumulate and index directives," "how do you catch the
 pattern where an AI says something plausible but wrong," and "how do you
 enforce that secrets never leak into a prompt."
+
+What exactly "AI-agent project" means here: not a single AI call bolted
+onto an app, but a project where the AI runs **autonomously and
+repeatedly across multiple tasks** — narrower than "any project that
+uses AI somewhere." That distinction actually matters: crystals like
+[05-autonomous-agent-operating-principles.md](05-autonomous-agent-operating-principles.md),
+[06-self-improving-heuristics-loop.md](06-self-improving-heuristics-loop.md),
+[19-chaos-engineering-for-agents.md](19-chaos-engineering-for-agents.md),
+[20-decision-rights-raci.md](20-decision-rights-raci.md),
+[29-agent-cost-and-budget-management.md](29-agent-cost-and-budget-management.md),
+and [36-execution-mode-escalation-ladder.md](36-execution-mode-escalation-ladder.md)
+only make sense given that autonomy and repetition. Widen the scope to
+"any project that uses AI somewhere" and the reason these crystals exist
+gets blurry.
 
 ## Why "crystal"
 
@@ -44,12 +58,13 @@ other projects.
 The number (`NN-`) on each crystal below is a **permanent ID recording the
 order it was added**, not a ranking of importance — this isn't an
 oversight, it's a deliberate design choice: keeping the number a stable
-identifier means links where one crystal references another, like
-`[05-...](05-...)`, references from projects that adopt this folder, and
-citations by number in documents like `directive-registry.md` all stay
-intact ([BLUEPRINT.md](BLUEPRINT.md) section 5 — the same principle ADRs,
-RFCs, and this folder's own [02-directive-registry.md](02-directive-registry.md)
-use: IDs must be stable and must not carry meaning). Instead, "what to look
+identifier means nothing breaks — not the links where one crystal
+references another (like `[05-...](05-...)`), not references from
+projects that adopt this folder, and not citations by number in documents
+like `directive-registry.md` ([BLUEPRINT.md](BLUEPRINT.md) section 5 —
+the same principle ADRs, RFCs, and this folder's own
+[02-directive-registry.md](02-directive-registry.md) use: IDs must be
+stable and must not carry meaning). Instead, "what to look
 at first" is shown separately, as a priority list below — it supplies
 ordering information without renumbering anything.
 
@@ -76,7 +91,7 @@ The remaining crystals are worth reading once the "why this is needed"
 opening of each document actually applies to your own project — there's no
 need to bring all of them in at once ([USAGE-GUIDE.md](USAGE-GUIDE.md)'s
 "Planning perspective" walks through the same ordering in more detail). We
-don't rank all 36 crystals into one master priority order — what's needed
+don't rank all 37 crystals into one master priority order — what's needed
 first genuinely differs project to project, and forcing a single overall
 ranking would hide that difference rather than help.
 
@@ -149,6 +164,7 @@ much do you trust its results."
 | [18-determinism-and-reproducibility.md](18-determinism-and-reproducibility.md) | What causes the same input to yield a different answer, and how to handle it | 🟢 abstract verified (not the full original text — stated explicitly in the document) |
 | [22-llm-benchmark-literacy.md](22-llm-benchmark-literacy.md) | How to read credibility, contamination, and absolute-vs-relative framing when handed an LLM benchmark number | 🟢 5 benchmark papers verified against the source |
 | [34-self-experiment-reporting-standard.md](34-self-experiment-reporting-standard.md) | How to honestly report a self-experiment (hypothesis testing) that has no predefined test case, across three elements: qualitative, quantitative, and confidence | 🟡 the sample-size principle verified against the source; the confidence-marker system is an original design |
+| [37-target-metric-gaming-safeguards.md](37-target-metric-gaming-safeguards.md) | Why optimizing a proxy metric breaks its correlation with the true goal (Goodhart's law), and countermeasures like multiple metrics and trip wires | 🟢 verified against the source (all of Amodei et al. 2016's mitigations, DeepMind's real-world examples) |
 
 ### Safety & Security — defending against information leakage — what leaks and how
 
@@ -157,7 +173,7 @@ below) — this axis focuses on "through what channel does information leak."
 
 | File | Covers | Verification strength |
 |---|---|---|
-| [07-prompt-guardrails/](07-prompt-guardrails/) | Executable code implementing a 3-layer defense against secrets/personal data leaking into prompts or externally (copy-paste ready) | 🟢 verified with an actual live block test |
+| [07-prompt-guardrails/](07-prompt-guardrails/) | Executable code implementing a 4-layer defense against secrets/personal data leaking into prompts or externally (copy-paste ready) | 🟢 verified with an actual live block test |
 | [23-confidential-project-protection.md](23-confidential-project-protection.md) | Protecting project-level confidentiality that pattern-matching can't catch, by enforcing it at the git push level | 🟢 |
 | [31-synthetic-data-memory-isolation.md](31-synthetic-data-memory-isolation.md) | How to prevent synthetic inputs used for evals from getting mixed into permanent memory files as if they were real history | 🟡 generalized from an actual incident in the original project |
 | [32-quasi-identifier-aggregation-risk.md](32-quasi-identifier-aggregation-risk.md) | The risk that individually-safe information becomes a re-identification/targeting risk once combined (quasi-identifier aggregation), and how to respond | 🟡 concept definitions verified against the source; Sweeney's original paper itself not cross-checked |
@@ -211,28 +227,30 @@ plausibly-but-wrong."
 
 ## Principles for when scale grows
 
-Once you pass 20 crystals, a point arrives where the "memory cap"
-principle that [06-self-improving-heuristics-loop.md](06-self-improving-heuristics-loop.md)
-applies to self-learning rules needs to be applied to this folder itself
-too — adding without limit conflicts with the "smallest possible high-signal
-token set" principle in [16-context-engineering-principles.md](16-context-engineering-principles.md).
+Once you pass 20 crystals, a point arrives where this folder itself needs
+the same "memory cap" principle that
+[06-self-improving-heuristics-loop.md](06-self-improving-heuristics-loop.md)
+applies to self-learning rules — adding without limit conflicts with the
+"smallest possible high-signal token set" principle in
+[16-context-engineering-principles.md](16-context-engineering-principles.md).
 **Every time a new expansion candidate comes up for review**: (1) check
 whether it actually overlaps with an existing crystal, (2) check whether
 verifiable primary sources exist for it, (3) if it doesn't fit any category
 in this table, decide whether to create a new category or whether it's out
 of scope. Once a category exceeds 6-7 crystals, it's time to split it.
-**The Quality & Verification category has reached that boundary at 7
-(01, 04, 13, 18, 21, 22, 34), and the Governance & Decision-making
-category has reached it at 6 (02, 05, 17, 20, 24, 25)** — the next time a candidate comes
-up for addition to either of these two categories, decide whether to split
-first before adding (for Quality & Verification, e.g., "judging
-completeness" vs. "measurement/evidence interpretation"; for Governance &
-Decision-making, e.g., "governance of knowledge/directives themselves" vs.
-"governance of execution autonomy"). **Safety & Security actually reached 8
-and was split into "defending against information leakage" (07, 23, 31, 32,
-35) and "defending judgment & reasoning" (03, 14, 26)** — the numbers stayed
-the same; only the table's category membership was divided (applying
-exactly the split rule from [BLUEPRINT.md](BLUEPRINT.md) section 5).
+**Quality & Verification and Safety & Security already organize their
+tables along two axes each** — the numbers stayed the same; only the
+table's category membership was divided ([BLUEPRINT.md](BLUEPRINT.md)
+section 5's split rule). Quality & Verification splits into "judging
+completeness" (01, 13, 21 — 3) vs. "measurement/evidence interpretation"
+(04, 18, 22, 34, 37 — 5); Safety & Security splits into "defending
+against information leakage" (07, 23, 31, 32, 35 — 5) vs. "defending
+judgment & reasoning" (03, 14, 26 — 3) — neither axis is at 6-7 yet, so
+no further split is needed. **Governance & Decision-making hasn't been
+split and has reached the 6-7 boundary at 6 (02, 05, 17, 20, 24, 25)** —
+the next time a candidate comes up for addition to this category, decide
+whether to split first (e.g., "governance of knowledge/directives
+themselves" vs. "governance of execution autonomy").
 
 ## Usage · Blueprint · Risk Analysis
 

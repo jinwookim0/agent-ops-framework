@@ -1,10 +1,10 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:359a4a9684f8 own=sha256:bd54ec62de61 -->
 # Directive Registry — How to Accumulate and Index User Directives (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/02-directive-registry.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:c045d19ca1f8 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:0bdbd711e8e1 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 A variant of the ADR (Architecture Decision
 Record) practice, refined through 100+ real directives/decisions
@@ -20,8 +20,8 @@ re-application trigger.**
 ## Why this is needed
 
 - As sessions get longer and directives pile up, it's not viable to expect a
-  human to remember and check every time whether "does this judgment now
-  conflict with a principle the user settled earlier?"
+  human to remember and check, every time, whether the current judgment
+  conflicts with a principle the user already settled.
 - Indexing the directives themselves lets the AI search first, before making
   a new judgment call — "was there already a rule for this?"
 

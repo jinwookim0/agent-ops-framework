@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:77e723ce175a own=sha256:41928d50dc35 -->
 # Convincing But Fake — A Catalog and How to Verify (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/03-epistemic-immunity-catalog.md)**

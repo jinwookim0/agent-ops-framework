@@ -1,29 +1,32 @@
 #!/usr/bin/env python3
-"""agent-ops-framework-reflection-check.py — docs/directive-registry.md에 새로 쌓인
-지시 중, agent-ops-framework가 아닌 다른 프로젝트(tasks/prototypes/products)의
-고도화가 agent-ops-framework에 반영할 만한 이식 가능한 구조적 패턴을 담고 있는지
-후보를 찾아 agent-ops-framework/REFLECTION-CANDIDATES.md에 누적한다.
+"""agent-ops-framework-reflection-check.py — scans newly-added entries in
+docs/directive-registry.md for a portable structural pattern from some
+other project's (not agent-ops-framework's own) evolution that might be
+worth reflecting back into agent-ops-framework, and accumulates
+candidates in agent-ops-framework/REFLECTION-CANDIDATES.md.
 
-2026-08-29 신설. 사용자 지시: "agent-ops-framework가 아닌 다른 프로젝트가 고도화될
-때 마찬가지로 agent-ops-framework에 반영 가능한 고도화해나갈 수 있는 부분을
-고도화하는 작업 반영이 자동화되어야 한다." — `docs/auto-mode-operating-
-principles.md` §3.7(레포 비대화 대응)이 이미 실측으로 확인한 교훈("문서에
-적어두는 것만으로는 재발을 못 막는다")을 그대로 적용해, 이것도 §3.8로
-매 틱 확인 목록에 박아넣는다.
+The problem this solves: when a project that has adopted this folder
+keeps evolving, it's easy to lose track of which of its new
+directives/decisions are actually portable structural patterns worth
+folding back into this shared collection — simply writing "let's reflect
+this later" into a document doesn't prevent that from being forgotten
+again (the same lesson BLUEPRINT.md section 4 already draws on). This
+script automates the discovery half of that loop.
 
-**이 스크립트가 하지 않는 것(정직하게)**: 크리스탈을 자동으로 만들지 않는다.
-`agent-ops-framework/BLUEPRINT.md`의 편입 기준(1차 자료 확인, 도메인 지식 최소화
-검증 등)은 사람 또는 AI의 판단이 필요한 품질 게이트라, 자동화하면 그 게이트
-자체가 무의미해진다. 이 스크립트는 "무엇을 검토해야 하는지" 후보를 놓치지
-않게 발견·누적하는 것까지만 자동화한다 — 발견(detection)과 실행(execution)을
-분리하는 이 레포의 기존 원칙(quality-regression-check.py, eval-staleness-
-check.sh와 동일 설계)을 그대로 따른다.
+**What this script does NOT do (stated honestly)**: it never creates a
+crystal automatically. agent-ops-framework/BLUEPRINT.md's admission
+criteria (checking a primary source, minimizing domain knowledge, etc.)
+are quality gates that require human or AI judgment — automating them
+would make the gate itself meaningless. This script only automates
+finding and accumulating candidates for "what needs review," never
+deciding whether to admit one — the same detection/execution split this
+repo's other checker scripts already follow.
 
-사용법:
-  ./scripts/agent-ops-framework-reflection-check.py           # 체크포인트 이후 새 지시만 스캔
-  ./scripts/agent-ops-framework-reflection-check.py --rescan   # 체크포인트 무시하고 전체 재스캔(후보 목록은 유지, 중복 항목만 건너뜀)
+Usage:
+  ./scripts/agent-ops-framework-reflection-check.py           # scan only directives newer than the last checkpoint
+  ./scripts/agent-ops-framework-reflection-check.py --rescan   # ignore the checkpoint and rescan everything (the candidate list is kept; duplicates are skipped)
 
-종료 코드: 항상 0 (조언용 리포트 — repo-growth-check.py와 동일 정책).
+Exit code: always 0 (advisory report).
 """
 import argparse
 import pathlib
@@ -32,15 +35,17 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 REGISTRY = ROOT / "docs" / "directive-registry.md"
-# 2026-09-01: agent-ops-framework 전체가 ko/en 대칭 구조로 재편되며 이동
-# (SSOT는 ko/ — LANGUAGE-POLICY.md 참고). 이 두 파일은 원본 프로젝트 자신의
-# 실행 이력이라 번역 대상이 아니므로 ko/ 안에만 존재한다.
+# These two files hold this repository's own operating history (not
+# translatable content), so they live only under ko/ — consistent with
+# the ko/en split the rest of this folder uses (ko is SSOT; see
+# LANGUAGE-POLICY.md).
 CHECKPOINT = ROOT / "ko" / ".reflection-checkpoint"
 CANDIDATES = ROOT / "ko" / "REFLECTION-CANDIDATES.md"
 
-# 이식 가능한 구조적 패턴을 시사하는 신호어 — 도메인 콘텐츠(가격, 지역명 등)가
-# 아니라 "프로세스/규칙 자체"를 새로 만들었다는 신호. 과탐(false positive)을
-# 허용하고 사람/AI 판단으로 거르는 쪽을 택한다(놓치는 것보다 나음).
+# Signal words suggesting a portable structural pattern — signaling that a
+# *process/rule itself* was newly created, not domain content (pricing,
+# region names, etc.). Tolerates false positives and leaves filtering to
+# human/AI judgment (better than missing a real one).
 SIGNAL_KEYWORDS = [
     "원칙",
     "규칙",
@@ -60,8 +65,9 @@ SIGNAL_KEYWORDS = [
     "파이프라인",
 ]
 
-# 카테고리 추정용 키워드 — agent-ops-framework/README.md의 7개 카테고리와 대략 매칭.
-# 추정일 뿐이니 결과 표에도 "추정"이라고 표시한다.
+# Keywords for guessing a category — roughly matched against this folder's
+# category list (see README.md). This is only a guess, so the result
+# table also marks it "(guessed)".
 CATEGORY_HINTS = {
     "거버넌스·의사결정": ["지시", "우선순위", "결정", "책임", "권한", "위임"],
     "품질·검증": ["eval", "검증", "루브릭", "품질", "회귀", "테스트"],
@@ -72,11 +78,13 @@ CATEGORY_HINTS = {
     "구조·재사용": ["구조", "템플릿", "재사용", "스캐폴딩", "모듈"],
 }
 
-# 2026-09-01 발견: 예전엔 5컬럼(6개 파이프)을 강제해 docs/directive-
-# registry.md의 실제 4컬럼(| # | 내용 | 트리거 | 사용자 지시 원문 |) 행과
-# 하나도 안 맞았다 — 이 스캐너가 언제나 "0건 스캔"만 내는 무한 무동작
-# 상태였다는 뜻. 앞의 두 컬럼(번호, 본문)만 강제하고 나머지는 자유롭게
-# 둬서, 레지스트리 표에 컬럼이 추가/삭제돼도 계속 매치되게 한다.
+# Found during a self-audit: this regex used to require 5 columns (6
+# pipes), which never matched docs/directive-registry.md's actual
+# 4-column rows (| # | body | trigger | verbatim user directive |) — this
+# scanner was silently a permanent no-op, always reporting "0 scanned."
+# Now only the first two columns (number, body) are required and the rest
+# are left free, so it keeps matching even if the registry table's later
+# columns are added to or removed.
 ROW_RE = re.compile(r"^\|\s*([0-9]+(?:\.[0-9]+)?)\s*\|\s*(.+?)\s*\|.*$")
 
 
@@ -122,14 +130,15 @@ def scan(min_entry):
         if num_val <= min_entry:
             continue
         if "agent-ops-framework" in body or "agent-ops-framework" in line:
-            continue  # agent-ops-framework 자신에 대한 항목은 대상 아님(이미 반영됨)
+            continue  # entries about agent-ops-framework itself aren't candidates (already reflected)
         hit_keywords = [k for k in SIGNAL_KEYWORDS if k in body]
         if not hit_keywords:
             continue
-        # num_str(원문 그대로, 예: "12")을 표시·중복확인에 쓴다 — num_val
-        # (float)을 그대로 쓰면 "12"가 "12.0"으로 표시돼 directive-
-        # registry.md의 실제 번호 표기와 안 맞는 문제(2026-09-01 발견)가
-        # 있었다. 정렬·임계값 비교에만 num_val을 쓴다.
+        # num_str (verbatim, e.g. "12") is used for display/dedup — using
+        # num_val (a float) directly would render "12" as "12.0", which
+        # doesn't match directive-registry.md's actual numbering (a bug
+        # found and fixed during a self-audit). num_val is only used for
+        # sorting/threshold comparisons.
         rows.append((num_val, num_str, body, hit_keywords))
     return rows
 
@@ -170,12 +179,12 @@ def main():
     ap.add_argument(
         "--rescan",
         action="store_true",
-        help="체크포인트 무시하고 전체 재스캔(중복은 자동 건너뜀)",
+        help="ignore the checkpoint and rescan everything (duplicates are skipped automatically)",
     )
     args = ap.parse_args()
 
     if not REGISTRY.exists():
-        print(f"[fatal] {REGISTRY}가 없습니다.", file=sys.stderr)
+        print(f"[fatal] {REGISTRY} not found.", file=sys.stderr)
         return 1
 
     min_entry = -1.0 if args.rescan else load_checkpoint()
@@ -187,16 +196,18 @@ def main():
         save_checkpoint(max_seen)
 
     print(
-        f"=== agent-ops-framework-reflection-check: {len(rows)}건 스캔, {added}건 신규 후보 추가 ==="
+        f"=== agent-ops-framework-reflection-check: {len(rows)} scanned, {added} new candidate(s) added ==="
     )
     if added:
         print(
-            f"→ {CANDIDATES.relative_to(ROOT)} 확인 — '검토 대기' 상태인 행을 사람/AI가 검토해"
+            f"→ check {CANDIDATES.relative_to(ROOT)} — a human/AI should review rows marked '검토 대기' (pending review)"
         )
-        print("  '반영됨(크리스탈 번호)' 또는 '반영 보류(이유)'로 상태를 갱신할 것.")
+        print(
+            "  and update their status to '반영됨(크리스탈 번호)' (adopted) or '반영 보류(이유)' (deferred, with reason)."
+        )
     else:
         print(
-            "신규 후보 없음 — 체크포인트 이후 이식 가능한 패턴 신호가 없었거나 전부 이미 기록됨."
+            "No new candidates — no portable-pattern signal since the last checkpoint, or everything was already recorded."
         )
     return 0
 

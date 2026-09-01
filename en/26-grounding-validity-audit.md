@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:0a89b2756d70 own=sha256:072539ebf9c1 -->
 # Grounding Validity Audit — Periodically Revisiting Our Own Guidance Documents
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/26-grounding-validity-audit.md)**

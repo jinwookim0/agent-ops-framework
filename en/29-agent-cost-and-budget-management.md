@@ -1,10 +1,10 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:f08fce007f95 own=sha256:bffbf8c29772 -->
 # Agent Cost & Budget Management — A Different Axis From Observability
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/29-agent-cost-and-budget-management.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:919848cd253f (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:433d0f86afad (of the body below, excluding the stamp comment, this line, and the version line)
 
 If [11-observability-and-agent-tracing.md](11-observability-and-agent-tracing.md)
 covers how to log "what happened," this crystal covers **"what it cost, why it
@@ -44,9 +44,9 @@ having headroom on one gives no guarantee of headroom on the other. And a
 "limit reached" error is not a transient failure — it's a **signal**: retrying
 will keep failing for the same reason until the reset time. The correct
 response is to **stop and report to the user**, not retry. If the observed
-reset time keeps shifting, that's a sign this is likely **a rolling window
-based on recent usage**, not "one fixed daily reset" — don't assume that once
-you're past a reset time you're safe from then on.
+reset time keeps shifting, that's a sign the limit works as **a rolling
+window based on recent usage**, not "one fixed daily reset" — don't assume
+that once you're past a reset time you're safe from then on.
 
 ## Core Mechanism 3 — Parallel Batches Amplify Hitting a Limit
 

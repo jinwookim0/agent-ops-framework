@@ -1,16 +1,20 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:cc6872f58e7a own=sha256:252914b66b68 -->
 # Observability — How to Keep Agent Execution From Being Left as Claims Instead of Logs
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/11-observability-and-agent-tracing.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:b9089b18afd0 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:70ec8e3a755c (of the body below, excluding the stamp comment, this line, and the version line)
 
-**Verification strength**: 🟡 The framework's own principles (separating
-intent from observation, structured logging) are settled and based on
-the ReAct pattern, but the external standard (OpenTelemetry's GenAI
-semantic conventions) couldn't be checked in detail since the documentation
-was mid-migration — stated explicitly as unverified.
+**Verification strength**: 🟢 (re-verified 2026-09-01) The framework's
+own principles (separating intent from observation, structured logging)
+are settled and based on the ReAct pattern, and the external standard
+(OpenTelemetry's GenAI semantic conventions,
+github.com/open-telemetry/semantic-conventions-genai) was checked
+directly against the source this time, including actual attribute names
+(`gen_ai.operation.name`, `gen_ai.usage.input_tokens`, etc.) — an
+earlier version of this document couldn't confirm this, since that
+repository was inaccessible while mid-migration.
 
 Whether an AI agent's statement that it "completed" something and whether
 that tool call actually happened can be two separate things (item 8 in
@@ -56,19 +60,29 @@ At minimum, structure and record the following fields:
 | When | Timestamp | Prevents concealing the time axis (item 10 in [03](03-epistemic-immunity-catalog.md)) |
 | Cost (optional) | Tokens/time/number of API calls | FinOps observability — connects to [13-debt-and-quality-bar.md](13-debt-and-quality-bar.md) |
 
-## An emerging standard worth watching (stated honestly — details unverified)
+## An emerging standard worth watching — OpenTelemetry's GenAI semantic conventions
 
 OpenTelemetry is developing semantic conventions (a standardized log
-schema) for generative-AI (GenAI)/agent execution, spun out into a
-separate repository — **this document was not able to directly review
-and verify the specific span names or attribute list** (the
-documentation was in the middle of being moved between repos, and access
-failed). If you need a standardized observability schema, the
-recommendation is to first implement the three principles above on your
-own, then directly check the latest OpenTelemetry GenAI semantic
-conventions documentation and align your field names to it — **this
-document's field names (in the table above) make no claim of matching
-that standard**; they were derived independently.
+schema) for generative-AI (GenAI)/agent execution in a separate
+repository (github.com/open-telemetry/semantic-conventions-genai) — 🟢
+re-verified 2026-09-01 against the actual spans/attributes:
+
+| This crystal's field | Actual OpenTelemetry attribute |
+|---|---|
+| Which task/step this was | `gen_ai.operation.name` (the span name itself follows `"{operation.name} {request.model}"`) |
+| What was actually done | `gen_ai.request.model`, `gen_ai.provider.name` |
+| What the result was | `gen_ai.response.finish_reasons`, `error.type` |
+| Cost (optional) | `gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens` |
+
+**Honest limit**: this mapping was drawn after the fact from this
+crystal's own independently-derived fields — it doesn't mean this
+crystal was originally designed to follow the OpenTelemetry standard.
+No exact match was found in this re-verification for the "what was
+intended" and "when" fields (deeper documentation digging might turn
+one up). If you actually need a standardized schema, first implement
+the three principles above on your own, then open this repository's
+latest documentation directly to align field names — this crystal
+doesn't substitute for the full standard document.
 
 ## Connecting to regression detection
 

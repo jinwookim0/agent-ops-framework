@@ -1,0 +1,9 @@
+{
+  "ticket_id": "TICKET-E01",
+  "run": 2,
+  "captured_at": "2026-09-01",
+  "note": "A second, fully independent subagent call with the identical prompt as TICKET-E01.json's run 1 -- new isolated context, no memory of run 1's answer. Captured specifically to test SPEC.md's determinism criterion empirically rather than leave it asserted.",
+  "raw_response_verbatim": "{\"category\": \"billing\", \"confidence\": 0.55, \"reasoning\": \"The ticket bundles two distinct issues: a duplicate charge (billing) and a blank PDF export (bug). The double-charge complaint is the more urgent, actionable item and drives the categorization, but confidence is reduced because a single category can't fully capture the second, unrelated bug report which should also be logged separately.\", \"oversight_gate\": \"confirm\"}",
+  "subagent_tokens": 20148,
+  "duration_ms": 9504
+}

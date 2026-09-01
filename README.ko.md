@@ -1,5 +1,5 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
-# agent-ops-framework
+<!-- translated-from: ssot=sha256:4bd9e956a839 own=sha256:474c828d4087 -->
+# agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 핵심 모음(Structural Crystals)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Crystal verification](https://github.com/jinwookim0/agent-ops-framework/actions/workflows/verify.yml/badge.svg)](.github/workflows/verify.yml)
@@ -7,10 +7,11 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 > 🌐 **Read this page in English: [README.md](README.md)**
+> 🖼 **[이 저장소 전체를 한 페이지로 훑어보는 시각적 요약](https://claude.ai/code/artifact/18574a68-d92e-45db-a505-db0b038ac284)** — 내용은 이 README와 같고, 훑어보기 좋게 배치만 다르다.
 
-**"AI 에이전트 프로젝트를 어떻게 운영할 것인가"에 대한 규칙을 무료로 모아, 그대로 복사해 쓸 수 있게 만든 모음집 — 호기심 많은 고등학생부터 실무 AI 엔지니어까지, 누구나 자신에게 필요한 조각만 정확히 가져갈 수 있도록 썼다.**
+**"AI 에이전트 프로젝트를 어떻게 운영할 것인가"에 대한 규칙을 모아, 그대로 복사해 쓸 수 있게 만든 모음집 — 누구나 자신에게 필요한 조각만 정확히 가져갈 수 있도록 썼다.**
 
-이 페이지(와 그 [영문판](README.md))는 짧은 랜딩 페이지다. 36개 크리스탈 전체를 파일 단위로 설명·검증강도 배지와 함께 정리한 전체 지도는 한 단계 더 안쪽, **[`ko/README.md`](ko/README.md)**(한국어, 그 안쪽 콘텐츠의 SSOT) 또는 **[`en/README.md`](en/README.md)**(영어)에 있다 — 둘은 같은 내용이니 편한 쪽을 읽으면 된다.
+이 페이지(와 그 [영문판](README.md))는 짧은 랜딩 페이지다. 37개 크리스탈 전체를 파일 단위로 설명·검증강도 배지와 함께 정리한 전체 지도는 한 단계 더 안쪽, **[`ko/README.md`](ko/README.md)**(한국어, 그 안쪽 콘텐츠의 SSOT) 또는 **[`en/README.md`](en/README.md)**(영어)에 있다 — 둘은 같은 내용이니 편한 쪽을 읽으면 된다.
 
 ---
 
@@ -29,12 +30,12 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 *"서사 제거"와 6개 게이트가 실제로 무엇을 확인하는지는 [BLUEPRINT.md](ko/BLUEPRINT.md)에 전체 내용이 있다 — 이 그림은 세부 규칙이 아니라 과정의 전체 모양을 보여준다.*
 
 시작하기 전에 알아두면 좋은 두 가지:
-- **한국어(`ko/`)가 SSOT(원본)인 건 영어를 지원하지 않아서가 아니라 실용적인 이유 때문이다**: 이 모음집이 계속 활발히 자라는 동안, 모든 수정마다 두 언어를 완벽히 동기화하는 건 비용이 더 큰 일이다. `en/`은 필요할 때 의도적으로 번역되고, 양방향 자동 동기화 체크(`agent-ops-framework-translation-sync-check.py`)로 관리된다 — 어느 쪽을 읽어도 같은 내용이다.
-- **여기엔 "그냥 믿어라"가 없다.** 모든 크리스탈은 어떤 1차 자료가 근거이고 그 자료를 얼마나 철저히 확인했는지를 명시한다 — 크리스탈 자신이 여러분 프로젝트의 주장에도 똑같이 적용하라고 요구하는 바로 그 원칙이다([`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md) 참고).
+- **한국어(`ko/`)가 SSOT(원본)인 데는 실용적인 이유 하나가 있다.** 이 모음집이 계속 활발히 자라는 동안, 모든 수정마다 두 언어를 완벽히 동기화하는 건 비용이 더 큰 일이다 — 그게 전부이지, 영어 지원 여부와는 무관하다. `en/`은 필요할 때 의도적으로 번역되고, 양방향 자동 동기화 체크(`agent-ops-framework-translation-sync-check.py`)로 관리된다 — 어느 쪽을 읽어도 같은 내용이다.
+- **여기엔 "그냥 믿어라"가 없다.** 모든 크리스탈은 어떤 1차 자료가 근거이고 그 자료를 얼마나 철저히 확인했는지를 명시한다 — 크리스탈 자신이 프로젝트의 주장에도 똑같이 적용하라고 요구하는 바로 그 원칙이다([`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md) 참고).
 
 ## 먼저 볼 것 (대략 이 순서로)
 
-이걸 처음 프로젝트에 들여온다면 36개 크리스탈을 전부 한 번에 읽으려 하지 말 것 — 아래를 이 순서로 보고, 나머지는 각 문서 자신의 "왜 필요한가" 절이 실제로 자기 상황에 해당될 때만 챙긴다:
+이걸 처음 프로젝트에 들여온다면 37개 크리스탈을 전부 한 번에 읽으려 하지 말 것 — 아래를 이 순서로 보고, 나머지는 각 문서 자신의 "왜 필요한가" 절이 실제로 자기 상황에 해당될 때만 챙긴다:
 
 1. **[`07-prompt-guardrails/`](ko/07-prompt-guardrails/)** — 개인정보를 다루는 첫 작업이 생기기 *전에* 반드시 먼저. 이건 다른 것들과 다르다 — 읽을 원칙이 아니라 **그대로 복사해서 실행하는 코드**다(훅, 스캐너, 마스킹 스크립트).
 2. **[`01-definition-of-done.md`](ko/01-definition-of-done.md)** — 작업이 몇 개를 넘어가기 시작하면.
@@ -43,9 +44,27 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 5. **[`09-project-structure-template.md`](ko/09-project-structure-template.md)** — 프로젝트 구조 자체를 설계(또는 재설계)할 때.
 6. **[`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md)**와 **[`04-eval-engineering-methodology.md`](ko/04-eval-engineering-methodology.md)** — 산출물 품질을 눈대중이 아니라 처음으로 진지하게 측정해야 할 때.
 
-## 전체 지도 — 9개 카테고리, 36개 크리스탈
+## 적용된 모습으로 보기
 
-크리스탈 번호는 영구 ID다(추가된 순서이지 중요도 순위가 아니다 — 이유는 `ko/README.md`의 "번호는 추가 순서다, 중요도가 아니다" 절 참고; GitHub이 한글 헤딩에 자동 생성하는 앵커 슬러그는 직접 링크할 만큼 안정적이지 않아, 여기서는 프래그먼트가 아니라 파일 자체를 가리킨다). 아래는 카테고리 단위 지도다 — 36개 전체의 설명과 검증 배지가 담긴 완전한 파일별 표는 **[`ko/README.md`](ko/README.md)**(또는 [`en/README.md`](en/README.md) — 내용 동일) 참고.
+[`examples/`](examples/) 안의 에이전트 둘은 API 키나 별도 설정 없이
+파이썬만으로 바로 돌아간다. [`issue-triage-agent/`](examples/issue-triage-agent/)는
+들어오는 티켓을 분류하고,
+[`research-digest-agent/`](examples/research-digest-agent/)는 반복
+실행되면서 스스로 휴리스틱을 갱신해나간다. 이 둘의 코드에서만 37개
+크리스탈 중 25개가 확인된다.
+
+세 번째 예제는 다르다.
+[`escalation-reviewer-agent/`](examples/escalation-reviewer-agent/)는
+진짜 LLM 에이전트를 불러다 실제 티켓을 맡긴다. 그 에이전트가 아는 건
+눈앞의 티켓 하나뿐이다. 그렇게 돌려본 결과 실행 도중 진짜 보안 허점이
+하나 드러났고, 그것도 숨기지 않고 그대로 남겼다.
+
+각 예제엔 `CASE-STUDY.md`(영어)가 붙어 있어서, 크리스탈 때문에 실제로
+바뀐 파일과 줄을 바로 확인할 수 있다.
+
+## 전체 지도 — 9개 카테고리, 37개 크리스탈
+
+크리스탈 번호는 영구 ID다(추가된 순서이지 중요도 순위가 아니다 — 이유는 `ko/README.md`의 "번호는 추가 순서다, 중요도가 아니다" 절 참고; GitHub이 한글 헤딩에 자동 생성하는 앵커 슬러그는 직접 링크할 만큼 안정적이지 않아, 여기서는 프래그먼트가 아니라 파일 자체를 가리킨다). 아래는 카테고리 단위 지도다 — 37개 전체의 설명과 검증 배지가 담긴 완전한 파일별 표는 **[`ko/README.md`](ko/README.md)**(또는 [`en/README.md`](en/README.md) — 내용 동일) 참고.
 
 | 카테고리 | 답하는 질문 | 예시 크리스탈 |
 |---|---|---|
@@ -74,8 +93,8 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Contributor Covenant v2.1 원문 |
 | [`LICENSE`](LICENSE) | MIT |
 
-## 이것은 아닌 것
+## 이 저장소가 아닌 것
 
-- 여러분 프로젝트의 실제 콘텐츠를 대체하지 않는다 — 그건 여전히 100% 여러분의 것이다.
-- 독립적으로 재검증된 별도의 무언가가 아니다 — 각 크리스탈은 그 원본 프로젝트 *안에서* 일어난 검증을 요약한 것이고, 검증 배지는 정확히 그만큼만 확인됐다는 뜻이지 그 이상이 아니다.
-- 단일 기능 패키징 포맷이 아니다(그건 더 좁은 별개의 관심사다) — 이건 프로젝트 전체의 *운영 방식*을 추출한 것이다.
+- 프로젝트의 실제 콘텐츠를 대체하지 않는다 — 그 콘텐츠는 여전히 100% 그 프로젝트만의 것이다.
+- 독립적으로 재검증되지는 않았다 — 각 크리스탈은 그 원본 프로젝트 *안에서* 일어난 검증을 요약한 것이고, 검증 배지는 정확히 그만큼만 확인됐다는 뜻이지 그 이상이 아니다.
+- 단일 기능 패키징 포맷이 아니다 — 그건 더 좁은 별개의 관심사이고, 이 저장소는 프로젝트 전체의 *운영 방식*을 추출한 것이다.

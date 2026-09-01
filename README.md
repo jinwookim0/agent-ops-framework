@@ -1,4 +1,4 @@
-# agent-ops-framework
+# agent-ops-framework — A Collection of Structural Crystals for Operating AI-Agent Projects
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Crystal verification](https://github.com/jinwookim0/agent-ops-framework/actions/workflows/verify.yml/badge.svg)](.github/workflows/verify.yml)
@@ -6,10 +6,11 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 > 🌐 **이 페이지를 한국어로 보기: [README.ko.md](README.ko.md)**
+> 🖼 **[A one-page visual overview of this whole repo](https://claude.ai/code/artifact/18574a68-d92e-45db-a505-db0b038ac284)** — same content as this README, laid out for skimming.
 
-**A free, copy-paste collection of "how to run an AI-agent project" rules — written so that anyone, from a curious high-schooler to a working AI engineer, can pick up exactly the piece they need.**
+**A copy-paste collection of "how to run an AI-agent project" rules, written so that anyone can pick up exactly the piece they need.**
 
-This page (and its [Korean translation](README.ko.md)) is a short landing page. The full, file-by-file map of all 36 crystals — with a description and a verification badge for each — lives one level deeper, in **[`en/README.md`](en/README.md)** (English) or **[`ko/README.md`](ko/README.md)** (Korean, the source of truth for that deeper content); both say the same thing, so read whichever you're comfortable in.
+This page (and its [Korean translation](README.ko.md)) is a short landing page. The full, file-by-file map of all 37 crystals — with a description and a verification badge for each — lives one level deeper, in **[`en/README.md`](en/README.md)** (English) or **[`ko/README.md`](ko/README.md)** (Korean, the source of truth for that deeper content); both say the same thing, so read whichever you're comfortable in.
 
 ---
 
@@ -28,12 +29,12 @@ Each rule here started as a real mistake, a real fix, or a real design decision 
 *Full detail on what "strip the story" and the 6 gates actually check lives in [BLUEPRINT.md](ko/BLUEPRINT.md) — this diagram shows the shape of the process, not every rule.*
 
 Two things worth knowing before you dive in:
-- **Korean (`ko/`) is the source of truth, not because English isn't supported, but for a practical reason**: while this collection is still actively growing, keeping two languages perfectly in sync on every edit would cost more than it's worth. `en/` is translated deliberately and kept in sync by an automated two-way check (`agent-ops-framework-translation-sync-check.py`) — you can read either one, they say the same thing.
+- **Korean (`ko/`) is the source of truth for one practical reason.** While this collection is still actively growing, keeping two languages perfectly in sync on every edit would cost more than it's worth — that's the entire reason; it says nothing about whether English is supported. `en/` is translated deliberately and kept in sync by an automated two-way check (`agent-ops-framework-translation-sync-check.py`) — you can read either one, they say the same thing.
 - **Nothing here is "trust me."** Every crystal states which primary source backs it and how thoroughly that source was actually checked — the same discipline the crystals themselves ask you to apply to your own project's claims (see [`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md)).
 
 ## Start here (in roughly this order)
 
-If you're adding this to a project for the first time, don't try to read all 36 crystals — read these, in this order, and pick up the rest only when a document's own "why this matters" section actually applies to you:
+If you're adding this to a project for the first time, don't try to read all 37 crystals — read these, in this order, and pick up the rest only when a document's own "why this matters" section actually applies to you:
 
 1. **[`07-prompt-guardrails/`](ko/07-prompt-guardrails/)** — do this *before* your first task that touches personal data, not after. This one is different from the rest: it's not a principle to read, it's **working code you copy and run** (a hook, a scanner, a masking script).
 2. **[`01-definition-of-done.md`](ko/01-definition-of-done.md)** — once you have more than a handful of tasks going.
@@ -42,9 +43,27 @@ If you're adding this to a project for the first time, don't try to read all 36 
 5. **[`09-project-structure-template.md`](ko/09-project-structure-template.md)** — when you're designing (or redesigning) the project's structure itself.
 6. **[`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md)** and **[`04-eval-engineering-methodology.md`](ko/04-eval-engineering-methodology.md)** — the first time you need to seriously measure output quality, not just eyeball it.
 
-## The full map — 36 crystals in 9 categories
+## See it applied
 
-Every crystal number is a permanent ID (the order it was added, not a ranking — see `ko/README.md`'s "번호는 추가 순서다, 중요도가 아니다" section for why; GitHub's auto-generated anchor slugs for Korean headings aren't reliable enough to link to directly, so this points at the file, not a fragment). Below is the category-level map; for the complete file-by-file table with a description and a verification badge for each of the 36, see **[`en/README.md`](en/README.md)** (or [`ko/README.md`](ko/README.md) — identical content).
+Two agents in [`examples/`](examples/) run with nothing but Python — no
+API key, no setup.
+[`issue-triage-agent/`](examples/issue-triage-agent/) classifies
+incoming tickets; [`research-digest-agent/`](examples/research-digest-agent/)
+runs on a recurring loop and updates its own heuristics as it goes.
+Between the two, their code covers 25 of the 37 crystals.
+
+The third example breaks that pattern.
+[`escalation-reviewer-agent/`](examples/escalation-reviewer-agent/)
+hands real tickets to an actual LLM agent — one told nothing except the
+single ticket in front of it — and writes up exactly what happened,
+including a real security gap the run turned up on its own.
+
+Every example comes with a `CASE-STUDY.md` that names the file and line
+a crystal actually changed, not just the idea behind it.
+
+## The full map — 37 crystals in 9 categories
+
+Every crystal number is a permanent ID (the order it was added, not a ranking — see `ko/README.md`'s "번호는 추가 순서다, 중요도가 아니다" section for why; GitHub's auto-generated anchor slugs for Korean headings aren't reliable enough to link to directly, so this points at the file, not a fragment). Below is the category-level map; for the complete file-by-file table with a description and a verification badge for each of the 37, see **[`en/README.md`](en/README.md)** (or [`ko/README.md`](ko/README.md) — identical content).
 
 | Category | Answers the question | Example crystals |
 |---|---|---|

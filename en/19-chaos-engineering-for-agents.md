@@ -1,23 +1,23 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: ssot=sha256:1c950bfcdc25 own=sha256:b98f3047a9a7 -->
 # Chaos Engineering for Agents — Deliberately Breaking Things Before an Incident Does
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/19-chaos-engineering-for-agents.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:ab7143640585 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:47e833e89be5 (of the body below, excluding the stamp comment, this line, and the version line)
 
 Where [14-ai-red-team-checklist.md](14-ai-red-team-checklist.md) covers
 **malicious attacks** (someone deliberately trying to trick the
-system), this crystal is a different threat model — **deliberately
-experimenting, before an incident happens, to see whether the system
-holds up against environmental failures that nobody intended but that
-actually occur** (tool timeouts, API outages, budget exhaustion,
-malformed responses).
+system), this crystal addresses a different threat model —
+**environmental failures that nobody intended but that actually
+occur** (tool timeouts, API outages, budget exhaustion, malformed
+responses) — by deliberately experimenting against them before an
+incident happens, to see whether the system holds up.
 
 ## Basis (primary source verified)
 
 🟢 Verified against the original at ["Principles of Chaos
-Engineering"](https://principlesofchaos.org/) — Netflix pioneered this field, and the site itself is a community document formed by industry-wide consensus since. Quoting the definition verbatim:
+Engineering"](https://principlesofchaos.org/) — Netflix pioneered this field, and the site itself is a community document that captures the industry-wide consensus formed since then. Quoting the definition verbatim:
 **"Chaos Engineering is the discipline of experimenting on a system in
 order to build confidence in the system's capability to withstand
 turbulent conditions in production."**

@@ -11,14 +11,24 @@
       "Read(**/*.pem)",
       "Read(**/*_rsa)",
       "Read(**/*_ed25519)",
+      "Read(**/*_ecdsa)",
+      "Read(**/*_dsa)",
       "Read(**/*.key)",
+      "Read(**/*.pfx)",
+      "Read(**/*.p12)",
+      "Read(**/*.jks)",
+      "Read(**/*.keystore)",
       "Read(**/.netrc)",
       "Read(**/.git-credentials)",
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)",
       "Read(~/.kube/**)",
       "Read(~/.docker/config.json)",
-      "Read(~/.config/gcloud/**)"
+      "Read(~/.config/gcloud/**)",
+      "Read(~/.npmrc)",
+      "Read(~/.pypirc)",
+      "Read(~/.cargo/credentials)",
+      "Read(~/.cargo/credentials.toml)"
     ]
   },
   "hooks": {

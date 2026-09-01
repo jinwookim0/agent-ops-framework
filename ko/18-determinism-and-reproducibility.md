@@ -2,8 +2,8 @@
 
 > 🌐 **[Read in English](../en/18-determinism-and-reproducibility.md)**
 
-**버전**: 1.0.1
-**콘텐츠 해시**: sha256:642a53b43f33 (본문 기준, 이 두 줄 제외)
+**버전**: 1.0.2
+**콘텐츠 해시**: sha256:d4444417c3de (본문 기준, 이 두 줄 제외)
 
 "방금 됐던 게 왜 지금은 안 되지?"는 AI 에이전트 프로젝트에서 가장 흔하고
 가장 잘못 진단되는 질문이다. 이 크리스탈은 **왜 비결정적인지**와
@@ -38,7 +38,7 @@ in input buffers)"** — 즉 배치(batching) 처리 방식 자체다. (이 세�
 아니다. 문제는 **핵심 판단(통과/불통과, 숫자 결론, 실행할 행동)**이
 흔들리는 것이다 — 이 둘을 구분해서, 후자에만 안정성 검증 자원을 쓴다.
 
-### 2. 다수결로 안정성을 사는다 — self-consistency
+### 2. 다수결로 안정성을 산다 — self-consistency
 같은 판단을 독립적으로 여러 번 뽑아 다수결로 최종 답을 정하면 단일
 실행보다 안정적이다 — [04-eval-engineering-methodology.md](04-eval-engineering-methodology.md)
 5단계(self-consistency 재채점)가 이 원칙을 구체적 파이프라인 단계로

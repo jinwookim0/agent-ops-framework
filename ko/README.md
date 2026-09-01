@@ -1,4 +1,4 @@
-# agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 구조적 결정체 모음
+# agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 핵심 모음(Structural Crystals)
 
 > 🌐 **[Read in English](../en/README.md)**
 
@@ -15,6 +15,19 @@ AI 에이전트가 여러 작업을 관리하는 프로젝트는 대개 **도메
 누적·색인하는가**", "**AI가 그럴듯하지만 틀린 말을 하는 패턴을 어떻게
 검증하는가**", "**프롬프트에 비밀값이 새나가지 않게 어떻게 강제하는가**"
 같은 **프로세스 그 자체**만 남겼다.
+
+"AI 에이전트 프로젝트"가 정확히 가리키는 범위: AI를 한 번 호출하고 끝나는
+기능이 아니라, **자율적으로, 반복적으로, 여러 작업을 스스로 처리하는**
+프로젝트를 뜻한다 — "AI를 쓰는 프로젝트" 전반보다 좁다. 이 구분은 실제로
+갈린다: [05-autonomous-agent-operating-principles.md](05-autonomous-agent-operating-principles.md)·
+[06-self-improving-heuristics-loop.md](06-self-improving-heuristics-loop.md)·
+[19-chaos-engineering-for-agents.md](19-chaos-engineering-for-agents.md)·
+[20-decision-rights-raci.md](20-decision-rights-raci.md)·
+[29-agent-cost-and-budget-management.md](29-agent-cost-and-budget-management.md)·
+[36-execution-mode-escalation-ladder.md](36-execution-mode-escalation-ladder.md)은
+이 자율성·반복성이 없으면 애초에 성립하지 않는 크리스탈이다. 범위를
+"AI를 쓰는 프로젝트" 전반으로 넓히면 이런 크리스탈들이 왜 필요한지가
+흐려진다.
 
 ## 왜 "결정체(crystal)"인가
 
@@ -62,7 +75,7 @@ AI 에이전트가 여러 작업을 관리하는 프로젝트는 대개 **도메
 
 나머지 크리스탈은 각 문서 서두의 "왜 필요한가"가 실제로 자기 프로젝트에
 해당되는 시점에 본다 — 전부 한 번에 들여올 필요 없다([USAGE-GUIDE.md](USAGE-GUIDE.md)
-"기획 관점"에 같은 순서가 더 자세히 설명돼 있다). 36개 전체를 하나의 총
+"기획 관점"에 같은 순서가 더 자세히 설명돼 있다). 37개 전체를 하나의 총
 순위로 매기지는 않는다 — 프로젝트마다 무엇이 먼저 필요한지가 실제로
 다르고, 억지로 매긴 총순위는 그 차이를 숨겨 오히려 덜 유용하다.
 
@@ -126,6 +139,7 @@ self-consistency 재채점)에서 이미 "자기 채점을 구조적으로 억�
 | [18-determinism-and-reproducibility.md](18-determinism-and-reproducibility.md) | 같은 입력에 답이 달라지는 원인과 대응법 | 🟢 초록 확인(원문 전체는 아님, 문서에 명시) |
 | [22-llm-benchmark-literacy.md](22-llm-benchmark-literacy.md) | LLM 벤치마크 수치를 인용받았을 때 신뢰도·오염·절대vs상대를 읽는 법 | 🟢 5개 벤치마크 논문 원문 확인 |
 | [34-self-experiment-reporting-standard.md](34-self-experiment-reporting-standard.md) | 정해진 케이스가 없는 자가 실험(가설 검증)을 정성·정량·신뢰도 3요소로 정직하게 보고하는 법 | 🟡 표본크기 원칙은 원문 확인, 신뢰도 마커 체계는 자체 설계 |
+| [37-target-metric-gaming-safeguards.md](37-target-metric-gaming-safeguards.md) | 대리 지표를 목표로 삼으면 진짜 목표와의 상관관계가 깨지는 문제(Goodhart's law)와 복수 지표·트립와이어 등 대응법 | 🟢 원문 확인(Amodei et al. 2016 완화 전략 전부, DeepMind 실사례) |
 
 ### 안전·보안 — 정보 유출 방어 — 무엇이 새나가는가
 
@@ -134,7 +148,7 @@ self-consistency 재채점)에서 이미 "자기 채점을 구조적으로 억�
 
 | 파일 | 다루는 것 | 검증 강도 |
 |---|---|---|
-| [07-prompt-guardrails/](07-prompt-guardrails/) | 비밀값·개인정보가 프롬프트/외부로 새나가는 걸 3단으로 막는 실행 가능한 코드(그대로 복사해 쓸 수 있음) | 🟢 실제 라이브 차단 검증까지 완료 |
+| [07-prompt-guardrails/](07-prompt-guardrails/) | 비밀값·개인정보가 프롬프트/외부로 새나가는 걸 4단으로 막는 실행 가능한 코드(그대로 복사해 쓸 수 있음) | 🟢 실제 라이브 차단 검증까지 완료 |
 | [23-confidential-project-protection.md](23-confidential-project-protection.md) | 패턴으로 못 잡는 프로젝트 단위 기밀을 git push 강제로 보호 | 🟢 |
 | [31-synthetic-data-memory-isolation.md](31-synthetic-data-memory-isolation.md) | 평가용 합성 입력이 영구 기억 파일에 실제 이력처럼 섞여 들어가는 사고를 막는 법 | 🟡 원본 프로젝트 실제 사고에서 일반화 |
 | [32-quasi-identifier-aggregation-risk.md](32-quasi-identifier-aggregation-risk.md) | 개별로는 안전한 정보가 결합되면 재식별·표적 위험이 되는 준식별자 결합 위험과 대응 | 🟡 개념 정의는 원문 확인, Sweeney 원논문 자체는 미대조 |
@@ -196,14 +210,15 @@ self-consistency 재채점)에서 이미 "자기 채점을 구조적으로 억�
 검증 가능한 1차 자료가 있는지, (3) 이 표의 카테고리 중 어디에도 안
 맞으면 카테고리 자체를 새로 만들지 아니면 범위 밖인지부터 판단한다.
 카테고리 하나에 크리스탈이 6~7개를 넘으면 그 카테고리를 다시 쪼개는
-시점이다. **품질·검증 카테고리가 7개(01·04·13·18·21·22·34), 거버넌스·의사결정
-카테고리가 6개(02·05·17·20·24·25)로 그 경계에 도달했다** — 다음에 이 두
-카테고리에 추가할 후보가 생기면, 추가 전에 먼저 쪼갤지부터 판단한다(품질·
-검증은 예: "완성도 판정" 대 "측정·근거 해석"으로, 거버넌스·의사결정은 예:
-"지식/지시 자체의 거버넌스" 대 "실행 자율성의 거버넌스"로). **안전·보안은
-실제로 8개에 도달해 "정보 유출 방어"(07·23·31·32·35)와 "판단·추론
-방어"(03·14·26)로 분할을 실행했다** — 번호는 그대로 두고 표의 소속만
-나눴다([BLUEPRINT.md](BLUEPRINT.md) 5절의 분할 규칙 그대로 적용).
+시점이다. **품질·검증과 안전·보안은 이미 두 축으로 나눠 표를 구성했다**
+— 번호는 그대로 두고 표의 소속만 나눈 것이다([BLUEPRINT.md](BLUEPRINT.md)
+5절의 분할 규칙). 품질·검증은 "완성도 판정"(01·13·21, 3개) 대 "측정·근거
+해석"(04·18·22·34·37, 5개)으로, 안전·보안은 "정보 유출 방어"(07·23·31·32·35,
+5개) 대 "판단·추론 방어"(03·14·26, 3개)로 나뉜다 — 둘 다 각 축이 아직
+6~7개 미만이라 추가 분할은 필요 없다. **거버넌스·의사결정 카테고리는
+아직 안 나뉜 채 6개(02·05·17·20·24·25)로 경계에 도달했다** — 다음에
+이 카테고리에 추가할 후보가 생기면, 추가 전에 먼저 쪼갤지부터
+판단한다(예: "지식/지시 자체의 거버넌스" 대 "실행 자율성의 거버넌스").
 
 ## 사용법 · 설계도 · 리스크 분석
 
