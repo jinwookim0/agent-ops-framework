@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: 24ff2d937cafd2df5e890906de2370839ccbc3e8 -->
 # Observability — How to Keep Agent Execution From Being Left as Claims Instead of Logs
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/11-observability-and-agent-tracing.md)**
