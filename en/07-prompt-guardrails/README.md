@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:f0087a2e8b2b own=sha256:ec4cc7760be9 -->
+<!-- translated-from: ssot=sha256:9d86ca460d1e own=sha256:7d7e95a5d539 -->
 # Prompt Guardrails — a 3-Layer Defense (Executable Code, Ready to Copy and Use)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../../ko/07-prompt-guardrails/README.md)**
 
-**Version**: 1.3.2
-**Content hash**: sha256:263ceccd126b (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.4.0
+**Content hash**: sha256:5f2b4492985a (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 verified with an actual live block test (a
 publish attempt with a test secret pattern was actually refused; a `git
@@ -105,6 +105,20 @@ splitting — reproduced live) by switching to NUL-delimited listing
 (`-z`/`xargs -0`), and replaced `guard-secrets.sh`'s predictable
 `/tmp/*.$$` temp-file paths (a symlink-preemption risk on a shared
 multi-user host) with `mktemp`.
+
+**FIXED (2026-09-01, found while directly checking whether CI actually
+passes)**: `public-repo-check.sh` is `verify.yml`'s only build-blocking
+step, but it had no way to mark a match as "reviewed, kept
+intentionally" (e.g. the synthetic tickets in
+`examples/issue-triage-agent/` deliberately using an RFC 2606
+reserved domain) — so CI was failing every single run, permanently,
+and that only surfaced when the exit code was checked directly on the
+command line. Added `public-repo-check-allowlist.txt` (path:line plus
+a reason) and changed the script so only matches NOT on that list block
+the build. A whitelisted match still prints, labeled "☑️ reviewed —
+whitelisted," rather than disappearing silently — a silent pass would
+mean a genuinely new leak landing on the same line as an old, reviewed
+one could slip through unnoticed.
 
 **DOCUMENTED ONLY (structural limits that can't be fully closed — know
 these going in)**:

@@ -11,10 +11,17 @@
 # mask-sensitive-output.py를 쓴다 — 둘은 같은 패턴을 공유하니 한쪽을 고치면
 # 다른 쪽도 같이 검토한다. 원천 차단(애초에 못 읽게)은 settings.json의
 # permissions.deny 참고.
+#
+# 2026-09-01 발견: 이 스크립트를 CI(verify.yml)의 유일한 빌드-차단 조건으로
+# 쓰는데, "검토했고 의도적으로 남긴 값"(예: RFC 2606 예약 도메인을 쓴 합성
+# 테스트 데이터)을 표시할 방법이 없어서 그런 값이 하나라도 있으면 영원히
+# exit 1이 나왔다 — public-repo-check-allowlist.txt로 그 구분을 명시적으로
+# 둔다. 화이트리스트에 없는 매치는 전부 그대로 빌드를 막는다.
 
 set -uo pipefail
 cd "$(git rev-parse --show-toplevel)"
 
+ALLOWLIST_FILE="ko/07-prompt-guardrails/scripts/public-repo-check-allowlist.txt"
 FOUND=0
 # --cached: 이미 git에 추가된 파일 / --others --exclude-standard: 아직 add 안 했지만
 # .gitignore에 안 걸려서 커밋하면 들어갈 파일. 즉 "지금 커밋하면 포함될 모든 파일"을 본다.
@@ -39,9 +46,30 @@ check() {
   # 바이트를 포함하면 이 경고 자체가 화면에서 변조/은폐될 수 있다. \t·\n은
   # 남기고 그 외 C0 제어문자만 지운다.
   hits=$(printf '%s' "$hits" | LC_ALL=C tr -d '\000-\010\013-\037\177')
-  if [ -n "$hits" ]; then
+  [ -z "$hits" ] && return
+
+  # 화이트리스트 대조: grep -n 출력은 "경로:줄번호:내용" 형식이라, 앞의
+  # "경로:줄번호"만 잘라 화이트리스트 파일에 그 줄이 있는지 본다. 내용에
+  # 콜론이 더 있어도 앞 두 필드만 자르므로 안전하다.
+  local blocking="" allowed="" line key
+  while IFS= read -r line; do
+    [ -z "$line" ] && continue
+    key=$(printf '%s' "$line" | cut -d: -f1,2)
+    if [ -f "$ALLOWLIST_FILE" ] && grep -qE "^${key}([[:space:]]|#|$)" "$ALLOWLIST_FILE" 2>/dev/null; then
+      allowed="${allowed}${line}"$'\n'
+    else
+      blocking="${blocking}${line}"$'\n'
+    fi
+  done <<< "$hits"
+
+  if [ -n "$allowed" ]; then
+    echo "☑️  $label (검토·화이트리스트 처리됨 — 빌드 안 막음, $ALLOWLIST_FILE 참고)"
+    printf '%s' "$allowed" | sed '/^$/d;s/^/    /'
+    echo
+  fi
+  if [ -n "$blocking" ]; then
     echo "⚠️  $label"
-    echo "$hits" | sed 's/^/    /'
+    printf '%s' "$blocking" | sed '/^$/d;s/^/    /'
     echo
     FOUND=1
   fi
