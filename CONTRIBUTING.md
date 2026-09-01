@@ -108,6 +108,43 @@ open: `git fetch upstream main && git rebase upstream/main` (after adding
 the original repo as a remote named `upstream` once:
 `git remote add upstream https://github.com/jinwookim0/agent-ops-framework.git`).
 
+## Responding to an automated review (CodeRabbit)
+
+This repo has CodeRabbit installed as an automatic PR reviewer (see
+`ko/07-prompt-guardrails/README.md`'s 2026-09-02 changelog entry for why
+and how). Treat its comments as a starting point, not a verdict — an
+LLM-based reviewer can be right about a mechanical claim and wrong about
+a contextual one in the very same review. This actually happened on a
+real PR (#2, 2026-09-02): the same review correctly caught a real `cd`
+failure-handling bug and a real regex-injection bug in
+`public-repo-check.sh`, and, in the same breath, incorrectly claimed a
+changelog entry's date needed correcting — running `date` directly
+showed the entry was already right.
+
+Before applying (or dismissing) any review comment, from CodeRabbit or
+otherwise:
+1. **Reproduce the claim, don't take it on faith.** If it says something
+   fails under a condition, actually create that condition and run it.
+   If it proposes a fix, apply it and rerun the failing case — "looks
+   right" isn't the same as "shown to work": the first fix attempted for
+   the `cd` bug above looked correct and, reproduced live, didn't
+   actually change the outcome.
+2. **Reply to every comment with an outcome**, not silence — "confirmed,
+   fixed in `<sha>`" or "checked, doesn't hold because `<evidence>`". An
+   unanswered comment is easy to mistake for one that was quietly applied
+   or quietly ignored.
+3. **Don't batch-accept "commit all suggestions"** (CodeRabbit's own
+   autofix panel offers exactly this) without going comment-by-comment
+   first — a batch apply has no way to skip the ones that turn out to be
+   wrong.
+
+This is a manual checklist, not a CI step, on purpose: "verify before
+applying" needs an agent with real shell access to actually reproduce
+each claim, and wiring that into an always-on pipeline has an ongoing
+API cost that isn't justified yet for this project. Until that changes,
+this is what a maintainer (human, or an invoked AI coding session) walks
+through by hand each time a review lands.
+
 ## Versioning an existing crystal
 
 Every crystal in `ko/` carries a `**버전**` (semantic version) and
