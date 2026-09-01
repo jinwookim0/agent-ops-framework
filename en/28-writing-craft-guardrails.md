@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:ae005365fb14 own=sha256:b4cc9d35bfac -->
+<!-- translated-from: ssot=sha256:76c89979b836 own=sha256:affe59262421 -->
 # Writing Craft Guardrails — Removing the "AI Smell"
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/28-writing-craft-guardrails.md)**
 
 **Version**: 1.4.0
-**Content hash**: sha256:3a2f934ae429 (of the body below, excluding the stamp comment, this line, and the version line)
+**Content hash**: sha256:9d45eb2604bd (of the body below, excluding the stamp comment, this line, and the version line)
 
 Text output produced by an AI agent is usually **factually correct but no
 fun to read**. [01-definition-of-done.md](01-definition-of-done.md) and
@@ -272,6 +272,19 @@ well-regarded blogs, encyclopedia-style commentary on prose style):
    from a real incident" is false the moment it's read as ruling out path
    (b). Say "most" or "some of these" instead when the fact actually
    splits that way.
+6. **Translating into a word whose meaning field doesn't match** — even a
+   dictionarily-correct translation can drag in a different, more common
+   idiomatic sense that the reader reaches for first. Example:
+   translating "crystal" (a literal mineral formation) into Korean as
+   "결정체" also pulls in that word's far more common idiomatic sense —
+   "the crystallization/embodiment of something," as in "the
+   crystallization of effort" — making it read as something different
+   from "크리스탈," the proper noun this project already uses for the
+   concept (a real case found and fixed in `README.ko.md`). Getting the
+   denotation right and checking "what other sense does this word carry
+   for the reader" are two separate checks — when the second one causes
+   confusion, keep the term already established elsewhere, or pick a
+   word whose sense doesn't overlap.
 
 ## Self-check checklist
 
@@ -292,6 +305,10 @@ well-regarded blogs, encyclopedia-style commentary on prose style):
 - [ ] Does a word rule out any exception ("every," "all," "without
       exception") when exceptions actually exist — if so, say "most" or
       "some of these" instead, matching what's actually true.
+- [ ] Even if a word is dictionarily correct, does it also carry a more
+      common idiomatic sense in the target language that the reader
+      would reach for first — if so, pick a word whose sense doesn't
+      overlap.
 - [ ] If this piece's structure is identical, word for word, to other
       output in the same series, can you explain why it has to be
       identical?
