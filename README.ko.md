@@ -43,6 +43,15 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 5. **[`09-project-structure-template.md`](ko/09-project-structure-template.md)** — 프로젝트 구조 자체를 설계(또는 재설계)할 때.
 6. **[`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md)**와 **[`04-eval-engineering-methodology.md`](ko/04-eval-engineering-methodology.md)** — 산출물 품질을 눈대중이 아니라 처음으로 진지하게 측정해야 할 때.
 
+## 적용된 모습으로 보기
+
+**[`examples/issue-triage-agent/`](examples/issue-triage-agent/)** — API 키
+없이 바로 돌려볼 수 있는 작은 데모 에이전트다.
+[`CASE-STUDY.md`](examples/issue-triage-agent/CASE-STUDY.md)(영어)가 15개
+크리스탈이 실제 코드의 어느 파일·어느 줄을 바꿨는지 하나씩 짚어준다 —
+크리스탈이 뭐라고 말하는지 요약한 게 아니라, 그 크리스탈 때문에 실제로
+무엇이 달라졌는지를 보여준다.
+
 ## 전체 지도 — 9개 카테고리, 37개 크리스탈
 
 크리스탈 번호는 영구 ID다(추가된 순서이지 중요도 순위가 아니다 — 이유는 `ko/README.md`의 "번호는 추가 순서다, 중요도가 아니다" 절 참고; GitHub이 한글 헤딩에 자동 생성하는 앵커 슬러그는 직접 링크할 만큼 안정적이지 않아, 여기서는 프래그먼트가 아니라 파일 자체를 가리킨다). 아래는 카테고리 단위 지도다 — 37개 전체의 설명과 검증 배지가 담긴 완전한 파일별 표는 **[`ko/README.md`](ko/README.md)**(또는 [`en/README.md`](en/README.md) — 내용 동일) 참고.

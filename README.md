@@ -42,6 +42,15 @@ If you're adding this to a project for the first time, don't try to read all 37 
 5. **[`09-project-structure-template.md`](ko/09-project-structure-template.md)** — when you're designing (or redesigning) the project's structure itself.
 6. **[`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md)** and **[`04-eval-engineering-methodology.md`](ko/04-eval-engineering-methodology.md)** — the first time you need to seriously measure output quality, not just eyeball it.
 
+## See it applied
+
+**[`examples/issue-triage-agent/`](examples/issue-triage-agent/)** — a
+small, runnable demo agent (no API key needed) with a
+[`CASE-STUDY.md`](examples/issue-triage-agent/CASE-STUDY.md) that walks
+through 15 crystals and points at the exact file/line each one shaped —
+not a description of what a crystal says, but what actually changed in
+real code because of it.
+
 ## The full map — 37 crystals in 9 categories
 
 Every crystal number is a permanent ID (the order it was added, not a ranking — see `ko/README.md`'s "번호는 추가 순서다, 중요도가 아니다" section for why; GitHub's auto-generated anchor slugs for Korean headings aren't reliable enough to link to directly, so this points at the file, not a fragment). Below is the category-level map; for the complete file-by-file table with a description and a verification badge for each of the 37, see **[`en/README.md`](en/README.md)** (or [`ko/README.md`](ko/README.md) — identical content).

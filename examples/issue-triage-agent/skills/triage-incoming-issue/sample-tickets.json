@@ -1,0 +1,67 @@
+{
+  "_synthetic": true,
+  "_note": "Every ticket below is an invented test fixture for this demo project, not a real user report — see the synthetic/note fields on each ticket, and crystal 31 (synthetic-data-memory-isolation) for why that distinction is load-bearing, not decorative.",
+  "_pii_scanner_note": "ko/07-prompt-guardrails/scripts/public-repo-check.sh correctly flags TICKET-1046's contact info as email/phone-shaped text — that's the scanner working as designed, not a false positive to silence. Reviewed and kept intentionally: jane.doe@example.com uses the IANA-reserved example.com domain (RFC 2606, guaranteed to never resolve to a real mailbox) and 555-0148 uses the NANPA-reserved 555-01XX block (reserved for fictional use in media) — both are the standard way to write realistic-shaped-but-guaranteed-fake contact info, chosen deliberately so redact_pii() has something real to catch (an obviously-fake string like 'not-an-email' wouldn't exercise the redaction path at all).",
+  "tickets": [
+    {
+      "id": "TICKET-1042",
+      "title": "App crashes with a stack trace when exporting to CSV",
+      "body": "Every time I click 'Export to CSV' on a report with more than ~500 rows, the app crashes. Console shows:\nTypeError: Cannot read properties of undefined (reading 'length')\n  at exportToCsv (report.js:214)\nRepro: create a report with 600+ rows, click Export > CSV.",
+      "reporter": "user_a7f3",
+      "reporter_contact": null,
+      "created_at": "2026-08-28T09:14:00Z",
+      "synthetic": true,
+      "note": "Bug report with a concrete repro and a real stack trace — should classify as bug/P1, not get escalated to P0 just because the word 'crashes' appears."
+    },
+    {
+      "id": "TICKET-1043",
+      "title": "Possible auth bypass via crafted session token",
+      "body": "I found that setting the session cookie to a specially-crafted value (role=admin embedded in an unsigned segment) lets a normal account load the admin dashboard. Happy to share a minimal repro privately rather than posting it here.",
+      "reporter": "user_k91d",
+      "reporter_contact": null,
+      "created_at": "2026-08-28T11:02:00Z",
+      "synthetic": true,
+      "note": "Security report — must always land on oversight_gate=confirm regardless of classifier confidence (directive-registry row 2)."
+    },
+    {
+      "id": "TICKET-1044",
+      "title": "Would be great to have keyboard shortcuts for switching tabs",
+      "body": "Not urgent, just a nice-to-have: it would speed up my workflow if Ctrl+Tab / Ctrl+Shift+Tab cycled through open report tabs like a browser does.",
+      "reporter": "user_m20q",
+      "reporter_contact": null,
+      "created_at": "2026-08-28T13:40:00Z",
+      "synthetic": true,
+      "note": "Clean feature request, low priority, no ambiguity — should auto-resolve to feature-request/P3 with no escalation."
+    },
+    {
+      "id": "TICKET-1045",
+      "title": "How do I configure a custom date range for the weekly digest?",
+      "body": "The docs mention a digest but I can't find where to set the date range in Settings. Is this possible from the UI or only via config file?",
+      "reporter": "user_p55z",
+      "reporter_contact": null,
+      "created_at": "2026-08-28T15:22:00Z",
+      "synthetic": true,
+      "note": "Clean question, no repro needed — should auto-resolve to question/P3."
+    },
+    {
+      "id": "TICKET-1046",
+      "title": "Invoice #4821 double-charged me this month",
+      "body": "My card was charged twice for invoice #4821 ($49 each). Please refund the duplicate. You can reach me at jane.doe@example.com or 555-0148 if you need more details.",
+      "reporter": "user_j82e",
+      "reporter_contact": "jane.doe@example.com, 555-0148",
+      "created_at": "2026-08-28T16:05:00Z",
+      "synthetic": true,
+      "note": "Billing ticket carrying real-shaped PII (email + phone) in the body — exercises both the directive-registry override (row 1: add team:finance label) and PII redaction (row 3) before anything gets logged."
+    },
+    {
+      "id": "TICKET-1047",
+      "title": "it doesn't work",
+      "body": "nothing happens when I try to use it, please fix",
+      "reporter": "user_x14t",
+      "reporter_contact": null,
+      "created_at": "2026-08-28T17:50:00Z",
+      "synthetic": true,
+      "note": "No repro, no feature named, no error — too little signal for any category to be assigned with real confidence. Should land on needs-human-review with confidence_gate=ask, not get defaulted into 'bug' just because that's the most common category."
+    }
+  ]
+}
