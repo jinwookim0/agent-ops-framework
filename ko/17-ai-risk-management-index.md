@@ -2,8 +2,8 @@
 
 > 🌐 **[Read in English](../en/17-ai-risk-management-index.md)**
 
-**버전**: 1.2.0
-**콘텐츠 해시**: sha256:bda0bde1ef91 (본문 기준, 이 두 줄 제외)
+**버전**: 1.3.0
+**콘텐츠 해시**: sha256:e11f8735f82e (본문 기준, 이 두 줄 제외)
 
 이 크리스탈은 새 내용을 추가하지 않는다 — 대신 다른 크리스탈들이
 **국제적으로 통용되는 리스크 관리 골격 안에서 각각 어디에 해당하는지**
@@ -30,17 +30,27 @@ deadline-rule.md](24-application-deadline-rule.md)도 조사·적용 습관에
 
 ## 근거 (1차 자료 확인 — 정직하게 밝힘)
 
-🟢 **검증된 것**: NIST(미국 국립표준기술연구소)의 AI Risk Management
-Framework(AI RMF 1.0)가 4개 핵심 기능 — **Govern(거버넌스), Map(맵핑),
-Measure(측정), Manage(관리)** — 로 구성된다는 것은 nist.gov 공식 페이지
-원문에서 직접 확인했다.
+🟢 **검증된 것 (2026-09-01 재검증으로 범위 확대)**: NIST(미국 국립표준기술
+연구소)의 AI Risk Management Framework(AI RMF 1.0, 공식 문서 NIST AI
+100-1, nvlpubs.nist.gov 원문 PDF 직접 열람)가 4개 핵심 기능으로
+구성된다는 것과, 그 각각의 **공식 한 줄 정의**를 원문에서 직접 확인했다:
+**Govern**("A culture of risk management is cultivated and present"),
+**Map**("Context is recognized and risks related to context are
+identified"), **Measure**("Identified risks are assessed, analyzed, or
+tracked"), **Manage**("Risks are prioritized and acted upon based on a
+projected impact"). 각 기능이 다시 카테고리·서브카테고리로 세분화된다는
+구조 자체도, Govern 기능의 표(Table 1 — 예: GOVERN 1.1 "Legal and
+regulatory requirements involving AI are understood, managed, and
+documented")를 직접 열람해 확인했다.
 
-⚪ **검증 못한 것**: 각 기능의 NIST 공식 상세 정의는 이 문서 작성 시점의 도구
-접근 범위 안에서 원문을 열람하지 못했다(문서 페이지 이동/404). 아래
-"이 문서의 해석"은 **NIST의 공식 문구가 아니라, 4개 기능 이름과 통상적으로
-알려진 AI 리스크 관리 실무 관행을 참고해 이 문서가 재구성한 것**이다 —
-NIST를 인용하는 것처럼 보이지 않게, 아래 절 제목에 "이 문서의 해석"이라고
-명시한다.
+🟡 **부분적으로만 검증됨**: Map·Measure·Manage 세 기능 각각의 전체
+서브카테고리 목록(Govern처럼 Table 2~4에 있을 것)은 이번 재검증에서
+직접 열람하지 못했다 — Govern의 표 구조를 확인한 것으로 미루어 나머지도
+같은 형식일 것이라고 **추정**할 뿐, 그 내용까지 원문 대조한 것은 아니다.
+아래 "이 문서의 해석" 절은 여전히 **NIST의 공식 서브카테고리 문구가
+아니라, 이 프레임워크가 자신의 크리스탈들을 4개 기능 이름에 맞춰
+재구성한 것**이다 — NIST를 인용하는 것처럼 보이지 않게, 절 제목에
+"이 문서의 해석"이라고 명시한다.
 
 ## 이 문서의 해석 — 4기능에 대응하는 실무 질문과 관련 크리스탈
 

@@ -34,18 +34,30 @@ limits" below for that re-check rule.
 
 ## Basis (primary source verified — stated honestly)
 
-🟢 **Verified**: That NIST's (the U.S. National Institute of Standards
-and Technology) AI Risk Management Framework (AI RMF 1.0) consists of
-four core functions — **Govern, Map, Measure, and Manage** — was
-verified directly against the original on the official nist.gov page.
+🟢 **Verified (scope widened by a 2026-09-01 re-verification)**: That
+NIST's (the U.S. National Institute of Standards and Technology) AI Risk
+Management Framework (AI RMF 1.0, official document NIST AI 100-1,
+opened directly at nvlpubs.nist.gov) consists of four core functions,
+and each function's **official one-line definition**, were both checked
+directly against the original: **Govern** ("A culture of risk
+management is cultivated and present"), **Map** ("Context is recognized
+and risks related to context are identified"), **Measure**
+("Identified risks are assessed, analyzed, or tracked"), **Manage**
+("Risks are prioritized and acted upon based on a projected impact").
+That each function further breaks down into categories/subcategories
+was also confirmed directly, via the Govern function's table (Table 1
+— e.g. GOVERN 1.1, "Legal and regulatory requirements involving AI are
+understood, managed, and documented").
 
-⚪ **Not verified**: The official detailed definitions of each function
-could not be viewed in the original within this session's tool-access
-scope at the time of writing (the document page moved/404'd). The
-"This document's interpretation" section below is **not NIST's official
-wording, but this document's own reconstruction, drawing on the four
-function names and generally known AI risk-management practice** —
-so as not to appear to quote NIST, the section title below is
+🟡 **Only partially verified**: the full subcategory lists for Map,
+Measure, and Manage (presumably in their own Tables 2-4, mirroring
+Govern's) were not opened directly in this re-verification — having
+seen Govern's table structure, this document **assumes** the others
+follow the same format, without having checked their actual content
+against the source. The "This document's interpretation" section below
+is still **not NIST's official subcategory wording, but this
+framework's own reorganization of its crystals under the four function
+names** — so as not to appear to quote NIST, the section title is
 explicitly marked "This document's interpretation."
 
 ## This document's interpretation — practical questions and related crystals mapped to the four functions
