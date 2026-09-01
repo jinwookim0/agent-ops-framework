@@ -2,8 +2,8 @@
 
 > 🌐 **[Read in English](../../en/07-prompt-guardrails/README.md)**
 
-**버전**: 1.1.2
-**콘텐츠 해시**: sha256:32d543bd9e59 (본문 기준, 이 두 줄 제외)
+**버전**: 1.2.0
+**콘텐츠 해시**: sha256:bc739b9c1b9f (본문 기준, 이 두 줄 제외)
 
 **검증 강도**: 🟢 실제 라이브 차단 검증까지 완료(테스트 시크릿 패턴으로
 Artifact 발행 시도 → 실제 거부 확인, git push 시도 → 실제 차단 확인).
@@ -98,7 +98,18 @@ NUL 구분(`-z`/`xargs -0`)으로 교체해 차단, `guard-secrets.sh`의 예측
   사라진다 — 이것도 체크섬과 서명의 차이와 같은 근본적 한계다.
 - **git 히스토리 재작성에 취약**: 커밋 해시 기반 스탬프는 rebase/squash/
   히스토리 정리(예: 실수로 커밋된 시크릿을 BFG로 지우는 것 — 바로 이
-  스캐너가 유도할 만한 조치) 한 번에 전부 무의미해진다.
+  스캐너가 유도할 만한 조치) 한 번에 전부 무의미해진다. **2026-09-01
+  실제 사고로 확인·부분 완화**: 한 세션 안에서 두 차례 squash를 거치며
+  실제로 `translated-from` 스탬프 44개 중 37개가 도달 불가능한(orphan)
+  커밋을 가리키게 됐다 — `git log -1 --format=%ct <해시>`가 아직
+  gc되지 않은 dangling 커밋에도 "성공"해 조용히 통과하는 바람에 로컬에서는
+  한동안 티가 안 났다. `agent-ops-framework-translation-sync-check.py`에
+  `git merge-base --is-ancestor` 기반 도달가능성 검사와 `--repair`
+  옵션을 추가해 깨진 스탬프를 기계적으로 감지·복구하게 했다 — 단, 이건
+  사고 발생 뒤 복구를 자동화한 것이지 히스토리 재작성 자체를 안전하게
+  만드는 게 아니다: 재작성할 때마다 `--repair`를 후속 커밋으로 반드시
+  실행해야 한다는 운영 규칙은 여전히 사람이 지켜야 한다
+  (`docs/directive-registry.md` 1번 항목).
 - **live 배포판과 이 템플릿 사이 드리프트**: 실제 배포된 `.claude/
   hooks/guard-secrets.sh`는 이 템플릿에 없는 대외비 경로 차단 로직
   (confidential-paths.txt/pending-human-review-paths.txt)을 추가로
