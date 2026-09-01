@@ -44,20 +44,21 @@ If you're adding this to a project for the first time, don't try to read all 37 
 
 ## See it applied
 
-**[`examples/`](examples/)** — three worked demo agents. Two are
-runnable with zero setup (no API key), covering 25 of the 37 crystals
-with real, checkable code:
-[`issue-triage-agent/`](examples/issue-triage-agent/) (a reactive
-per-item classifier) and
-[`research-digest-agent/`](examples/research-digest-agent/) (an
-autonomous, self-improving loop). The third,
-[`escalation-reviewer-agent/`](examples/escalation-reviewer-agent/), is
-different in kind — the one place a **real** LLM agent was actually
-invoked (isolated, scoped to its own task) and governed by this
-framework's principles, including a real, unscripted security finding.
-Each has a `CASE-STUDY.md` pointing at the exact file/line a crystal
-shaped — not a description of what a crystal says, but what actually
-changed because of it.
+Two agents in [`examples/`](examples/) run with nothing but Python — no
+API key, no setup.
+[`issue-triage-agent/`](examples/issue-triage-agent/) classifies
+incoming tickets; [`research-digest-agent/`](examples/research-digest-agent/)
+runs on a recurring loop and updates its own heuristics as it goes.
+Between the two, their code covers 25 of the 37 crystals.
+
+The third example breaks that pattern.
+[`escalation-reviewer-agent/`](examples/escalation-reviewer-agent/)
+hands real tickets to an actual LLM agent — one told nothing except the
+single ticket in front of it — and writes up exactly what happened,
+including a real security gap the run turned up on its own.
+
+Every example comes with a `CASE-STUDY.md` that names the file and line
+a crystal actually changed, not just the idea behind it.
 
 ## The full map — 37 crystals in 9 categories
 

@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:a912dc8b70ae own=sha256:c2c803323f40 -->
+<!-- translated-from: ssot=sha256:fe0a704c7cdf own=sha256:4c58c90dcde4 -->
 # agent-ops-framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -45,20 +45,21 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 
 ## 적용된 모습으로 보기
 
-**[`examples/`](examples/)** — 데모 에이전트 세 개. 그중 둘은 API 키 없이
-바로 돌려볼 수 있고, 37개 크리스탈 중 25개를 실제로 동작하는 코드로
-보여준다: [`issue-triage-agent/`](examples/issue-triage-agent/)(반응형
-개별 항목 분류기)와
-[`research-digest-agent/`](examples/research-digest-agent/)(자율
-반복·자가개선형 루프). 세 번째
+[`examples/`](examples/) 안의 에이전트 둘은 API 키도 별도 설정도 없이
+파이썬만으로 돌아간다. [`issue-triage-agent/`](examples/issue-triage-agent/)는
+들어오는 티켓을 분류하고,
+[`research-digest-agent/`](examples/research-digest-agent/)는 반복
+실행되면서 자기 휴리스틱을 스스로 갱신한다. 이 둘의 코드만으로 37개
+크리스탈 중 25개를 확인할 수 있다.
+
+세 번째 예제는 이 패턴을 깬다.
 [`escalation-reviewer-agent/`](examples/escalation-reviewer-agent/)는
-성격이 다르다 — 이 저장소에서 유일하게 **진짜** LLM 에이전트를 실제로
-호출해(격리된, 자기 작업만 아는 컨텍스트로) 이 프레임워크의 원칙으로
-거버넌스를 씌운 사례이고, 실제로 각본 없이 발견된 보안 허점도 담겨있다.
-각각의 `CASE-STUDY.md`(영어)가 크리스탈이 실제로 어느 파일·어느 줄을
-바꿨는지(또는 무엇을 증명했는지) 하나씩 짚어준다 — 크리스탈이 뭐라고
-말하는지 요약한 게 아니라, 그 크리스탈 때문에 실제로 무엇이 달라졌는지를
-보여준다.
+실제 티켓을 진짜 LLM 에이전트에게 넘긴다 — 그 앞에 놓인 티켓 하나 말고는
+아무것도 알려주지 않은 채로. 그리고 실행 중 스스로 드러난 진짜 보안
+허점까지 그대로 기록해뒀다.
+
+모든 예제엔 `CASE-STUDY.md`(영어)가 딸려 있다. 크리스탈의 취지가 아니라,
+그것 때문에 실제로 바뀐 파일과 줄을 짚어준다.
 
 ## 전체 지도 — 9개 카테고리, 37개 크리스탈
 
