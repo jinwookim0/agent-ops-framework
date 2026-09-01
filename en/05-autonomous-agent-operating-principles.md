@@ -1,4 +1,4 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: 4012aa8221da5116b7a08a3dc42a3bee069eb8ad -->
 # Autonomous AI Agent Operating Principles (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/05-autonomous-agent-operating-principles.md)**
