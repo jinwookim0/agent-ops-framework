@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:c9a4ee6654b4 own=sha256:2a2dc275bc1c -->
+<!-- translated-from: ssot=sha256:6ef20ffbec9f own=sha256:de043f2c1f07 -->
 # Writing Craft Guardrails — Removing the "AI Smell"
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/28-writing-craft-guardrails.md)**
 
-**Version**: 1.2.1
-**Content hash**: sha256:618ce59f6e19 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.3.0
+**Content hash**: sha256:dda0ea91259f (of the body below, excluding the stamp comment, this line, and the version line)
 
 Text output produced by an AI agent is usually **factually correct but no
 fun to read**. [01-definition-of-done.md](01-definition-of-done.md) and
@@ -324,9 +324,10 @@ right argument (🟡), not opened directly. **The Korean-to-English
 direction** (found in this project's own `ko/` → `en/` translations) is
 backed only by this project's own incident history, not an outside
 academic source — it's a real, fixed case from this project, not a
-linguistically generalized finding. **Both sources in the pronoun section (Chen & Lee 2022, Park 2012) are
-also 🟡** — author, bibliographic details, and core claim confirmed via
-their KCI abstract pages, not the full text. Park 2012 itself carries an
+linguistically generalized finding. **Both sources in the pronoun
+section (Chen & Lee 2022, Park 2012) are also 🟡** — author,
+bibliographic details, and core claim confirmed via their KCI abstract
+pages, not the full text. Park 2012 itself carries an
 internal discrepancy, disclosed above rather than resolved: the Korean
 subject-drop rate reads 67.82% in the body but 69.22% in the paper's own
 English abstract, and settling which is final would need the body text.
@@ -339,6 +340,57 @@ original (🟢), but "these two are the best examples out there" was never
 itself checked** — they're two cases found by search that happen to fit
 this crystal's argument well, not the result of surveying every major
 open-source project's language guidelines and comparing them.
+
+## Per-source copyright and ethics review
+
+Requested directly: separately from whether the "Grounding" sources
+above are accurate (already checked), is it actually safe to record
+each one, verbatim quotes included, in this public repository? The
+standard applied: the three tests Korean copyright law's Article 28
+(quotation of a published work) uses — (1) is the quote subordinate to
+this crystal's own writing (not the other way around), (2) is it the
+minimum needed, (3) is the source fully credited — plus the separate
+principle that facts, statistics, and ideas themselves were never
+copyrightable material in the first place.
+
+| Source | What was actually carried over | Copyright status | Why it's safe |
+|---|---|---|---|
+| Orwell (1946) | 2 of 6 rules, quoted as short phrases | Public domain in life+70 countries (UK etc., since 2021); US status not directly confirmed | A handful of short phrases, not a substitute for the essay's own argument — subordinate and minimal |
+| Graham | Two quoted sentences | Author holds copyright; no separate open license found | Two sentences only, fully credited, for commentary — safe regardless of license |
+| Strunk (1918 original) | Short phrases like "Omit needless words" | Confirmed public domain in the US (full text distributed via Project Gutenberg) | Public domain, so the quotation test doesn't even apply — though citing it under the common name "Strunk & White" is worth flagging: the actual quoted wording is Strunk's 1918 original, not E.B. White's still-copyrighted 1959 revision |
+| Zinsser (1976) | Two quoted sentences | Author died 2015; copyright still active | Two sentences only, fully credited |
+| Vonnegut (1980) | Titles of 4 of 7 rules (a few words each) | Held by International Paper Co., actively rights-managed (many reprints carry "reprinted with permission") | Only rule titles were quoted — short, low in original expression, not the essay's actual prose |
+| Kawasaki (2005) | The rule itself (10 slides / 20 minutes / 30pt), described, not quoted | Held by Kawasaki personally | A numeric rule is a fact/idea, not expression — never copyrightable to begin with |
+| Lee O-deok (1992) | No quote at all — only a Wikipedia-sourced summary | Original never opened; copyright status not checked | Nothing was carried over from the book itself — this was never a quotation |
+| Kim 2012 | One definition sentence + 4 example pairs | Published by NIKL, but authored by an outside professor — no KOGL open-license mark found on this issue's colophon | Meets all three Article 28 tests (detailed in the answer this table follows) — safe independent of whether KOGL applies |
+| Chen & Lee (2022) | The abstract's core claim, summarized in this crystal's own words | KCI abstract page; full text not opened | No sentence from the abstract was quoted verbatim — facts and ideas aren't copyrightable material |
+| Park (2012) | Statistics only | KCI abstract page; full text not opened | Numbers and statistics are facts, not copyrightable expression |
+| Kubernetes localization guide | A 4-row example table, reproduced as-is | CC BY 4.0 — reuse explicitly permitted | The license itself permits this; source (repo, URL, license) credited |
+| GitHub docs | Two rules, quoted verbatim | Prose content under CC BY 4.0 (code separately under MIT) | The license itself permits this |
+| Pinker, *The Sense of Style* | Nothing (title and topic only) | N/A | Nothing was carried over from the book |
+
+**Conclusion**: every source where actual text was carried over (Orwell,
+Graham, Strunk, Zinsser, Vonnegut, Kim 2012, Kubernetes, GitHub docs) is
+(a) a handful of sentences or fewer, (b) fully credited, and (c)
+subordinate to this crystal's own, much longer discussion — meeting
+Article 28's test (or the more permissive terms of an explicit CC BY
+license). Sources where only facts, statistics, or ideas were carried
+over (Chen & Lee, Park, Lee O-deok, Kawasaki, Pinker) were never
+copyrightable material to begin with. Nothing here raises a privacy,
+defamation, or harmful-information concern — every source is either a
+published academic paper, publicly available writing advice, or
+official open-source project documentation (Chen & Lee 2022 covers a
+historically sensitive period — Japanese colonial rule — but the only
+thing carried over from it is a single, neutral linguistic fact about
+that period, not any judgment about the period itself).
+
+**Honest limitations**: this review is this crystal's own applied
+judgment, not legal advice. Whether Orwell's essay is still under
+copyright in the US, and whether Kim 2012 actually falls under NIKL's
+KOGL open-use policy, were both left unconfirmed — the underlying
+copyright notices weren't directly available to check. Both quotations
+are short enough, though, that Article 28's own test is met regardless
+of how either question resolves.
 
 ## Related
 - [01-definition-of-done.md](01-definition-of-done.md) — this crystal
