@@ -40,7 +40,7 @@ check() {
   # 때문에 조용히 검사에서 빠졌다(라이브 재현 확인됨) — xargs -0 + NUL
   # 구분 목록으로 파일명에 공백/개행이 있어도 항상 통째로 한 인자가 되게
   # 고쳤다.
-  hits=$(xargs -0 grep -InE "$pattern" < "$FILELIST" 2>/dev/null || true)
+  hits=$(xargs -0 grep -inE "$pattern" < "$FILELIST" 2>/dev/null || true)
   # 터미널/ANSI 이스케이프 주입 방어(2026-09-01 레드팀 발견): 매칭된 줄은
   # 스캔 대상 파일의 내용을 그대로 담고 있어, 공격자가 제어한 파일이 ESC
   # 바이트를 포함하면 이 경고 자체가 화면에서 변조/은폐될 수 있다. \t·\n은

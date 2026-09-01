@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:42a8e907b414 own=sha256:b6e69aca70e4 -->
+<!-- translated-from: ssot=sha256:97f194798b37 own=sha256:08805af59755 -->
 # agent-ops-framework — A Collection of Structural Crystals for Operating AI-Agent Projects
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/README.md)**
@@ -173,7 +173,7 @@ below) — this axis focuses on "through what channel does information leak."
 
 | File | Covers | Verification strength |
 |---|---|---|
-| [07-prompt-guardrails/](07-prompt-guardrails/) | Executable code implementing a 3-layer defense against secrets/personal data leaking into prompts or externally (copy-paste ready) | 🟢 verified with an actual live block test |
+| [07-prompt-guardrails/](07-prompt-guardrails/) | Executable code implementing a 4-layer defense against secrets/personal data leaking into prompts or externally (copy-paste ready) | 🟢 verified with an actual live block test |
 | [23-confidential-project-protection.md](23-confidential-project-protection.md) | Protecting project-level confidentiality that pattern-matching can't catch, by enforcing it at the git push level | 🟢 |
 | [31-synthetic-data-memory-isolation.md](31-synthetic-data-memory-isolation.md) | How to prevent synthetic inputs used for evals from getting mixed into permanent memory files as if they were real history | 🟡 generalized from an actual incident in the original project |
 | [32-quasi-identifier-aggregation-risk.md](32-quasi-identifier-aggregation-risk.md) | The risk that individually-safe information becomes a re-identification/targeting risk once combined (quasi-identifier aggregation), and how to respond | 🟡 concept definitions verified against the source; Sweeney's original paper itself not cross-checked |

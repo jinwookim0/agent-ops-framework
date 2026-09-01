@@ -148,7 +148,7 @@ self-consistency 재채점)에서 이미 "자기 채점을 구조적으로 억�
 
 | 파일 | 다루는 것 | 검증 강도 |
 |---|---|---|
-| [07-prompt-guardrails/](07-prompt-guardrails/) | 비밀값·개인정보가 프롬프트/외부로 새나가는 걸 3단으로 막는 실행 가능한 코드(그대로 복사해 쓸 수 있음) | 🟢 실제 라이브 차단 검증까지 완료 |
+| [07-prompt-guardrails/](07-prompt-guardrails/) | 비밀값·개인정보가 프롬프트/외부로 새나가는 걸 4단으로 막는 실행 가능한 코드(그대로 복사해 쓸 수 있음) | 🟢 실제 라이브 차단 검증까지 완료 |
 | [23-confidential-project-protection.md](23-confidential-project-protection.md) | 패턴으로 못 잡는 프로젝트 단위 기밀을 git push 강제로 보호 | 🟢 |
 | [31-synthetic-data-memory-isolation.md](31-synthetic-data-memory-isolation.md) | 평가용 합성 입력이 영구 기억 파일에 실제 이력처럼 섞여 들어가는 사고를 막는 법 | 🟡 원본 프로젝트 실제 사고에서 일반화 |
 | [32-quasi-identifier-aggregation-risk.md](32-quasi-identifier-aggregation-risk.md) | 개별로는 안전한 정보가 결합되면 재식별·표적 위험이 되는 준식별자 결합 위험과 대응 | 🟡 개념 정의는 원문 확인, Sweeney 원논문 자체는 미대조 |
