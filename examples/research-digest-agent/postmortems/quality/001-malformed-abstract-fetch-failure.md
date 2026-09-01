@@ -25,7 +25,7 @@ None in production (no production deployment exists) — impact stated
 here as what it *would have been*: one entire week's digest missing,
 with no distinguishing signal between "nothing relevant this week" and
 "the pipeline silently failed this week," which is a worse failure mode
-than an obviously-broken run because it looks like a normal empty result.
+than an obviously broken run because it looks like a normal empty result.
 
 ## Root cause (5 Whys)
 

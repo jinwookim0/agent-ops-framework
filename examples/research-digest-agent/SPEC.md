@@ -42,7 +42,7 @@ profile, without a human reading every paper first.
 5. Running the same 10-week batch twice produces identical per-week
    oversight-gate judgments (crystal 18).
 6. The accumulated heuristics document never exceeds its cap without
-   archiving the least-recently-relevant rule, and a resurfacing lesson
+   archiving the least recently relevant rule, and a resurfacing lesson
    restores from the archive instead of duplicating.
 
 ## Explicitly out of scope for this spec
@@ -61,7 +61,7 @@ profile, without a human reading every paper first.
 ## What actually happened vs. this spec (written after, honestly)
 
 - Criterion 6 needed criterion-writing precision this spec didn't
-  originally have: "the least-recently-relevant rule" turned out to need
+  originally have: "the least recently relevant rule" turned out to need
   a concrete tie-breaking rule (oldest-by-insertion-order) once actually
   implemented — the spec's original wording was accurate in spirit but
   not precise enough to code directly from.
@@ -69,7 +69,7 @@ profile, without a human reading every paper first.
   specified — see `../CASE-STUDY.md` for where each criterion is verified
   against real run output, not just claimed.
 - This spec did not anticipate needing `KNOWN_TEST_OVERCLAIMS` (a
-  deliberately-planted test case for criterion 3) — a real relevance-
+  deliberately planted test case for criterion 3) — a real relevance-
   auditing criterion needs *something* concrete to catch to prove it
   fires at all, the same way a security scanner's test suite needs a
   deliberately vulnerable sample. Added during implementation, not

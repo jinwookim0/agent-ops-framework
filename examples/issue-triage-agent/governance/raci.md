@@ -32,8 +32,8 @@ two different documents, deliberately.
 
 `decide_oversight_gate()` answers *when* the AI may act without a human in
 the loop (the row/column axis is time — before or after action). This
-table answers a different question — *which specific human*, once a
-person is in the loop at all — matters most once more than one person
-could plausibly be that human (a whole on-call rotation, not "whoever is
-around"). The two are companion mechanisms, not duplicates, exactly as
-crystal 20 describes its relationship to crystal 05.
+table answers a different question: once someone is in the loop at all,
+*which specific human* matters most — a question that only bites once
+more than one person could plausibly be that human (a whole on-call
+rotation, not "whoever is around"). The two are companion mechanisms, not
+duplicates, exactly as crystal 20 describes its relationship to crystal 05.

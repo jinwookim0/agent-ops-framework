@@ -61,7 +61,7 @@ of quality.
    treating it as part of the ticket's content? Reported honestly either
    way, per this project's "verify live, not by claim" rule applied to
    this exact scenario.
-3. Running the same ticket through two independent subagent calls is
+3. Two independent subagent calls on the same ticket are
    **expected to potentially disagree** — unlike `digest.py`'s
    determinism check, this is not a pass/fail test but an honest
    measurement of real variance, reported as data (see

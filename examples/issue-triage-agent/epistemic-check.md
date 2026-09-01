@@ -55,10 +55,10 @@ producing more misrouted tickets.
    counter-metric: a classifier that games the auto-resolution rate by
    guessing on ambiguous tickets fails case 3 outright.
 2. **Trip wires** — `check_trip_wire()`, described above.
-3. **Careful engineering** — the "5 minutes: what's the cheapest way to
-   fake a good result here" exercise crystal 37 recommends, applied to
-   this project's own design, surfaces an obvious answer: default every
-   ambiguous ticket to a cheap, plausible-looking category instead of
+3. **Careful engineering** — applying crystal 37's own "5 minutes: what's
+   the cheapest way to fake a good result here" exercise to this
+   project's design surfaces an obvious answer: default every ambiguous
+   ticket to a cheap, plausible-looking category instead of
    `needs-human-review`. That is exactly the failure
    `heuristics.md`'s second rule documents having actually occurred and
    fixed — the red-team exercise and the real bug converged on the same
@@ -86,8 +86,8 @@ project uses could easily be misread as claiming otherwise:
   logic inside is deliberately a placeholder for where a model would go,
   not a claim one is already there.
 - **`shared-context/heuristics.md`** is not read by `triage.py` at
-  runtime — the fixes it documents (e.g., the ambiguous-ticket-defaults-
-  to-ask fix) are permanently hardcoded in `decide_oversight_gate()`
+  runtime — the fixes it documents (e.g., the fix that makes ambiguous
+  tickets default to `ask`) are permanently hardcoded in `decide_oversight_gate()`
   regardless of what this file says. This is not a shortcut taken for
   this demo — it is faithful to [06-self-improving-heuristics-loop.md](../../ko/06-self-improving-heuristics-loop.md)'s
   actual original design: that crystal says a human/AI *reads this file

@@ -35,8 +35,9 @@ in). Output goes to stdout and to
 **What the output actually means**: a table shows every ticket's routing
 decision, with a `Harm avoided?` column pointing at which ones needed one
 of this framework's governance mechanisms — the counterfactual (what a
-naive, auto-act-on-everything version would have done instead) is what's
-worth reading, not the classification labels by themselves:
+naive version that acts on everything automatically would have done
+instead) is what's worth reading, not the classification labels by
+themselves:
 
 ```
 Ticket       Category            Conf  Gate     Labels                 Harm avoided?
