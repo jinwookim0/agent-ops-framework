@@ -1,0 +1,21 @@
+# CodeRabbit config. Not a ko/en crystal, so no version/content-hash stamp
+# (same reasoning as CONTRIBUTING.md and the .github/workflows/*.yml files).
+#
+# Found 2026-09-02: CodeRabbit's default is to auto-review a PR only when
+# its base is the repository's default branch (main). PR #2
+# (fix/en-public-repo-check-allowlist-parity -> expansion-and-hardening)
+# got silently skipped with "Auto reviews are disabled on base/target
+# branches other than the default branch" -- a real gap for this repo's
+# branch structure, which routes work through an integration branch
+# (expansion-and-hardening) before it reaches main. Without this,
+# every non-main-base PR needs a manual `@coderabbitai review` comment,
+# which is easy to forget and defeats the point of an automatic reviewer.
+#
+# base_branches accepts regex and only *adds* to the default branch (it
+# can never be used to exclude main) -- see
+# https://docs.coderabbit.ai/configuration/auto-review
+reviews:
+  auto_review:
+    enabled: true
+    base_branches:
+      - ".*"

@@ -1,4 +1,4 @@
-<svg viewBox="0 0 760 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How a crystal gets made: a real incident or repeated decision has its story stripped, then must pass BLUEPRINT.md's 6 gates. If not, it is not added, by design. If it passes, it becomes a new crystal in ko/, the source of truth; translation to en/ is optional; either way it ends up copied into your own project.">
+<svg viewBox="0 0 760 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How a crystal gets made: real trial and error, or a repeated decision, has its story stripped, then must pass BLUEPRINT.md's 6 gates. If not, it is not added, by design. If it passes, it becomes a new crystal in ko/, the source of truth; translation to en/ is optional; either way it ends up copied into your own project.">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0c1117"/>
@@ -50,7 +50,7 @@
 
   <!-- A -->
   <rect x="260" y="110" width="240" height="58" rx="10" fill="#1a212b" stroke="#3d4757" stroke-width="1.5" filter="url(#shadow-d)"/>
-  <text x="380" y="134" text-anchor="middle" class="lbl">Real incident or</text>
+  <text x="380" y="134" text-anchor="middle" class="lbl">Trial and error or</text>
   <text x="380" y="152" text-anchor="middle" class="lbl">repeated decision</text>
   <path class="edge" d="M380,168 L380,204" marker-end="url(#arrow-d)"/>
 

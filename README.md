@@ -20,11 +20,11 @@ Say you're building something with an AI agent — a coding assistant, a researc
 
 ## Why "crystal"?
 
-Each rule here started as a real mistake, a real fix, or a real design decision inside a live project — that history is *why* the rule can be trusted, but the history itself (dates, project names, specific incidents) doesn't travel well to a different project. Each document in this repo is that lesson with the story stripped out and only the reusable pattern left — the way a crystal keeps its structure after the liquid it grew in is gone. That's also why every crystal is honestly labeled with **how well-verified** it is (🟢 = the cited primary source was actually checked; 🟡 = only the outline was confirmed, details reconstructed) — no crystal claims more confidence than it earned.
+Most rules here started as a real mistake, a real fix, or a real design decision inside a live project — a few started instead from an externally verifiable source, like a paper or an official spec. The history itself (dates, project names, specific incidents) doesn't travel well to a different project, so each document in this repo is that lesson with the story stripped out and only the reusable pattern left — the way a crystal keeps its structure after the liquid it grew in is gone. Every crystal is also honestly labeled with **how well-verified** it is (🟢 = the cited primary source was actually checked; 🟡 = only the outline was confirmed, details reconstructed) — no crystal claims more confidence than it earned.
 
 ## How a crystal gets made
 
-<img src="assets/readme/crystal-flow.svg" alt="How a crystal gets made: a real incident or repeated decision has its story stripped, then must pass BLUEPRINT.md's 6 gates. If not, it is not added, by design. If it passes, it becomes a new crystal in ko/, the source of truth; translation to en/ is optional; either way it ends up copied into your own project." width="100%">
+<img src="assets/readme/crystal-flow.svg" alt="How a crystal gets made: real trial and error, or a repeated decision, has its story stripped, then must pass BLUEPRINT.md's 6 gates. If not, it is not added, by design. If it passes, it becomes a new crystal in ko/, the source of truth; translation to en/ is optional; either way it ends up copied into your own project." width="100%">
 
 *Full detail on what "strip the story" and the 6 gates actually check lives in [BLUEPRINT.md](ko/BLUEPRINT.md) — this diagram shows the shape of the process, not every rule.*
 
@@ -86,7 +86,7 @@ Every crystal number is a permanent ID (the order it was added, not a ranking �
 | [`ko/RISK-ANALYSIS.md`](ko/RISK-ANALYSIS.md) | The public-safety review this collection went through before being extracted |
 | [`ko/DISCLAIMER.md`](ko/DISCLAIMER.md) | A ready-to-use disclaimer template for when you actually publish |
 | [`ko/LANGUAGE-POLICY.md`](ko/LANGUAGE-POLICY.md) | Which language an AI agent should default to reading, and the exceptions |
-| [`ko/GLOSSARY.md`](ko/GLOSSARY.md) | What this folder's recurring terms (crystal, story, domain-neutral, SSOT, gate, STALE/DIVERGED, ...) actually mean, in one place |
+| [`en/GLOSSARY.md`](en/GLOSSARY.md) | What this folder's recurring terms (crystal, story, domain-neutral, SSOT, gate, STALE/DIVERGED, ...) actually mean, in one place |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to propose or edit a crystal, the actual git/PR mechanics, and the bar a pull request needs to clear |
 | [`SECURITY.md`](SECURITY.md) | How to report a vulnerability, and what's actually in scope (the executable code in `07-prompt-guardrails/`) |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Contributor Covenant v2.1, verbatim |

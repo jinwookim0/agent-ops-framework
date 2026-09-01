@@ -19,7 +19,17 @@
 # 둔다. 화이트리스트에 없는 매치는 전부 그대로 빌드를 막는다.
 
 set -uo pipefail
-cd "$(git rev-parse --show-toplevel)"
+# CodeRabbit 리뷰로 발견(2026-09-02): `-e` 없이 이 cd만 실패하면(예: git
+# 저장소 밖에서 잘못 실행) 아래 git ls-files도 조용히 실패하고, 그러면
+# FOUND=0인 채로 스크립트가 "이상 없음"으로 종료될 수 있다. 처음엔
+# `cd "$(git rev-parse ...)" || exit 1`로 고쳤는데, 직접 재현해보니
+# 이것만으로는 안 막힌다는 게 드러났다 — `git rev-parse`가 실패해
+# `$(...)`가 빈 문자열이 되면 `cd ""`는 bash에서 에러 없이 그냥 제자리에
+# 머무는 것으로 처리돼(exit 0) `|| exit 1`이 아예 발동하지 않는다(라이브
+# 재현 확인). git rev-parse의 실패를 변수 대입 시점에서 직접 잡아야
+# 실제로 막힌다(shellcheck SC2164도 이 형태를 권장).
+REPO_ROOT="$(git rev-parse --show-toplevel)" || exit 1
+cd "$REPO_ROOT" || exit 1
 
 ALLOWLIST_FILE="ko/07-prompt-guardrails/scripts/public-repo-check-allowlist.txt"
 FOUND=0
@@ -31,6 +41,34 @@ FOUND=0
 FILELIST=$(mktemp)
 trap 'rm -f "$FILELIST"' EXIT
 git ls-files -z --cached --others --exclude-standard > "$FILELIST"
+
+# CodeRabbit 리뷰로 발견(2026-09-02): 예전엔 이 "경로:줄번호" 키를 이스케이프
+# 없이 그대로 grep -E 패턴에 꽂아 넣어서, 파일 경로에 든 정규식 메타문자
+# (특히 확장자 앞의 `.`)가 "아무 글자 하나"로 해석돼 버렸다 — 라이브로
+# 검증됨: "public-repo-check.sh" 라인의 화이트리스트 항목이 실제로는
+# "public-repo-checkXsh"처럼 다른 경로에도 매치했다. grep -E 대신 리터럴
+# 문자열 비교(`=`)로 바꿔 이 문제 자체를 없앤다. 같은 리뷰가 지적한 대로
+# "사유 없이 줄만 추가"도 이제 이 함수 안에서 직접 막는다 — 화이트리스트
+# 파일 자신의 주석이 그동안 문서로만 요구하던 것을 코드로 강제한다.
+is_allowlisted() {
+  local key="$1" line entry_key rest reason
+  [ -f "$ALLOWLIST_FILE" ] || return 1
+  while IFS= read -r line; do
+    [ -z "$line" ] && continue
+    case "$line" in \#*) continue ;; esac
+    entry_key="${line%%[[:space:]]*}"
+    rest="${line#"$entry_key"}"
+    rest="${rest#"${rest%%[![:space:]]*}"}" # 앞쪽 공백 제거
+    case "$rest" in
+      '#'*) reason="${rest#\#}"; reason="${reason# }" ;;
+      *) reason="" ;;
+    esac
+    if [ "$entry_key" = "$key" ] && [ -n "$reason" ]; then
+      return 0
+    fi
+  done < "$ALLOWLIST_FILE"
+  return 1
+}
 
 check() {
   local label="$1" pattern="$2"
@@ -55,7 +93,7 @@ check() {
   while IFS= read -r line; do
     [ -z "$line" ] && continue
     key=$(printf '%s' "$line" | cut -d: -f1,2)
-    if [ -f "$ALLOWLIST_FILE" ] && grep -qE "^${key}([[:space:]]|#|$)" "$ALLOWLIST_FILE" 2>/dev/null; then
+    if is_allowlisted "$key"; then
       allowed="${allowed}${line}"$'\n'
     else
       blocking="${blocking}${line}"$'\n'

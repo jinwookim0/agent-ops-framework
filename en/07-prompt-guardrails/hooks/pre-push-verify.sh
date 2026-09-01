@@ -36,7 +36,16 @@
 # it's a safety net, not an enforced wall.
 
 set -uo pipefail
-cd "$(git rev-parse --show-toplevel)"
+# Same failure mode as public-repo-check.sh (found via CodeRabbit review,
+# 2026-09-02 -- see that script's header comment for the full story): a
+# bare `cd "$(...)"` doesn't actually block anything if git rev-parse
+# fails, since bash's `cd ""` is a silent no-op (exit 0). This hook only
+# ever runs inside a real repo (git invokes it), so the risk window is
+# smaller here -- but leaving one sibling script fixed and the other not
+# is exactly the failure mode this document warns about elsewhere, so it
+# gets the same fix.
+REPO_ROOT="$(git rev-parse --show-toplevel)" || exit 1
+cd "$REPO_ROOT" || exit 1
 
 ZERO_SHA="0000000000000000000000000000000000000000"
 BLOCK=0

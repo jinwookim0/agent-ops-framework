@@ -1,4 +1,4 @@
-<svg viewBox="0 0 760 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="크리스탈이 만들어지는 과정: 실제 사고 또는 반복된 결정에서 서사를 제거한 뒤, BLUEPRINT.md의 6개 게이트를 통과해야 한다. 통과 못 하면 설계상 의도로 편입하지 않는다. 통과하면 ko/에 새 크리스탈(SSOT)이 생기고, en/ 번역은 선택 사항이며, 결국 자신의 프로젝트에 그대로 복사된다.">
+<svg viewBox="0 0 760 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="크리스탈이 만들어지는 과정: 시행착오 또는 반복된 결정에서 서사를 제거한 뒤, BLUEPRINT.md의 6개 게이트를 통과해야 한다. 통과 못 하면 설계상 의도로 편입하지 않는다. 통과하면 ko/에 새 크리스탈(SSOT)이 생기고, en/ 번역은 선택 사항이며, 결국 자신의 프로젝트에 그대로 복사된다.">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0c1117"/>
@@ -50,7 +50,7 @@
 
   <!-- A -->
   <rect x="260" y="110" width="240" height="58" rx="10" fill="#1a212b" stroke="#3d4757" stroke-width="1.5" filter="url(#shadow-d)"/>
-  <text x="380" y="134" text-anchor="middle" class="lbl">실제 사고 또는</text>
+  <text x="380" y="134" text-anchor="middle" class="lbl">시행착오 또는</text>
   <text x="380" y="152" text-anchor="middle" class="lbl">반복된 결정</text>
   <path class="edge" d="M380,168 L380,204" marker-end="url(#arrow-d)"/>
 
