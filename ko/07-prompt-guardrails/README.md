@@ -2,8 +2,8 @@
 
 > 🌐 **[Read in English](../../en/07-prompt-guardrails/README.md)**
 
-**버전**: 1.6.1
-**콘텐츠 해시**: sha256:b34d7a93d98a (본문 기준, 이 두 줄 제외)
+**버전**: 1.6.2
+**콘텐츠 해시**: sha256:b329d2ce0fe2 (본문 기준, 이 두 줄 제외)
 
 **검증 강도**: 🟢 실제 라이브 차단 검증까지 완료(테스트 시크릿 패턴으로
 Artifact 발행 시도 → 실제 거부 확인, git push 시도 → 실제 차단 확인).
@@ -136,6 +136,18 @@ output.py`는 같은 패턴에 `re.IGNORECASE`를 명시해서 정상적으로 �
 써서 함께 고쳤다 — "Claude-Session:"이 대문자로 시작하는데 정작 이
 훅의 패턴은 소문자였다면, 방금 4차로 추가한 방어 자체가 처음부터
 무력했을 것이다.
+
+**FIX됨(2026-09-02, PR 리뷰 도구를 새로 붙이려다 발견)**:
+`public-repo-check.sh`의 화이트리스트(allowlist) 메커니즘이 ko/
+버전에만 구현돼 있었고 en/ 버전에는 아예 없었다 — 그 결과
+`en/07-prompt-guardrails/scripts/public-repo-check.sh`를 단독으로
+실행하면 자기 문서(바로 위 grep -I/-i 버그를 설명하는 재현 예시 문구)에
+걸려 항상 exit 1로 실패했다. CI(`verify.yml`)는 ko/ 스크립트만
+빌드-차단 조건으로 쓰기 때문에 지금까지 드러나지 않았을 뿐 —
+"두 언어가 기능적으로 동일하다"는 이 문서 자신의 전제가 실제로는
+깨져 있던 사례다. `en/07-prompt-guardrails/scripts/
+public-repo-check-allowlist.txt`를 새로 만들고 en 스크립트에 ko와
+동일한 화이트리스트 로직을 포팅해 고쳤다.
 
 **DOCUMENT만 함(구조적 한계라 완전 해소 불가능, 아래처럼 알고 쓸 것)**:
 - **정규식 탐지의 근본 한계**: 이메일을 "골뱅이"로 풀어쓰거나 유니코드

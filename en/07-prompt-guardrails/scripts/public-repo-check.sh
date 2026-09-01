@@ -15,10 +15,18 @@
 # — the two share the same patterns, so review both whenever you change
 # either one. For blocking at the source (never letting it be read in the
 # first place), see settings.json's permissions.deny.
+#
+# Found 2026-09-01: this script is verify.yml's only build-blocking check,
+# but there was no way to mark "reviewed and deliberately left in" (e.g.
+# synthetic test data using an RFC 2606 reserved domain) — so a single such
+# value made it exit 1 forever. public-repo-check-allowlist.txt makes that
+# distinction explicit. Any match not on the allowlist still blocks the
+# build as-is.
 
 set -uo pipefail
 cd "$(git rev-parse --show-toplevel)"
 
+ALLOWLIST_FILE="en/07-prompt-guardrails/scripts/public-repo-check-allowlist.txt"
 FOUND=0
 # --cached: files already added to git / --others --exclude-standard: not
 # yet added but not excluded by .gitignore either, so they'd be included if
@@ -46,9 +54,31 @@ check() {
   # warning itself could be visually tampered with/hidden on screen. Strip
   # C0 control characters other than \t/\n.
   hits=$(printf '%s' "$hits" | LC_ALL=C tr -d '\000-\010\013-\037\177')
-  if [ -n "$hits" ]; then
+  [ -z "$hits" ] && return
+
+  # Cross-check against the allowlist: grep -n output is "path:line:content",
+  # so cut just the leading "path:line" and look for that line in the
+  # allowlist file. Extra colons in the content are harmless since only the
+  # first two fields are cut.
+  local blocking="" allowed="" line key
+  while IFS= read -r line; do
+    [ -z "$line" ] && continue
+    key=$(printf '%s' "$line" | cut -d: -f1,2)
+    if [ -f "$ALLOWLIST_FILE" ] && grep -qE "^${key}([[:space:]]|#|$)" "$ALLOWLIST_FILE" 2>/dev/null; then
+      allowed="${allowed}${line}"$'\n'
+    else
+      blocking="${blocking}${line}"$'\n'
+    fi
+  done <<< "$hits"
+
+  if [ -n "$allowed" ]; then
+    echo "☑️  $label (reviewed and allowlisted — doesn't block the build, see $ALLOWLIST_FILE)"
+    printf '%s' "$allowed" | sed '/^$/d;s/^/    /'
+    echo
+  fi
+  if [ -n "$blocking" ]; then
     echo "⚠️  $label"
-    echo "$hits" | sed 's/^/    /'
+    printf '%s' "$blocking" | sed '/^$/d;s/^/    /'
     echo
     FOUND=1
   fi

@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:e869e15a618f own=sha256:97d1499d6d79 -->
+<!-- translated-from: ssot=sha256:69bf7a3e915c own=sha256:3146bd29922b -->
 # Prompt Guardrails — a 4-Layer Defense (Executable Code, Ready to Copy and Use)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../../ko/07-prompt-guardrails/README.md)**
 
-**Version**: 1.6.1
-**Content hash**: sha256:bbf140f08e00 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.6.2
+**Content hash**: sha256:e795ce12d626 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 verified with an actual live block test (a
 publish attempt with a test secret pattern was actually refused; a `git
@@ -173,6 +173,18 @@ the exact same typo into its own commit-message check — fixed there
 too. If it hadn't been caught, the layer 4 defense just added above
 would have missed its own name: "Claude-Session:" starts with a capital
 letter, and that check's pattern was written in lowercase.
+
+**FIXED (2026-09-02, found while wiring up a new PR-review tool)**:
+`public-repo-check.sh`'s allowlist mechanism was only implemented in the
+ko/ version — the en/ version had none at all. As a result, running
+`en/07-prompt-guardrails/scripts/public-repo-check.sh` on its own always
+failed with exit 1, tripped up by its own documentation (the reproduction
+example just above, describing the grep -I/-i bug). This stayed hidden
+because CI (`verify.yml`) only treats the ko/ script as build-blocking —
+a real case of this document's own "both languages are functionally
+identical" premise quietly breaking. Fixed by creating
+`en/07-prompt-guardrails/scripts/public-repo-check-allowlist.txt` and
+porting the same allowlist logic from ko into the en script.
 
 **DOCUMENTED ONLY (structural limits that can't be fully closed — know
 these going in)**:

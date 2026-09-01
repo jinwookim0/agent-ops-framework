@@ -1,0 +1,21 @@
+# Allowlist for public-repo-check.sh — only a match that's been reviewed
+# and confirmed "deliberately safe" belongs here. Format: path:line  # reason
+#
+# Any match not in this file still blocks the build (FOUND=1) — the
+# allowlist doesn't mean "skip review," it's a record that "a person already
+# reviewed this line and confirmed it's safe." Every new entry must come
+# with the line actually opened and checked, and a reason written down —
+# adding a line with no reason defeats the point of this file.
+#
+# Found 2026-09-01: before this allowlist existed, the entries below made
+# public-repo-check.sh always return exit 1, which meant a permanent red
+# light as long as CI (verify.yml) treats this script as its sole failure
+# condition — caused by having no way to distinguish "reviewed and
+# deliberately left in" from "an actual new leak." This mechanism makes
+# that distinction explicit.
+
+examples/issue-triage-agent/skills/triage-incoming-issue/sample-tickets.json:4  # RFC 2606 reserved domain (example.com) + NANPA 555-01XX reserved block (for fictional use) — detailed rationale in sample-tickets.json's own _pii_scanner_note field
+examples/issue-triage-agent/skills/triage-incoming-issue/sample-tickets.json:49  # Same reviewed item as above (same synthetic ticket data)
+examples/issue-triage-agent/skills/triage-incoming-issue/sample-tickets.json:51  # Same reviewed item as above (same synthetic ticket data)
+en/07-prompt-guardrails/README.md:163  # A live-repro example describing public-repo-check.sh's grep -I/-i typo bug — not a real key; confirmed fixed since this exact string is now what the scanner correctly catches
+ko/07-prompt-guardrails/README.md:125  # Same reproduction example — the Korean version
