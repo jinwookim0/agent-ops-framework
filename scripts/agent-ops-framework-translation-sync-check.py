@@ -10,10 +10,11 @@ lives at the repo root instead of under ko//en/ so README.md can render as
 GitHub's default repo homepage.
 
 Renamed 2026-09-01 from agent-ops-framework-translation-staleness-check.py
-(one-directional only) — a "-> ko/ 재편 + 진정한 오픈소스가 되려면 영문->한글
-흐름도 지원해야 한다" 지시에 대응. Same detection-only philosophy as every
-other checker in this family (BLUEPRINT.md 4절): flags a signal, a human/AI
-still judges what to do about it.
+(one-directional only), to support the English-to-Korean contribution
+flow a real open-source project needs alongside the Korean-to-English
+one. Same detection-only philosophy as every other checker in this
+family (BLUEPRINT.md section 4): flags a signal, a human/AI still judges
+what to do about it.
 
 Stamp format (first line of a translated file):
   <!-- translated-from: <commit-hash> -->
@@ -163,7 +164,7 @@ def process_pair(rel_a: str, rel_b: str, buckets: dict) -> None:
         return
     else:
         # both stamped — ambiguous ownership, needs a human to fix by hand
-        buckets["unstamped"].append(f"{rel_b} (양쪽 다 스탬프 있음 — 소유권 불명확)")
+        buckets["unstamped"].append(f"{rel_b} (both sides stamped — ownership unclear)")
         return
 
     if not (ROOT / ssot_relpath).exists():
@@ -181,7 +182,7 @@ def process_pair(rel_a: str, rel_b: str, buckets: dict) -> None:
         or stamp_target_ts is None
         or stamp_set_ts is None
     ):
-        buckets["unstamped"].append(translation_relpath + " (커밋 조회 실패)")
+        buckets["unstamped"].append(translation_relpath + " (commit lookup failed)")
         return
 
     is_stale = ssot_ts > stamp_target_ts
@@ -205,7 +206,9 @@ def process_pair(rel_a: str, rel_b: str, buckets: dict) -> None:
 def main() -> int:
     if not EN_DIR.exists():
         print("=== agent-ops-framework-translation-sync-check ===")
-        print("\n⚪ agent-ops-framework/en/ 없음 — 아직 번역이 없다. 검사할 게 없다.")
+        print(
+            "\n⚪ agent-ops-framework/en/ not found — no translations yet, nothing to check."
+        )
         return 0
 
     buckets = {
@@ -235,48 +238,50 @@ def main() -> int:
 
     if stale:
         print(
-            f"\n🔴 STALE — SSOT가 번역 시점보다 최근에 바뀐 항목 {len(stale)}건 "
-            "(재번역 필요 여부는 직접 대조해 판단할 것):"
+            f"\n🔴 STALE — {len(stale)} item(s) where the SSOT changed more recently than "
+            "the translation (whether re-translation is needed: check both directly):"
         )
         for translation_relpath, ssot_relpath, hours in stale:
             print(
-                f"  {translation_relpath}  <  {ssot_relpath}  (SSOT가 {hours:.0f}시간 더 최근)"
+                f"  {translation_relpath}  <  {ssot_relpath}  (SSOT is {hours:.0f}h more recent)"
             )
 
     if diverged:
         print(
-            f"\n🟠 DIVERGED — 번역 파일이 스탬프 갱신 없이 직접 수정된 항목 {len(diverged)}건 "
-            "(무단 재번역으로 덮어쓰지 말 것 — 반드시 사람이 반영 여부를 판단):"
+            f"\n🟠 DIVERGED — {len(diverged)} item(s) where the translation was edited "
+            "directly without re-stamping (do NOT overwrite by blindly re-translating — "
+            "a human must judge whether/how to reconcile):"
         )
         for translation_relpath, ssot_relpath, hours, also_stale in diverged:
             note = (
-                " — SSOT도 그 사이 추가로 바뀌었다(STALE 조건도 동시에 참)"
+                " — the SSOT also changed in the meantime (STALE also true)"
                 if also_stale
                 else ""
             )
             print(
-                f"  {translation_relpath}  (스탬프 설정 이후 {hours:.0f}시간 뒤 직접 수정됨, "
-                f"SSOT: {ssot_relpath}){note} — 이 변경을 SSOT로 먼저 반영한 뒤 재번역·재스탬프할 것"
+                f"  {translation_relpath}  (edited directly {hours:.0f}h after its stamp was set, "
+                f"SSOT: {ssot_relpath}){note} — port this change into the SSOT first, then re-translate and re-stamp"
             )
 
     if not stale and not diverged:
-        print(f"\n✅ STALE도 DIVERGED도 없음 ({len(ok)}개 확인).")
+        print(f"\n✅ No STALE or DIVERGED items ({len(ok)} checked).")
 
     if unstamped:
-        print(f"\n⚪ 스탬프 판정 불가 {len(unstamped)}건:")
+        print(f"\n⚪ {len(unstamped)} item(s) with an undeterminable stamp:")
         for f in unstamped:
             print(f"  {f}")
 
     if missing_pair:
-        print(f"\n⚠️ 대응 파일이 없는 항목 {len(missing_pair)}건:")
+        print(f"\n⚠️ {len(missing_pair)} item(s) with no counterpart file:")
         for translation_relpath, ssot_relpath in missing_pair:
-            print(f"  {translation_relpath} -> {ssot_relpath} 없음")
+            print(f"  {translation_relpath} -> {ssot_relpath} not found")
 
     print(
-        "\n참고: STALE·DIVERGED 둘 다 신호일 뿐이다 — 실제로 반영이 필요한지는"
-        " 무엇이 바뀌었는지 열어서 판단한다. STALE은 보통 그냥 재번역하면 되지만,"
-        " DIVERGED는 번역 쪽에 남은 실제 기여를 먼저 SSOT로 이식하지 않으면 그"
-        " 기여가 사라진다 — 두 신호를 같은 방식으로 처리하지 않는다."
+        "\nNote: STALE and DIVERGED are both only signals — whether something actually"
+        " needs reflecting requires opening the diff and judging it. STALE usually just"
+        " needs a re-translation, but DIVERGED means a real contribution sits in the"
+        " translation that will be lost unless it's ported into the SSOT first — the two"
+        " signals are not interchangeable."
     )
     return 0
 

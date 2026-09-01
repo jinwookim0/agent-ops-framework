@@ -2,35 +2,38 @@
 """agent-ops-framework-version-stamp.py — bumps a ko/ crystal's semantic
 version and recomputes its content hash.
 
-2026-09-01 신설. 계기: "버저닝이 세맨틱하거나 커밋이 있는 등 유니크한
-해시여야 하지 않을까" — 처음 만든 순정수 버전(`**버전**: 1`)은 (a) 변경의
-성격(사소한 수정 vs 근본적 변경)을 전달 못하고, (b) 사람이 버전을 실제로
-올렸는지 기계적으로 검증할 방법이 없었다. 그래서 둘을 합친다:
+The original single-integer version (`**버전**: 1`) had two problems: (a)
+it couldn't convey the nature of a change (a minor wording fix vs. a
+fundamental reversal), and (b) there was no mechanical way to verify
+someone had actually bumped it. This combines two axes to fix both:
 
-- **세맨틱 버전**(major.minor.patch) — 사람/AI의 판단이 필요한 축. 이
-  크리스탈을 이식해 쓰는 다른 프로젝트에게 "이 변경이 재검토할 만큼
-  중요한가"를 전달한다.
-  - major: 원칙 자체가 바뀌거나 뒤집힘(드묾)
-  - minor: 새 메커니즘/절이 추가됨(원칙은 그대로, 범위가 넓어짐)
-  - patch: 표현·오타·링크 수정(의미 변화 없음)
-- **콘텐츠 해시**(sha256, 본문 기준) — 판단이 필요 없는 축, 기계적으로
-  100% 재현 가능하다. **이 저장소의 git 이력과 무관하게** 계산되므로,
-  이 크리스탈 파일 하나를 복사-붙여넣기해서 다른 프로젝트로 가져간
-  경우에도(BLUEPRINT.md 7절의 "이식") 그 사본이 원본과 바이트 단위로
-  같은지 대조할 수 있다 — git 커밋 해시 기반 스탬프(translated-from)가
-  이 저장소 밖에서는 무의미해지는 문제를 정확히 이걸로 보완한다.
+- **Semantic version** (major.minor.patch) — the axis that needs human/AI
+  judgment. Tells a project adopting this crystal "how much does this
+  change warrant a re-review."
+  - major: the principle itself changed or was reversed (rare)
+  - minor: a new mechanism/section was added (the principle stays the
+    same, only the scope widened)
+  - patch: wording/typo/link fixes (no change in meaning)
+- **Content hash** (sha256, over the body) — the axis that needs no
+  judgment, 100% mechanically reproducible. Computed **independent of
+  this repository's git history**, so even a crystal file copied out of
+  this repo entirely (the "porting" scenario in BLUEPRINT.md section 7)
+  can be diffed byte-for-byte against the original — this is exactly
+  what covers the gap left by the git-commit-hash-based `translated-from`
+  stamp, which becomes meaningless once a file leaves this repo.
 
-해시 대상: 버전/해시 헤더 두 줄을 제외한 나머지 전체 본문(자기 자신을
-참조하는 해시가 되지 않도록).
+Hash scope: the entire body excluding the two version/hash header lines
+(so the hash never has to reference itself).
 
-사용법:
-  ./scripts/agent-ops-framework-version-stamp.py <파일> --bump=major|minor|patch
-  ./scripts/agent-ops-framework-version-stamp.py <파일> --recompute-hash-only
-     (버전은 그대로 두고 해시만 다시 계산 — 해시가 안 맞을 때 대조용)
+Usage:
+  ./scripts/agent-ops-framework-version-stamp.py <file> --bump=major|minor|patch
+  ./scripts/agent-ops-framework-version-stamp.py <file> --recompute-hash-only
+     (leaves the version untouched and only recomputes the hash — useful
+     for comparing when a hash doesn't match)
 
-이 스크립트는 무엇을 "실질적 변경"으로 볼지 판단하지 않는다 — bump 수준은
-호출하는 사람/AI가 매번 명시적으로 골라야 한다(기본값 없음, 침묵하는
-자동판단을 만들지 않는다).
+This script never decides what counts as a "substantive change" — the
+bump level must always be chosen explicitly by whoever calls it (there
+is no default, so as not to create a silent automatic judgment).
 """
 import argparse
 import hashlib
@@ -70,9 +73,9 @@ def strip_header(text: str) -> tuple[list[str], int | None, int | None]:
             h_count += 1
     if v_count > 1 or h_count > 1:
         print(
-            f"오류: **버전**/**콘텐츠 해시** 패턴이 파일 안에 2번 이상 나타남 "
-            f"(버전 {v_count}회, 해시 {h_count}회) — 어느 줄이 진짜 헤더인지 "
-            "기계적으로 판단할 수 없다. 중복을 없앤 뒤 다시 시도할 것.",
+            f"error: **버전**/**콘텐츠 해시** pattern appears more than once in the file "
+            f"(version x{v_count}, hash x{h_count}) — cannot mechanically tell which "
+            "line is the real header. Remove the duplicate and retry.",
             file=sys.stderr,
         )
         sys.exit(1)
@@ -91,7 +94,8 @@ def main() -> int:
     lines, v_idx, h_idx = strip_header(text)
     if v_idx is None or h_idx is None:
         print(
-            f"오류: {args.file}에서 **버전**/**콘텐츠 해시** 줄을 못 찾음 — 먼저 헤더를 만들어야 한다.",
+            f"error: couldn't find **버전**/**콘텐츠 해시** lines in {args.file} — "
+            "create the header first.",
             file=sys.stderr,
         )
         return 1
