@@ -24,7 +24,19 @@
 # build as-is.
 
 set -uo pipefail
-cd "$(git rev-parse --show-toplevel)"
+# Found via CodeRabbit review (2026-09-02): without `-e`, if this cd alone
+# fails (e.g. run outside a git repo by mistake), the git ls-files below
+# also fails silently, and the script can then exit with FOUND=0 -- "looks
+# clean" -- instead of reporting the real failure. First fix attempt was
+# `cd "$(git rev-parse ...)" || exit 1`, but reproducing it live showed
+# that alone doesn't actually block anything -- when `git rev-parse` fails
+# and `$(...)` becomes an empty string, bash's `cd ""` is a silent no-op
+# (stays put, exit 0), so `|| exit 1` never fires (confirmed live). The
+# failure has to be caught at the point `git rev-parse` itself runs, in
+# the assignment, for this to actually work (shellcheck SC2164 also
+# recommends this shape).
+REPO_ROOT="$(git rev-parse --show-toplevel)" || exit 1
+cd "$REPO_ROOT" || exit 1
 
 ALLOWLIST_FILE="en/07-prompt-guardrails/scripts/public-repo-check-allowlist.txt"
 FOUND=0
@@ -38,6 +50,36 @@ FOUND=0
 FILELIST=$(mktemp)
 trap 'rm -f "$FILELIST"' EXIT
 git ls-files -z --cached --others --exclude-standard > "$FILELIST"
+
+# Found via CodeRabbit review (2026-09-02): this used to interpolate the
+# "path:line" key straight into a grep -E pattern with no escaping, so a
+# regex metacharacter in a file path (especially the `.` before an
+# extension) was read as "any single character" -- confirmed live: an
+# allowlist entry for "public-repo-check.sh" actually matched an unrelated
+# path like "public-repo-checkXsh" too. Switched to a literal string
+# comparison (`=`) instead of grep -E, which removes the problem entirely.
+# The same review also flagged that a bare "path:line" with no reason
+# after it was silently accepted -- this function now enforces in code
+# what the allowlist file's own comment has only ever asked for in words.
+is_allowlisted() {
+  local key="$1" line entry_key rest reason
+  [ -f "$ALLOWLIST_FILE" ] || return 1
+  while IFS= read -r line; do
+    [ -z "$line" ] && continue
+    case "$line" in \#*) continue ;; esac
+    entry_key="${line%%[[:space:]]*}"
+    rest="${line#"$entry_key"}"
+    rest="${rest#"${rest%%[![:space:]]*}"}" # strip leading whitespace
+    case "$rest" in
+      '#'*) reason="${rest#\#}"; reason="${reason# }" ;;
+      *) reason="" ;;
+    esac
+    if [ "$entry_key" = "$key" ] && [ -n "$reason" ]; then
+      return 0
+    fi
+  done < "$ALLOWLIST_FILE"
+  return 1
+}
 
 check() {
   local label="$1" pattern="$2"
@@ -64,7 +106,7 @@ check() {
   while IFS= read -r line; do
     [ -z "$line" ] && continue
     key=$(printf '%s' "$line" | cut -d: -f1,2)
-    if [ -f "$ALLOWLIST_FILE" ] && grep -qE "^${key}([[:space:]]|#|$)" "$ALLOWLIST_FILE" 2>/dev/null; then
+    if is_allowlisted "$key"; then
       allowed="${allowed}${line}"$'\n'
     else
       blocking="${blocking}${line}"$'\n'

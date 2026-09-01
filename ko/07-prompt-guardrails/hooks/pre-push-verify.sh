@@ -27,7 +27,14 @@
 # 자체를 건너뛰는 것도 항상 가능하다 — 이건 안전망이지 강제가 아니다.
 
 set -uo pipefail
-cd "$(git rev-parse --show-toplevel)"
+# public-repo-check.sh와 같은 실패 모드(2026-09-02 CodeRabbit 리뷰로 발견,
+# 자세한 경위는 그 스크립트 상단 주석 참고) — `cd "$(...)"` 하나만으론
+# git rev-parse 실패 시 `cd ""`가 조용히 성공(exit 0)해서 안 막힌다.
+# git 훅이라 항상 저장소 안에서만 호출되긴 하지만, 같은 방어를 한쪽
+# 스크립트에만 넣고 잊는 게 이 문서 자신이 경고하는 실패 모드라 여기도
+# 똑같이 고친다.
+REPO_ROOT="$(git rev-parse --show-toplevel)" || exit 1
+cd "$REPO_ROOT" || exit 1
 
 ZERO_SHA="0000000000000000000000000000000000000000"
 BLOCK=0

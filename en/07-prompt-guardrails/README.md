@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:69bf7a3e915c own=sha256:3146bd29922b -->
+<!-- translated-from: ssot=sha256:3c40d339b3c5 own=sha256:39802fbead32 -->
 # Prompt Guardrails — a 4-Layer Defense (Executable Code, Ready to Copy and Use)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../../ko/07-prompt-guardrails/README.md)**
 
-**Version**: 1.6.2
-**Content hash**: sha256:e795ce12d626 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.6.3
+**Content hash**: sha256:2e98fc8ec8e8 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 verified with an actual live block test (a
 publish attempt with a test secret pattern was actually refused; a `git
@@ -185,6 +185,35 @@ a real case of this document's own "both languages are functionally
 identical" premise quietly breaking. Fixed by creating
 `en/07-prompt-guardrails/scripts/public-repo-check-allowlist.txt` and
 porting the same allowlist logic from ko into the en script.
+
+**FIXED (2026-09-02, found by CodeRabbit's first real review)**: after
+wiring CodeRabbit up as an automated PR reviewer for this repo, its
+first actual review found two real problems (out of 3 comments — the
+third was disputed, see below). (1) It flagged that
+`public-repo-check.sh`/`pre-push-verify.sh` (all 4 ko/en files) had a
+`cd "$(git rev-parse --show-toplevel)"` that doesn't stop the script if
+it fails, since there's no `-e`. First fix attempt was
+`cd "$(...)" || exit 1`, but reproducing it live showed **that alone
+doesn't actually block anything** — when `git rev-parse` fails and
+`$(...)` becomes an empty string, bash's `cd ""` is a silent no-op
+(stays put, exit 0), so `|| exit 1` never fires. Fixed properly by
+catching the failure at the assignment itself
+(`REPO_ROOT=$(...) || exit 1`), then confirmed live both that running it
+outside a repo now actually exits 1, and that it still works normally
+inside one. (2) The allowlist match was interpolating the "path:line"
+key straight into a `grep -E` pattern with no escaping, so a regex
+metacharacter in a path (like the `.` before an extension) got read as
+"any single character" — CodeRabbit proved this live by showing
+`public-repo-check.sh` also matched a renamed
+`public-repo-checkXsh`. Switched to a literal string comparison instead
+of `grep -E`, which removes the problem outright, and used the same
+change to enforce in code what the allowlist file's own comment had only
+ever asked for in words — a `path:line` entry with no reason after it no
+longer matches at all. **Disputed**: the third comment claimed these
+entries should be dated "September 1, 2026" instead — checked the
+actual date and it really is September 2, 2026, so this wasn't applied.
+Keeping this here too, as a reminder that a review comment still needs
+verifying, not accepting on faith.
 
 **DOCUMENTED ONLY (structural limits that can't be fully closed — know
 these going in)**:
