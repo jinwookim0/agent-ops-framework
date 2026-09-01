@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:fe0a704c7cdf own=sha256:4c58c90dcde4 -->
+<!-- translated-from: ssot=sha256:fe0a704c7cdf own=sha256:54abb63c04cb -->
 # agent-ops-framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -45,21 +45,21 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 
 ## 적용된 모습으로 보기
 
-[`examples/`](examples/) 안의 에이전트 둘은 API 키도 별도 설정도 없이
-파이썬만으로 돌아간다. [`issue-triage-agent/`](examples/issue-triage-agent/)는
+[`examples/`](examples/) 안의 에이전트 둘은 API 키나 별도 설정 없이
+파이썬만으로 바로 돌아간다. [`issue-triage-agent/`](examples/issue-triage-agent/)는
 들어오는 티켓을 분류하고,
 [`research-digest-agent/`](examples/research-digest-agent/)는 반복
-실행되면서 자기 휴리스틱을 스스로 갱신한다. 이 둘의 코드만으로 37개
-크리스탈 중 25개를 확인할 수 있다.
+실행되면서 스스로 휴리스틱을 갱신해나간다. 이 둘의 코드에서만 37개
+크리스탈 중 25개가 확인된다.
 
-세 번째 예제는 이 패턴을 깬다.
+세 번째 예제는 다르다.
 [`escalation-reviewer-agent/`](examples/escalation-reviewer-agent/)는
-실제 티켓을 진짜 LLM 에이전트에게 넘긴다 — 그 앞에 놓인 티켓 하나 말고는
-아무것도 알려주지 않은 채로. 그리고 실행 중 스스로 드러난 진짜 보안
-허점까지 그대로 기록해뒀다.
+진짜 LLM 에이전트를 불러다 실제 티켓을 맡긴다. 그 에이전트가 아는 건
+눈앞의 티켓 하나뿐이다. 그렇게 돌려본 결과 실행 도중 진짜 보안 허점이
+하나 드러났고, 그것도 숨기지 않고 그대로 남겼다.
 
-모든 예제엔 `CASE-STUDY.md`(영어)가 딸려 있다. 크리스탈의 취지가 아니라,
-그것 때문에 실제로 바뀐 파일과 줄을 짚어준다.
+각 예제엔 `CASE-STUDY.md`(영어)가 붙어 있어서, 크리스탈 때문에 실제로
+바뀐 파일과 줄을 바로 확인할 수 있다.
 
 ## 전체 지도 — 9개 카테고리, 37개 크리스탈
 
