@@ -6,6 +6,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 > 🌐 **이 페이지를 한국어로 보기: [README.ko.md](README.ko.md)**
+> 🖼 **[A one-page visual overview of this whole repo](https://claude.ai/code/artifact/18574a68-d92e-45db-a505-db0b038ac284)** — same content as this README, laid out for skimming.
 
 **A copy-paste collection of "how to run an AI-agent project" rules, written so that anyone can pick up exactly the piece they need.**
 

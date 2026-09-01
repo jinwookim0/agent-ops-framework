@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:fec296a3d614 own=sha256:24a163ca5bc2 -->
+<!-- translated-from: ssot=sha256:4bd9e956a839 own=sha256:474c828d4087 -->
 # agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 핵심 모음(Structural Crystals)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -7,6 +7,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 > 🌐 **Read this page in English: [README.md](README.md)**
+> 🖼 **[이 저장소 전체를 한 페이지로 훑어보는 시각적 요약](https://claude.ai/code/artifact/18574a68-d92e-45db-a505-db0b038ac284)** — 내용은 이 README와 같고, 훑어보기 좋게 배치만 다르다.
 
 **"AI 에이전트 프로젝트를 어떻게 운영할 것인가"에 대한 규칙을 모아, 그대로 복사해 쓸 수 있게 만든 모음집 — 누구나 자신에게 필요한 조각만 정확히 가져갈 수 있도록 썼다.**
 
