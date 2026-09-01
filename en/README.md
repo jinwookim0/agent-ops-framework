@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:d356471ee3d5 own=sha256:caa8dfa4d5f4 -->
+<!-- translated-from: ssot=sha256:7603bb94ea55 own=sha256:caa8dfa4d5f4 -->
 # agent-ops-framework — A Collection of Structural Crystals for Operating AI-Agent Projects
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/README.md)**

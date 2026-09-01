@@ -1,5 +1,5 @@
-<!-- translated-from: ssot=sha256:fec296a3d614 own=sha256:6691a33ad238 -->
-# agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 구조적 결정체 모음
+<!-- translated-from: ssot=sha256:fec296a3d614 own=sha256:7fcdd1b4ff69 -->
+# agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 크리스탈 모음
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Crystal verification](https://github.com/jinwookim0/agent-ops-framework/actions/workflows/verify.yml/badge.svg)](.github/workflows/verify.yml)
