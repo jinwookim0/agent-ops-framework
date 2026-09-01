@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:13b5c8e99300 own=sha256:4212831185a5 -->
+<!-- translated-from: ssot=sha256:0d055e29f72b own=sha256:eafa82350247 -->
 # Blameless Postmortem Template — Based on Google SRE Practice
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/12-blameless-postmortem-template.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:e98c77e63603 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.1.0
+**Content hash**: sha256:d1568996420f (of the body below, excluding the stamp comment, this line, and the version line)
 
 It's inevitable that an AI agent will make mistakes (hallucination, a
 wrong judgment call, a safeguard malfunctioning, etc.). The problem isn't
@@ -26,6 +26,14 @@ principles directly:
    fix systems and processes to better support people."
 3. **Learning, not punishment**: Writing a postmortem is "not a
    punishment — it's a learning opportunity for the entire organization."
+
+**A copyright note, checked directly**: that site is licensed CC
+BY-NC-ND 4.0 (non-commercial, no derivatives) — confirmed. Read on its
+own, that license would put a translation itself on shaky ground as a
+derivative work. But the quotes above are three sentences or fewer,
+fully attributed, and subordinate to this crystal's own much longer
+discussion, which satisfies Korean copyright law's Article 28
+quotation exception independently of what the license itself allows.
 
 ## Why this matters especially for AI agent projects
 
