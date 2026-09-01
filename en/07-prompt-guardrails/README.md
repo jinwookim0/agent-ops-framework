@@ -1,10 +1,10 @@
-<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+<!-- translated-from: 2ae1d3292bfb069ca2638579e004c085d3c029ff -->
 # Prompt Guardrails — a 3-Layer Defense (Executable Code, Ready to Copy and Use)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../../ko/07-prompt-guardrails/README.md)**
 
-**Version**: 1.1.0
-**Content hash**: sha256:920126d022eb (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.2.0
+**Content hash**: sha256:3d61d0981f58 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 verified with an actual live block test (a
 publish attempt with a test secret pattern was actually refused; a `git
@@ -134,7 +134,20 @@ these going in)**:
 - **Fragile to git history rewrites**: commit-hash-based stamps all go
   meaningless at once after a rebase/squash/history cleanup (e.g. using
   BFG to purge a secret that was committed by mistake — exactly the kind
-  of remediation this scanner might prompt).
+  of remediation this scanner might prompt). **Confirmed by a real
+  incident and partially mitigated, 2026-09-01**: two squashes in one
+  session left 37 of 44 `translated-from` stamps in this repo pointing
+  at a commit no longer reachable from HEAD — `git log -1
+  --format=%ct <hash>` kept "succeeding" (returning a plausible-looking
+  timestamp) for the dangling, not-yet-garbage-collected commit object,
+  so nothing looked wrong locally for a while. Added a
+  `git merge-base --is-ancestor`-based reachability check plus a
+  `--repair` flag to `agent-ops-framework-translation-sync-check.py` to
+  detect and fix this mechanically — but that's automating the recovery
+  after the fact, not making history rewriting itself safe: running
+  `--repair` as an immediate follow-up commit after any rewrite is still
+  an operational rule a human has to actually follow
+  (`docs/directive-registry.md` row 1).
 - **Drift between the live deployment and this template**: the actually
   deployed `.claude/hooks/guard-secrets.sh` has confidential-path-
   blocking logic (`confidential-paths.txt`/`pending-human-review-
