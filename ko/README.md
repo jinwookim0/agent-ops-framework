@@ -1,4 +1,4 @@
-# agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 크리스탈 모음
+# agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 핵심 모음(Structural Crystals)
 
 > 🌐 **[Read in English](../en/README.md)**
 
