@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:9431d3fe68e4 own=sha256:65a1585c0c49 -->
+<!-- translated-from: ssot=sha256:39b3a270a5da own=sha256:972ed876bea8 -->
 # Writing Craft Guardrails — Removing the "AI Smell"
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/28-writing-craft-guardrails.md)**
 
-**Version**: 1.1.0
-**Content hash**: sha256:6f61771927ec (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.2.0
+**Content hash**: sha256:c7bac17e97ea (of the body below, excluding the stamp comment, this line, and the version line)
 
 Text output produced by an AI agent is usually **factually correct but no
 fun to read**. [01-definition-of-done.md](01-definition-of-done.md) and
@@ -115,6 +115,95 @@ Japanese-influenced and Western-influenced sentence patterns. Confirmed
 to exist and roughly what it argues, via a Wikipedia summary only; this
 crystal hasn't checked the original text directly.
 
+## Pronoun translationese — filling in "he," "she," "it," "you" the way English does
+
+A pattern the user pointed out directly: English grammar needs a pronoun
+subject in nearly every sentence, but natural Korean re-fills that slot
+with a concrete noun (a name, a title, a role) or drops it from context
+entirely. Translate English pronouns literally and Korean ends up with
+"그는," "그녀는," "그것은," "당신은" showing up far more often than the
+English original's own pronoun density would predict.
+
+🟡 Chen Pei-Chen & Lee Seong-Ju, "'그녀' as a Translated Word: Inventing a
+Third-Person Female Pronoun in Colonial-Era Taiwan and Korea," *Korean
+Literature Research* No. 69 (2022), pp. 541-581 — confirmed via the
+paper's KCI abstract page; the full text wasn't opened. The abstract
+itself states that "그녀" ("she") entered Korean specifically to meet a
+translation need during language modernization — newspapers and
+literature tested and coined the word, following the same path Japanese
+took in coining "彼女" to correspond to Western "she." So "그녀" itself
+started out as a product of translationese. (Several linguistics papers
+also note that even "그" only settled into its modern third-person-pronoun
+role after early-20th-century modern fiction, a claim repeated often
+enough to be worth flagging, though this crystal hasn't opened those
+papers directly.)
+
+🟡 Park Cheong-hui, "A Statistical Approach to Ellipsis in Korean and
+English — Focusing on Subject and Object Omission," *Eomun Nonjip* No. 66
+(2012), pp. 171-192 — confirmed via the paper's KCI abstract page, not the
+full text. Its reported numbers: Korean drops the subject 67.82% of the
+time and the object 13.78% of the time; English drops the subject only
+31.5% of the time and the object 7.67% of the time. (The paper's own
+English-language abstract gives a slightly different figure, 69.22%, for
+the Korean subject-drop rate — a small internal discrepancy in the source
+itself, disclosed here rather than silently picking one number; settling
+which figure is final would mean reading the paper's body text.) Modern
+linguistics not uncommonly calls Korean a "null-subject language" for
+this reason.
+
+**Application**: when a Korean sentence starts with "그는/그녀는/그것은/
+당신은," ask first whether that slot could hold the original name or noun
+again, or be dropped from context entirely — if the sentence still reads
+clearly either way, cut the pronoun. "당신" ("you") in particular often
+reads as stiff or distancing in Korean; mechanically translating "you
+should..." as "당신은 ~해야 한다" is a classic tell.
+
+## Confirmed in practice — a well-known open-source project reached the same conclusions independently
+
+A question worth asking: has any real GitHub repository actually applied
+guidelines like these well, not just stated them? Yes. The two cases
+below reached almost the same rules as this crystal's cited papers,
+entirely on their own, from practical experience rather than academic
+research — theory and practice cross-confirming each other, which
+doesn't happen often.
+
+🟢 The official Kubernetes documentation repository (`kubernetes/website`,
+CC BY 4.0), in its Korean localization guide
+(kubernetes.io/ko/docs/contribute/localization_ko/) — read directly in
+the original. Its "avoid translationese" section gives this table
+(excerpted):
+
+| Translationese | Natural phrasing |
+| --- | --- |
+| 되어지다 (double passive) | 되다 |
+| a pig **with** short legs (짧은 다리를 가진 돼지) | a short-legged pig (다리가 짧은 돼지) |
+| he picked up a spoon with **his** hand and ate **his** rice (그는 그의 손으로... 그의 밥을 먹었다) | he picked up a spoon and ate (그는 손으로 숟가락을 들어 밥을 먹었다) |
+| there are pear**s**, apple**s**, and peach**es** at the store (배들, 사과들, 복숭아들) | there are pears, apples, peaches at the store (배, 사과, 복숭아들) |
+
+Three of these four examples overlap almost exactly with three of the
+categories this crystal cites from Kim 2012 (the literal possessive
+calque, the overused passive, the mechanical "들"). One of the largest
+open-source projects in the world independently ran into the same
+problems, in practice, with no reference to any academic paper, and
+landed on the same fixes.
+
+🟢 GitHub's own official documentation repository (`github/docs`, code
+under MIT), in its "Writing content to be translated" guide — read
+directly in the original. It states two rules: (1) "Lots of stacked
+modifiers can lead to incorrect translations because it's not easy to
+determine what modifies what" — exactly the modifier-stacked-between-
+subject-and-verb problem this project's own history section below
+names. (2) "Vague nouns and pronouns can make it unclear who or what you
+are referring to, especially when that content has to be translated" —
+the same concern as the pronoun section above.
+
+**Application**: these two cases are a different kind of evidence than
+Kim 2012, Chen & Lee 2022, or Park 2012 — practical rules from
+large-scale, real-world projects, not academic theory. When looking for
+grounding for a new crystal or a practical guide, it's worth checking not
+just academic papers but how an already well-run, large open-source
+project solves the same problem — these two happened to.
+
 ## The other direction — carrying Korean structure into English (this project's own history)
 
 Everything above runs English-to-Korean. This project has the opposite
@@ -197,6 +286,10 @@ well-regarded blogs, encyclopedia-style commentary on prose style):
 - [ ] **(Korean output)** Can a literal "~에 관하여/~로부터/~에 의해"
       prepositional calque unfold into a natural particle like
       "~에게서/~에서/~으로" (Kim 2012)?
+- [ ] **(Korean output)** For a sentence starting with "그는/그녀는/
+      그것은/당신은" — does it still make sense with the original noun
+      restated, or with the pronoun dropped entirely? If so, drop it
+      (Chen & Lee 2022, Park 2012).
 - [ ] **(English output translated from Korean)** Is there a Korean-style
       stack of modifiers wedged between the subject and the verb? If you
       have to read to the end of the sentence before you know what the
@@ -230,11 +323,21 @@ right argument (🟡), not opened directly. **The Korean-to-English
 direction** (found in this project's own `ko/` → `en/` translations) is
 backed only by this project's own incident history, not an outside
 academic source — it's a real, fixed case from this project, not a
-linguistically generalized finding. There are also approaches like
-Steven Pinker's *The Sense of Style*, which re-examines the validity of
-such rules from a linguistics foundation, but this crystal hasn't
-verified that book's specific prescriptions (🟡, only the book's stated
-goal was confirmed).
+linguistically generalized finding. **Both sources in the pronoun section (Chen & Lee 2022, Park 2012) are
+also 🟡** — author, bibliographic details, and core claim confirmed via
+their KCI abstract pages, not the full text. Park 2012 itself carries an
+internal discrepancy, disclosed above rather than resolved: the Korean
+subject-drop rate reads 67.82% in the body but 69.22% in the paper's own
+English abstract, and settling which is final would need the body text.
+There are also approaches like Steven Pinker's *The Sense of Style*,
+which re-examines the validity of such rules from a linguistics
+foundation, but this crystal hasn't verified that book's specific
+prescriptions (🟡, only the book's stated goal was confirmed). **The two
+open-source sources in "Confirmed in practice" were read directly in the
+original (🟢), but "these two are the best examples out there" was never
+itself checked** — they're two cases found by search that happen to fit
+this crystal's argument well, not the result of surveying every major
+open-source project's language guidelines and comparing them.
 
 ## Related
 - [01-definition-of-done.md](01-definition-of-done.md) — this crystal
