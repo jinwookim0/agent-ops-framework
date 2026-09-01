@@ -12,6 +12,12 @@ the bottom for the honest remainder.
 
 Same rule as the first example: every claim below points at a specific
 file/line and was checked by actually running the code, not asserted.
+**Before reading further**: this project's own name ("self-improving,"
+"summarize-and-digest") could easily be misread as "an LLM runs this" —
+it doesn't, anywhere, in a normal run. See
+[`epistemic-check.md`](epistemic-check.md) for exactly what that does and
+doesn't mean, and [`REAL-AI-CAPTURE.md`](REAL-AI-CAPTURE.md) for the one
+place a real model actually was invoked.
 
 ## Quick map
 
@@ -61,8 +67,8 @@ to verify actually closed, not just planned).
 ## 06 — Self-improving heuristics loop (deepened)
 
 The first example showed 2 static rules with no dynamics. This one
-actually runs the mechanism: 9 lessons get proposed across weeks 2-10,
-tied to specific in-run events (not invented) — run
+actually runs the *bookkeeping* mechanism live: 9 lessons get proposed
+across weeks 2-10, tied to specific in-run events (not invented) — run
 `skills/summarize-and-digest/digest.py` and watch `📝 heuristic` lines
 appear only on weeks where something new actually happened. At week 9,
 the 8th addition exceeds the cap (set to 7 for this 10-week demo) and
@@ -72,6 +78,19 @@ restores L1 from the archive instead of duplicating it — check
 `shared-context/heuristics-archive.md`'s "Restored" section, which is
 only non-empty because this actually happened, not because it was written
 by hand.
+
+**Scope this claim precisely**: `digest.py`'s own detection logic (the
+citation-stripping, unicode normalization, null-check, etc. that each
+lesson documents) is unconditionally hardcoded — it runs identically
+whether the corresponding lesson is active or archived in
+`heuristics.md`. What's demonstrated live here is the *lessons-file
+management mechanism* (cap, archive, restore), not an agent whose runtime
+behavior actually changes based on what it has learned — that would
+require `matches_interest()`/`summarize()` to be real model calls
+reading `heuristics.md` as context, which they aren't. See
+`../epistemic-check.md`'s first section for the full honest accounting,
+including a real false-positive found in the restore-matching logic
+itself.
 
 ## 05 — Autonomous operating principles (deepened)
 
@@ -107,6 +126,15 @@ catches it — check `observability/sample-run.jsonl`'s week-6 entry:
 ["47"]`. This is crystal 03's "confident fabrication" pattern applied to
 this agent's own generated output, not just to this project's guide
 documents (which is where crystal 26 originally applies it).
+
+**A scripted fixture only proves the audit fires when built to** —
+`REAL-AI-CAPTURE.md` closes that gap by running the exact same
+`audit_grounding()` function against a genuine, unscripted Claude
+response (no access to this code, no knowledge of what would be checked).
+That capture happened not to hallucinate a number — reported as-is, not
+retried until it did — which is still informative: it shows the audit
+doesn't false-positive on honest, qualitative prose either, which matters
+as much as catching a real fabrication would have.
 
 ## 14 — AI red-team checklist
 

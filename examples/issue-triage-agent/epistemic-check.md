@@ -69,6 +69,41 @@ producing more misrouted tickets.
    rather than silently skipped, per crystal 37's own framing of these as
    4 mechanisms to weigh, not all mandatory.
 
+## What "skill" and "self-improving" actually mean here (and don't)
+
+Raised directly by a user question during this project's own build, worth
+answering as honestly in the file as it was answered in conversation:
+**`classify()` is 100% deterministic, rule-based Python — no LLM or any
+other model executes at runtime, anywhere in this demo.** Two terms this
+project uses could easily be misread as claiming otherwise:
+
+- **"Skill"** is [09-project-structure-template.md](../../ko/09-project-structure-template.md)'s
+  structural vocabulary for "a reusable execution unit an AI-agent-managed
+  project is organized around" — it does not assert that machine
+  intelligence runs inside that unit. A `SKILL.md` + a plain function is
+  a completely valid skill in this framework's sense; `SKILL.md`'s own
+  "swapping in a real classifier" section exists precisely because the
+  logic inside is deliberately a placeholder for where a model would go,
+  not a claim one is already there.
+- **`shared-context/heuristics.md`** is not read by `triage.py` at
+  runtime — the fixes it documents (e.g., the ambiguous-ticket-defaults-
+  to-ask fix) are permanently hardcoded in `decide_oversight_gate()`
+  regardless of what this file says. This is not a shortcut taken for
+  this demo — it is faithful to [06-self-improving-heuristics-loop.md](../../ko/06-self-improving-heuristics-loop.md)'s
+  actual original design: that crystal says a human/AI *reads this file
+  before starting new work*, the same way a future session modifying
+  `triage.py` would read this file first — it was never designed as a
+  runtime dependency-injection mechanism for the code it documents. The
+  real, transferable value here is narrower than "the code learns from
+  itself": it's (a) institutional memory that stops a future edit from
+  silently reintroducing an already-fixed bug, and (b) `check_trip_wire()`'s
+  bookkeeping pattern being genuinely reusable regardless of what
+  triggered any specific rule.
+
+See `../research-digest-agent/REAL-AI-CAPTURE.md` for the one place in
+either example a real model was actually invoked, once, specifically to
+close part of this gap for the grounding-audit mechanism.
+
 ## Honest limit of this whole self-check
 
 This file was written alongside the code it evaluates, by the same

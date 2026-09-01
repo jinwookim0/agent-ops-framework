@@ -31,10 +31,11 @@ python3 skills/summarize-and-digest/digest.py --determinism-check
 ```
 
 No API key, no dependencies beyond the Python standard library. Watch
-for the `📝 heuristic` lines (crystal 06's loop actually running — a rule
-gets added, later capped/archived, then restored) and the two `gate=confirm`
-weeks (4 and 6 — an injection attempt and a fabricated-statistic catch,
-respectively).
+for the `📝 heuristic` lines (the lessons-file bookkeeping — cap, archive,
+restore — actually running; see `epistemic-check.md` for exactly what
+this does and doesn't mean about "self-improvement") and the two
+`gate=confirm` weeks (4 and 6 — an injection attempt and a
+fabricated-statistic catch, respectively).
 
 ## Where to start reading
 
@@ -54,15 +55,27 @@ respectively).
 6. [`modules/summarize-and-digest/`](modules/summarize-and-digest/) —
    the portable, dependency-free export (crystal 08), verified to run
    standalone with zero project files present.
+7. [`epistemic-check.md`](epistemic-check.md) — read this if the phrase
+   "self-improving" in this project's description made you wonder what's
+   actually running underneath. Short answer: no LLM runs anywhere in a
+   normal `digest.py` execution — this file says exactly what that does
+   and doesn't cost the demo.
+8. [`REAL-AI-CAPTURE.md`](REAL-AI-CAPTURE.md) — the one place a real
+   Claude call was actually made (once, live, in the session this project
+   was built in) to test `audit_grounding()` against genuine, unscripted
+   model output instead of only a scripted fixture.
 
 ## Honest scope
 
 Same disclaimer as `issue-triage-agent`: the filtering/summarization
-logic is deliberately rule-based (see `SKILL.md`'s last section for where
-a real model would plug in), the paper source doesn't exist (fully
+logic is deliberately rule-based — no LLM executes anywhere in a normal
+run (see `epistemic-check.md`, and `SKILL.md`'s last section for where a
+real model would plug in), the paper source doesn't exist (fully
 synthetic, fixed input), and the postmortem is explicitly a rehearsed
 exercise against a deliberate fault injection, not a real production
 incident — labeled as such, not dressed up as something it isn't. What's
 real: the code runs, every claim in `CASE-STUDY.md` points at output you
-can reproduce yourself, and the module's graceful degradation was
-verified by literally running it alone in an empty directory.
+can reproduce yourself, the module's graceful degradation was verified by
+literally running it alone in an empty directory, and
+`REAL-AI-CAPTURE.md` is a genuine (not scripted) model call whose result
+was reported as-is regardless of which way it came out.

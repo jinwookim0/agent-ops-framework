@@ -66,6 +66,33 @@ KNOWN_TEST_OVERCLAIMS = {
 }
 
 
+def render_table(
+    headers: list[str], rows: list[list[str]], max_col_width: int = 60
+) -> str:
+    """Plain-stdlib ASCII table (no dependency added for this) -- replaces
+    printing raw Python dicts per paper, which is correct but unreadable
+    at a glance. Truncates any cell past max_col_width with an explicit
+    marker (the same "truncate visibly, never silently" principle
+    summarize() itself uses on oversized abstracts)."""
+
+    def cell(s: str) -> str:
+        s = str(s)
+        return s if len(s) <= max_col_width else s[: max_col_width - 1] + "…"
+
+    rows = [[cell(c) for c in row] for row in rows]
+    widths = [len(h) for h in headers]
+    for row in rows:
+        for i, c in enumerate(row):
+            widths[i] = max(widths[i], len(c))
+
+    def fmt_row(cols: list[str]) -> str:
+        return "  ".join(c.ljust(w) for c, w in zip(cols, widths))
+
+    lines = [fmt_row(headers), fmt_row(["-" * w for w in widths])]
+    lines += [fmt_row(row) for row in rows]
+    return "\n".join(lines)
+
+
 def normalize(text: str) -> str:
     """Unicode-normalize before any keyword matching -- lesson L8 (week 9):
     an accented character (e.g. 'É' vs 'E') must not silently break a match
@@ -588,10 +615,28 @@ def main() -> int:
 
     print(f"=== summarize-and-digest: {len(data['weeks'])} simulated week(s) ===\n")
     for week_num, result in log_lines:
-        print(f"Week {week_num}: gate={result['gate']}")
+        print(f"Week {week_num} — gate={result['gate']}")
         print(f"  reason: {result['gate_reason']}")
+        rows = []
         for p in result["papers_out"]:
-            print(f"  {p}")
+            keywords = ", ".join(p.get("matched_keywords") or []) or "—"
+            injected = "⚠️ yes" if p.get("injection_detected") else "—"
+            if p.get("unverified_claims"):
+                note = f"UNVERIFIED: {', '.join(p['unverified_claims'])}"
+            elif p.get("summary"):
+                note = p["summary"]
+            else:
+                note = "—"
+            rows.append([p["id"], p["status"], keywords, injected, note])
+        print(
+            "\n".join(
+                "  " + line
+                for line in render_table(
+                    ["Paper", "Status", "Keywords", "Injection?", "Summary / note"],
+                    rows,
+                ).split("\n")
+            )
+        )
         for lesson_id, outcome in result["lesson_events"]:
             print(f"  📝 heuristic {lesson_id}: {outcome}")
         if result["context_compressed"]:
@@ -599,6 +644,41 @@ def main() -> int:
                 f"  🗜️  research-interests.md compressed (crossed {context.THRESHOLD_CHARS}-char threshold, verified lossless)"
             )
         print()
+
+    # Run-summary table -- the same shape as a reader would want when
+    # judging "did this behave correctly across the whole run," rather
+    # than re-deriving it by re-reading 10 separate per-week blocks.
+    summary_rows = []
+    for week_num, result in log_lines:
+        statuses = [p["status"] for p in result["papers_out"]]
+        counts = {
+            "digested": statuses.count("digested"),
+            "filtered": statuses.count("filtered-not-relevant"),
+            "dup": statuses.count("skipped-duplicate"),
+            "malformed": statuses.count("skipped-malformed-data"),
+            "held": statuses.count("held-ungrounded-claim"),
+        }
+        lessons = ", ".join(lid for lid, _ in result["lesson_events"]) or "—"
+        summary_rows.append(
+            [
+                str(week_num),
+                result["gate"],
+                str(counts["digested"]),
+                str(counts["filtered"]),
+                str(counts["dup"]),
+                str(counts["malformed"]),
+                str(counts["held"]),
+                lessons,
+            ]
+        )
+    print("=== run summary ===")
+    print(
+        render_table(
+            ["Wk", "Gate", "Dig", "Filt", "Dup", "Bad", "Held", "Lesson(s)"],
+            summary_rows,
+        )
+    )
+    print()
 
     heuristics.write()
     context.write()

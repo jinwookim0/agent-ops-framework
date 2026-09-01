@@ -63,6 +63,36 @@ def redact_pii(text: str) -> str:
     return text
 
 
+def render_table(
+    headers: list[str], rows: list[list[str]], max_col_width: int = 40
+) -> str:
+    """Plain-stdlib ASCII table -- replaces printing one raw line of
+    key=value pairs per ticket, which is correct but harder to scan than
+    a table when comparing several tickets' routing decisions at once.
+    Same helper as research-digest-agent/skills/summarize-and-digest/digest.py
+    (kept as an intentional duplicate, not a shared import, since these
+    two example projects are meant to each stand alone -- see crystal 08's
+    module-format principle applied in reverse: no cross-example
+    dependency to keep either one copy-pasteable on its own)."""
+
+    def cell(s: str) -> str:
+        s = str(s)
+        return s if len(s) <= max_col_width else s[: max_col_width - 1] + "…"
+
+    rows = [[cell(c) for c in row] for row in rows]
+    widths = [len(h) for h in headers]
+    for row in rows:
+        for i, c in enumerate(row):
+            widths[i] = max(widths[i], len(c))
+
+    def fmt_row(cols: list[str]) -> str:
+        return "  ".join(c.ljust(w) for c, w in zip(cols, widths))
+
+    lines = [fmt_row(headers), fmt_row(["-" * w for w in widths])]
+    lines += [fmt_row(row) for row in rows]
+    return "\n".join(lines)
+
+
 # ---------------------------------------------------------------------------
 # Classifier (the piece a real deployment would swap for an LLM call —
 # see SKILL.md). Kept as plain keyword rules here so this file has zero
@@ -293,20 +323,37 @@ def main() -> int:
     )
 
     all_harms = []
+    table_rows = []
+    reasons = {}
     for ticket in data["tickets"]:
         category, confidence = classify(ticket)
         labels = apply_directives(ticket, category)
         gate, reason = decide_oversight_gate(category, confidence)
         line = log_ticket(ticket, category, confidence, labels, gate, reason)
         log_lines.append(line)
-        print(
-            f"{ticket['id']}: category={category} confidence={confidence:.2f} labels={labels} gate={gate}"
-        )
-        print(f"  reason: {reason}")
+        reasons[ticket["id"]] = reason
         harms = naive_baseline(ticket, category, confidence)
-        for h in harms:
-            print(f"  ⚠️  without this framework's governance layer: {h}")
         all_harms.extend((ticket["id"], h) for h in harms)
+        table_rows.append(
+            [
+                ticket["id"],
+                category,
+                f"{confidence:.2f}",
+                gate,
+                ", ".join(labels),
+                "⚠️ yes" if harms else "—",
+            ]
+        )
+
+    print(
+        render_table(
+            ["Ticket", "Category", "Conf", "Gate", "Labels", "Harm avoided?"],
+            table_rows,
+        )
+    )
+    print()
+    for row in table_rows:
+        print(f"  {row[0]}: {reasons[row[0]]}")
 
     warnings = check_trip_wire(log_lines)
     if warnings:

@@ -32,28 +32,32 @@ last section for why, and for exactly where a real LLM call would plug
 in). Output goes to stdout and to
 [`observability/sample-run.jsonl`](observability/sample-run.jsonl).
 
-**What the output actually means**: each ticket's routing decision is
-printed alongside a counterfactual — what a naive version of this same
-agent (classify, then auto-act on everything, no exceptions) would have
-done instead. That's the part worth reading, not the classification
-labels by themselves:
+**What the output actually means**: a table shows every ticket's routing
+decision, with a `Harm avoided?` column pointing at which ones needed one
+of this framework's governance mechanisms — the counterfactual (what a
+naive, auto-act-on-everything version would have done instead) is what's
+worth reading, not the classification labels by themselves:
 
 ```
-TICKET-1043: category=security confidence=0.90 labels=['security'] gate=confirm
-  reason: security reports are never auto-resolved regardless of classifier confidence (directive-registry row 2)
-  ⚠️  without this framework's governance layer: a naive always-auto-act agent would have
-      closed this security report on its own (confidence 0.90 clears any reasonable
-      auto-approve bar) — no human would have seen it unless they went looking
-
-TICKET-1046: category=billing confidence=0.80 labels=['billing', 'team:finance'] gate=notify
-  ⚠️  without this framework's governance layer: a naive agent logs the raw ticket body —
-      this reporter's email/phone would sit in plaintext in a log file
+Ticket       Category            Conf  Gate     Labels                 Harm avoided?
+-----------  ------------------  ----  -------  ---------------------  -------------
+TICKET-1042  bug                 0.85  notify   bug                    —
+TICKET-1043  security            0.90  confirm  security               ⚠️ yes
+TICKET-1044  feature-request     0.80  notify   feature-request        —
+TICKET-1045  question            0.75  notify   question               —
+TICKET-1046  billing             0.80  notify   billing, team:finance  ⚠️ yes
+TICKET-1047  needs-human-review  0.20  ask      needs-human-review     ⚠️ yes
 
 === what this run actually demonstrates ===
 3 concrete harm(s) avoided out of 6 ticket(s) — the other tickets routed the same way a
 naive version would have, which is the point: this framework's mechanisms are supposed to
 be invisible on the easy cases and only change behavior on the ones that would otherwise
 go wrong.
+  - [TICKET-1043] a naive always-auto-act agent would have closed this security report on
+    its own (confidence 0.90 clears any reasonable auto-approve bar) — no human would have
+    seen it unless they went looking
+  - [TICKET-1046] a naive agent logs the raw ticket body — this reporter's email/phone
+    would sit in plaintext in a log file
 ```
 
 Three tickets out of six actually needed one of these mechanisms; the
