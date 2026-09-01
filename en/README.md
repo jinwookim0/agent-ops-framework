@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:d356471ee3d5 own=sha256:372900576332 -->
+<!-- translated-from: ssot=sha256:d356471ee3d5 own=sha256:caa8dfa4d5f4 -->
 # agent-ops-framework — A Collection of Structural Crystals for Operating AI-Agent Projects
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/README.md)**
@@ -44,12 +44,13 @@ other projects.
 The number (`NN-`) on each crystal below is a **permanent ID recording the
 order it was added**, not a ranking of importance — this isn't an
 oversight, it's a deliberate design choice: keeping the number a stable
-identifier means links where one crystal references another, like
-`[05-...](05-...)`, references from projects that adopt this folder, and
-citations by number in documents like `directive-registry.md` all stay
-intact ([BLUEPRINT.md](BLUEPRINT.md) section 5 — the same principle ADRs,
-RFCs, and this folder's own [02-directive-registry.md](02-directive-registry.md)
-use: IDs must be stable and must not carry meaning). Instead, "what to look
+identifier means nothing breaks — not the links where one crystal
+references another (like `[05-...](05-...)`), not references from
+projects that adopt this folder, and not citations by number in documents
+like `directive-registry.md` ([BLUEPRINT.md](BLUEPRINT.md) section 5 —
+the same principle ADRs, RFCs, and this folder's own
+[02-directive-registry.md](02-directive-registry.md) use: IDs must be
+stable and must not carry meaning). Instead, "what to look
 at first" is shown separately, as a priority list below — it supplies
 ordering information without renumbering anything.
 
@@ -212,11 +213,12 @@ plausibly-but-wrong."
 
 ## Principles for when scale grows
 
-Once you pass 20 crystals, a point arrives where the "memory cap"
-principle that [06-self-improving-heuristics-loop.md](06-self-improving-heuristics-loop.md)
-applies to self-learning rules needs to be applied to this folder itself
-too — adding without limit conflicts with the "smallest possible high-signal
-token set" principle in [16-context-engineering-principles.md](16-context-engineering-principles.md).
+Once you pass 20 crystals, a point arrives where this folder itself needs
+the same "memory cap" principle that
+[06-self-improving-heuristics-loop.md](06-self-improving-heuristics-loop.md)
+applies to self-learning rules — adding without limit conflicts with the
+"smallest possible high-signal token set" principle in
+[16-context-engineering-principles.md](16-context-engineering-principles.md).
 **Every time a new expansion candidate comes up for review**: (1) check
 whether it actually overlaps with an existing crystal, (2) check whether
 verifiable primary sources exist for it, (3) if it doesn't fit any category

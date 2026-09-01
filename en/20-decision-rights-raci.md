@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:7109e8bbecfc own=sha256:42e1a67798b6 -->
+<!-- translated-from: ssot=sha256:7109e8bbecfc own=sha256:0a96cbf75825 -->
 # Decision Rights Allocation — When Multiple People Share the Same AI Agent
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/20-decision-rights-raci.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:ea1132cc690a (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:d92bee4da759 (of the body below, excluding the stamp comment, this line, and the version line)
 
 The crystals so far, especially
 [05-autonomous-agent-operating-principles.md](05-autonomous-agent-operating-principles.md),
@@ -31,7 +31,7 @@ Four roles:
 - **I (Informed)**: Those kept informed of progress, one-way
   communication (usually notified only upon completion).
 
-A technique standardized and recognized by the Project Management
+It's a technique standardized and recognized by the Project Management
 Institute (PMI), widely used to define roles and responsibilities in
 cross-departmental collaboration.
 
@@ -45,7 +45,7 @@ question "who is accountable" disappear.
 | Role | Who holds it once an AI agent is introduced |
 |---|---|
 | **R** | The AI agent (produces the actual deliverable) — though a person can also hold R concurrently (e.g., a human further refining the AI's output) |
-| **A** | **Must always be a specific human** — an AI cannot be Accountable. "The AI made it that way" does not substitute for final accountability. Principle 0 of this framework's [05](05-autonomous-agent-operating-principles.md) ("irreversible actions still get asked about first") is, in effect, a concrete application of this rule that "A is always human" |
+| **A** | **Must always be a specific human** — an AI cannot be Accountable. "The AI made it that way" does not substitute for final accountability. Principle 0 of this framework's [05](05-autonomous-agent-operating-principles.md) ("irreversible actions still get asked about first") is, in effect, a concrete application of this "A is always human" rule |
 | **C** | Domain experts (for deliverables needing specialized advice — legal, medical, financial, etc.) — for areas touched by item 4 of [01-definition-of-done.md](01-definition-of-done.md) (professional-advice disclaimer), consider putting an actual expert in the C role |
 | **I** | The remaining stakeholders affected by the deliverable |
 
@@ -80,7 +80,7 @@ A one-person project (the default structure that
 assumes) implicitly has that one person as both R and A on everything —
 there's little need to spell out RACI. This crystal becomes necessary
 the moment two or more people start sharing the same agent
-configuration, governance documents, or shared context — especially
+configuration, governance documents, or shared context. In particular,
 start by explicitly assigning A for shared resources multiple people
 can touch simultaneously, such as
 [02-directive-registry.md](02-directive-registry.md) (who has authority

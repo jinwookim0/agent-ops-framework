@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:18691f465941 own=sha256:4ac0cd5edd98 -->
+<!-- translated-from: ssot=sha256:18691f465941 own=sha256:d4788b5d8e0d -->
 # Spec-First Implementation — The Actual Effect of Writing the Plan First and Building to It
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/21-spec-first-implementation.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:7c7a1377b837 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:edb7ca34da70 (of the body below, excluding the stamp comment, this line, and the version line)
 
 We don't recommend the approach of "have the AI draw up a plan/design
 spec first, then implement to that" just as "good practice" — this
@@ -31,8 +31,8 @@ different eras and fields:
 
 ## Basis (primary source verified) — actual figures
 
-🟢 Verified both papers directly in the original in this session (not
-an estimate).
+🟢 Verified both papers directly against their original text in this
+session (not an estimate).
 
 **Plan-and-Solve (PS+) vs. Zero-shot-CoT** (same model, only the
 prompting method differs):
@@ -86,8 +86,8 @@ math-problem reasoning** and **single-function-scale code generation**.
 🟠 There is **no** evidence that the same effect size carries over into
 the context this crystal is set in (a multi-file product build running
 from plan → design → data → backend → frontend → evaluation) — the
-direction is likely the same, but this is only an inference, not
-overstated as a verified fact. As scale grows, the complexity of the
+direction is likely the same, but that's only an inference; it isn't
+overstated here as a verified fact. As scale grows, the complexity of the
 "plan" itself grows too, so there's theoretically also a risk that
 errors at the planning stage get amplified even more (a counter-
 hypothesis this session did not verify — its existence isn't being

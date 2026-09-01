@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:f0087a2e8b2b own=sha256:17c66f0df960 -->
+<!-- translated-from: ssot=sha256:f0087a2e8b2b own=sha256:a88e846a6748 -->
 # Prompt Guardrails — a 3-Layer Defense (Executable Code, Ready to Copy and Use)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../../ko/07-prompt-guardrails/README.md)**
 
-**Version**: 1.3.0
-**Content hash**: sha256:c0b341cf8ce4 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.3.1
+**Content hash**: sha256:9a57a0425751 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 verified with an actual live block test (a
 publish attempt with a test secret pattern was actually refused; a `git
@@ -13,8 +13,8 @@ confirmed and closed several concrete regex-coverage gaps (PEM private-key
 blocks, GitHub/Stripe/Slack tokens, terminal-escape-injection defense,
 fail-closed on JSON parse failure — see "Honest limits" below).
 
-Executable code that keeps secrets — passwords, API keys — and personal
-data — email addresses, phone numbers, resident registration numbers —
+Executable code that keeps secrets (passwords, API keys) and personal
+data (email addresses, phone numbers, resident registration numbers)
 from leaking into an AI agent's prompts, external publications, or git
 commits. This folder is **the one document set in this whole collection
 that isn't an explanation but code you can copy and use directly** — it's

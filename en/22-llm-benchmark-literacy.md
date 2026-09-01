@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:0d2aa911d7b2 own=sha256:99458e3c55e8 -->
+<!-- translated-from: ssot=sha256:0d2aa911d7b2 own=sha256:b962177815be -->
 # How to Read LLM Benchmarks — What They Measure, What They Miss, and How Much to Trust Them
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/22-llm-benchmark-literacy.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:a5397712d4ea (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:2e887d3f8360 (of the body below, excluding the stamp comment, this line, and the version line)
 
 [21-spec-first-implementation.md](21-spec-first-implementation.md) cited a
 number like "GSM8K 56.4%→59.3%" as supporting evidence — this crystal
@@ -52,9 +52,9 @@ sample (who is voting).
 🟢 Empirical evidence (verified against Zheng et al. 2023): when GPT-4 is
 used as the judge, it agrees with human judgments **more than 80% of the
 time** — which is on par with the rate at which humans agree with each
-other. In other words, the fact that LLM judges aren't perfect is also
-confirmed to be simply because human judges were never perfect to begin
-with.
+other. In other words, this also confirms that LLM judges are imperfect
+for the same reason human judges are: human judgment was never perfect
+to begin with.
 
 **Bottom line**: when handed a citation of a type-(A) benchmark number,
 always add "could this model have seen this exact problem during

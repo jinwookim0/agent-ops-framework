@@ -1,20 +1,20 @@
-<!-- translated-from: ssot=sha256:cc6872f58e7a own=sha256:bcb89bef5584 -->
+<!-- translated-from: ssot=sha256:cc6872f58e7a own=sha256:252914b66b68 -->
 # Observability — How to Keep Agent Execution From Being Left as Claims Instead of Logs
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/11-observability-and-agent-tracing.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:b9089b18afd0 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:70ec8e3a755c (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 (re-verified 2026-09-01) The framework's
 own principles (separating intent from observation, structured logging)
 are settled and based on the ReAct pattern, and the external standard
 (OpenTelemetry's GenAI semantic conventions,
-github.com/open-telemetry/semantic-conventions-genai) was this time
-directly checked against the source, including actual attribute names
+github.com/open-telemetry/semantic-conventions-genai) was checked
+directly against the source this time, including actual attribute names
 (`gen_ai.operation.name`, `gen_ai.usage.input_tokens`, etc.) — an
-earlier version of this document couldn't reach this while that
-repository was mid-migration.
+earlier version of this document couldn't confirm this, since that
+repository was inaccessible while mid-migration.
 
 Whether an AI agent's statement that it "completed" something and whether
 that tool call actually happened can be two separate things (item 8 in

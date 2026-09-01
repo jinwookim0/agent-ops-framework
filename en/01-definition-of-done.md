@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:6083e43675d6 own=sha256:3b4d71beb9ff -->
+<!-- translated-from: ssot=sha256:6083e43675d6 own=sha256:38c299cf77ee -->
 # Definition of Done — Completion Criteria for AI Agent Work (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/01-definition-of-done.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:775682513a8a (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:6443abaf7bdc (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 Draws on Scrum's standard Definition of
 Done concept, and each of the 10 criteria traces back to a real incident/
@@ -81,8 +81,8 @@ judgment, not the conclusion itself), or **③ actionability**
 **Failure pattern**: sentences that merely confirm the existence of a
 structure or fact and stop there — "this structure exists," "this process is
 underway" — provide no actionability, even when every word is true and
-sourced. Don't end with "confirmed / it's possible" — leave coordinates for
-"exactly where, what, and with which keywords" to look next.
+sourced. Don't end with "confirmed / it's possible" — point to exactly where,
+what, and with which keywords to look next.
 
 **Self-check questions**:
 - [ ] If every proper noun (specific name, number, URL, date) were stripped
@@ -109,8 +109,8 @@ framing embedded in them as if it were endorsing that framing itself.
 
 **Self-check questions**:
 - [ ] Is the quoted sentence a factual statement of "what happened," or an
-      evaluative statement of "and that's good/bad" — if the latter, is
-      whose viewpoint it is made clear?
+      evaluative statement of "and that's good/bad" — if the latter, is it
+      made clear whose viewpoint this is?
 - [ ] When covering news where the announcing party has an incentive to
       promote it, is that incentive itself made visible to the reader?
 - [ ] Does unconfirmed language ("planned," "expected") come across as

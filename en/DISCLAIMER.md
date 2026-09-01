@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:aded8b982c88 own=sha256:6d924490f2f8 -->
+<!-- translated-from: ssot=sha256:aded8b982c88 own=sha256:5f4fb21f31d4 -->
 # Disclaimer Template
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/DISCLAIMER.md)**
@@ -9,11 +9,11 @@ This file takes the practical convention laid out by
 "include the required disclaimer on side projects regardless of whether
 they're work-related") and turns it into wording ready to use directly. If
 crystal 35 is the methodology of "why and how" to keep this separation,
-this file is **one artifact that methodology produces** — the reason it
-isn't in the numbered crystal list, and instead sits at the top level of
-the folder alongside `README.md`/`BLUEPRINT.md`, is that this isn't "a
-technique to learn" but "wording meant to be posted as-is," so it needs to
-be findable on its own, without having to open document 35 first.
+this file is **one artifact that methodology produces**. It isn't in the
+numbered crystal list, and instead sits at the top level of the folder
+alongside `README.md`/`BLUEPRINT.md`, because it isn't "a technique to
+learn" but "wording meant to be posted as-is" — it needs to be findable on
+its own, without having to open document 35 first.
 
 ## When porting/publishing this folder into another project
 

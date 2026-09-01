@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:cf9e5712d52c own=sha256:29e92248efe3 -->
+<!-- translated-from: ssot=sha256:cf9e5712d52c own=sha256:78ee2950c167 -->
 # AI Red Team Checklist — Applying the OWASP Top 10 for LLM Applications (2025)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/14-ai-red-team-checklist.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:1f5693ea5ff6 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:418199e870da (of the body below, excluding the stamp comment, this line, and the version line)
 
 Where [07-prompt-guardrails/](07-prompt-guardrails/) prevents "a secret
 value leaking out by accident" (accidental disclosure), this crystal is a
@@ -51,8 +51,8 @@ project is actually exposed on":
 ## AI-agent-specific principle — "the boundary between data and instruction"
 
 If you had to pick the single most fundamental defensive principle among
-the 10 above: **always distinguish, within the content the agent
-processes, between "this is an instruction I must follow" and "this is
+the 10 above: **within the content the agent processes, always
+distinguish "this is an instruction I must follow" from "this is
 just data I have to handle."** The core mechanism of prompt injection
 (LLM01) is precisely this boundary getting blurred — even if text pulled
 from outside (search results, file contents, another agent's output)

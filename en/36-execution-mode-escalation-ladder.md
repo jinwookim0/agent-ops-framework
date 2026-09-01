@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:a49ec9f9ac1b own=sha256:4007a0c5f36d -->
+<!-- translated-from: ssot=sha256:a49ec9f9ac1b own=sha256:da473c057dab -->
 # Execution-Mode Escalation Ladder — When to Move Up to Parallel or Split Execution
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/36-execution-mode-escalation-ladder.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:200102197400 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:6d54b1c1a461 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟡 Field-tested through repeated use inside a single skill in the source project (has a passing eval-case record), but whether this exact four-tier ladder holds up in other projects or teams hasn't been checked — no external standard was compared against; this is an internally repeated, verified practice from within this one project.
 
@@ -56,7 +56,7 @@ New task received
 
 ## How this differs from crystal 09 (G3)
 
-The "Skill vs. Workflow" decision criterion in section 3.3 of [09-project-structure-template.md](09-project-structure-template.md) is a narrower judgment — **which format to write a single piece of execution logic in** (a single call vs. a multi-stage pipeline) — and L2 of this ladder corresponds exactly to that point. This ladder covers a broader question: **whether to go to parallel/split execution at all** at the moment a task is received, signal-driven, and includes L3 (fully separated parallel execution environment), which crystal 09 doesn't cover.
+The "Skill vs. Workflow" decision criterion in section 3.3 of [09-project-structure-template.md](09-project-structure-template.md) is a narrower judgment — **which format to write a single piece of execution logic in** (a single call vs. a multi-stage pipeline) — and L2 of this ladder corresponds exactly to that point. This ladder covers a broader question: **whether to go to parallel/split execution at all**, judged from signals at the moment a task is received. It also includes L3 (fully separated parallel execution environment), which crystal 09 doesn't cover.
 
 ## Honest limits
 

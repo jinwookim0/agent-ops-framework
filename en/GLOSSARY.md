@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:407a42314a84 own=sha256:eebc0a6ad194 -->
+<!-- translated-from: ssot=sha256:407a42314a84 own=sha256:19a01fef542b -->
 # Glossary — What This Folder's Recurring Terms Mean
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/GLOSSARY.md)**
@@ -88,10 +88,10 @@ extracted from — not this folder itself. When a crystal's body says
 "in the original project...," it always means this outside project.
 
 ## Reflection candidate
-A pattern an automated scanner flags, from the origin project's (or any
-project reusing this folder's own) ongoing evolution, as possibly worth
-turning into a new crystal here. Not a crystal itself — it still has to
-clear the gates. Defined in:
+A pattern an automated scanner spots in the origin project's (or any
+project reusing this folder's own) ongoing evolution and flags as
+possibly worth turning into a new crystal here. Not a crystal itself — it
+still has to clear the gates. Defined in:
 [REFLECTION-CANDIDATES.md](../ko/REFLECTION-CANDIDATES.md),
 [BLUEPRINT.md](BLUEPRINT.md) section 4.
 

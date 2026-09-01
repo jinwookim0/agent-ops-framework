@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:0c0d29b48282 own=sha256:d9a60c68edf1 -->
+<!-- translated-from: ssot=sha256:0c0d29b48282 own=sha256:728d024b0115 -->
 # Project Structure Template for AI-Agent-Managed Projects — A Five-Layer Architecture
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/09-project-structure-template.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:bbb8ea3fce95 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:9b1a07e076cd (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 Draws on the C4 model's (arc42) zoom-level
 concept, and the 5-layer structure/13-step order is a post-hoc write-up
@@ -44,7 +44,7 @@ structure.
 
 | Axis | Values | Meaning |
 |---|---|---|
-| Actionability classification | has-an-end / ongoing / reference-material / on-hold | What kind of item this is (a PARA-style classification) |
+| Actionability classification | finite / ongoing / reference-material / on-hold | What kind of item this is (a PARA-style classification) |
 | Domain | work/life/meta/cross | Whether the task is about work, personal life, infrastructure, or deliberate integration |
 | Oversight grade (`oversight_gate`) | none/notify/confirm | Whether execution involves irreversible actions (the **action** axis) |
 | Confidence grade (`confidence_gate`) | none/flag/ask | How confident the content of the output is (the **content** axis — different from the action axis) |

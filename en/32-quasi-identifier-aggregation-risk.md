@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:d77df4a1f7f4 own=sha256:641b01a14983 -->
+<!-- translated-from: ssot=sha256:d77df4a1f7f4 own=sha256:c63796db67ff -->
 # Quasi-Identifier Combination Risk — Individually Safe Information Becomes Identifying When Aggregated
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/32-quasi-identifier-aggregation-risk.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:b5da80de3619 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:56ba3fdf1c76 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟡 The term "quasi-identifier" and the core claim
 that "attributes with no identifying power individually can gain identifying
@@ -23,11 +23,12 @@ checklist) is generalized from a real incident in the original project.
 ## Basis
 
 A concept established by the lineage of Latanya Sweeney's k-anonymity
-research: information that is by itself uniquely identifying — like a name or
-a national ID number — is called an "identifier"; information that by itself
-applies to many people — like age, zip code, or gender — but **when a few are
-combined, narrows down to a specific individual**, is called a
-"quasi-identifier." The key finding: combinations of just a few
+research. Information that is uniquely identifying all on its own — a name,
+a national ID number — is called an "identifier." Information such as age,
+zip code, or gender applies to many people individually, but combining just
+a few such attributes can narrow the field down to one specific person; this
+second kind is called a "quasi-identifier." The key finding: combinations of
+just a few
 quasi-identifiers (e.g., birthdate, gender, and area of residence) can in
 practice uniquely single out an individual within a population set, and
 there's no binary boundary at all between "this attribute is identifying" and
@@ -72,11 +73,11 @@ filtered out.**
    falsifiable question, "would it be fine if this document were exposed right
    now, whether by a platform bug or by accident?" — this question actually
    resolves to yes/no, unlike a vague standard like "let's be careful."
-3. **Keep only summarized numbers/dates**: preserving the document's purpose
-   (understanding preferences/patterns) usually survives replacing an exact
-   amount with a range (e.g., "in the low millions") or an exact travel date
-   with something like "this quarter" — lower precision only to the point
-   where precision and risk stop being proportional.
+3. **Keep only summarized numbers/dates**: replacing an exact amount with a
+   range (e.g., "in the low millions"), or an exact travel date with
+   something like "this quarter," usually doesn't damage the document's
+   purpose (understanding preferences/patterns) — lower precision only to
+   the point where precision and risk stop being proportional.
 4. **Use automation only as a signal; the final judgment is human**: fully
    automated detection of quasi-identifier combination is generally hard
    (it requires contextual understanding) — accept up front that this

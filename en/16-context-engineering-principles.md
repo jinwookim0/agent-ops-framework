@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:5aa3dabcb594 own=sha256:a1108d56c042 -->
+<!-- translated-from: ssot=sha256:5aa3dabcb594 own=sha256:a5ea6c390d68 -->
 # Context Engineering Principles — Designing What the Agent Sees
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/16-context-engineering-principles.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:dfe912598dd8 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:ec30dbaba41e (of the body below, excluding the stamp comment, this line, and the version line)
 
 Writing a good prompt is different from **designing the entire context an
 agent sees at every moment**. This crystal lays out those design
@@ -68,14 +68,15 @@ Fetch things when they're actually needed.
 
 ### Before compacting: is this document even the kind that compresses?
 Not every bloated shared document has the same room to compress. Before
-attempting compaction, first distinguish the document's nature —
-**history-log-style** documents (the same topic accumulates narratively
-across many dates; old trial-and-error can be collapsed into a one-line
-conclusion without losing information) and **living-rulebook-style**
-documents (a set of live rules that other documents/code reference
-directly by number or name, where most sentences are themselves
-reference targets and so have essentially no slack to cut) call for
-different compression strategies. Treating the latter like the former
+attempting compaction, first distinguish the document's nature, because
+the two call for different compression strategies. A
+**history-log-style** document has the same topic accumulating
+narratively across many dates; old trial-and-error can be collapsed into
+a one-line conclusion without losing information. A
+**living-rulebook-style** document is a set of live rules that other
+documents/code reference directly by number or name, where most
+sentences are themselves reference targets and so have essentially no
+slack to cut. Treating the latter like the former
 leads to repeatedly re-litigating "why isn't this getting smaller," and
 forcing a cut breaks references. In practice, when the same
 over-threshold warning was tried against both types of document, the

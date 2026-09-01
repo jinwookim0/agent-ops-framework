@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:abfd06d804c3 own=sha256:fb07b4d50162 -->
+<!-- translated-from: ssot=sha256:abfd06d804c3 own=sha256:24bd0dd0c6ae -->
 # Autonomous AI Agent Operating Principles (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/05-autonomous-agent-operating-principles.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:6aa43959b3d8 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:33eb666ee764 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 The core claims of published papers — the
 Off-Switch Game (Hadfield-Menell 2017), Concrete Problems in AI Safety
@@ -99,8 +99,8 @@ evidence is available, not the first choice.
 **type catalog** of reasoning errors that have already occurred, and
 [04-eval-engineering-methodology.md](04-eval-engineering-methodology.md)
 evaluates a **finished output** — both are applied after the fact, or in
-batch. This section is instead about stopping before continuing, **while a
-task is still in progress**, the moment the same kind of signal shows up.
+batch. This section is instead about stopping before continuing whenever
+the same kind of signal shows up **while a task is still in progress**.
 The trigger conditions differ, but the actual "stop" action itself reuses
 this document's other stop mechanism (Principle 0).
 
@@ -210,9 +210,9 @@ next action" and actually doing that every single time — the repeatedly
 observed pattern is that **this gap only becomes visible after the same root
 cause (an implicit stop) recurs multiple times.** The cause is "the rule
 existed, but there was no mechanism enforcing it" — this is itself an
-instance of the "documentation alone doesn't prevent recurrence" lesson that
-this document, and other crystals in this folder, share, applied to this
-very section.
+instance, applied to this very section, of the "documentation alone doesn't
+prevent recurrence" lesson shared by this document and other crystals in
+this folder.
 
 **Structural fix**: unless one of the 3 legitimate stop reasons applies,
 before ending the turn, **actually schedule a reawakening of yourself**

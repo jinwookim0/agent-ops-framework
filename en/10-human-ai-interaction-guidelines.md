@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:8533de630be7 own=sha256:2f6b179184ec -->
+<!-- translated-from: ssot=sha256:8533de630be7 own=sha256:9e5eea572652 -->
 # The 18 Human-AI Interaction Principles — A Checklist Applying the Microsoft Research Standard
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/10-human-ai-interaction-guidelines.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:0624cce98737 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:305488a90f20 (of the body below, excluding the stamp comment, this line, and the version line)
 
 This crystal draws **not from the practical history of any single
 project, but from an external global standard as its source** — every
@@ -67,8 +67,8 @@ don't over-interpret it).
 
 ## How to adopt this in a project
 
-Don't try to apply all 18 at once. **Using it as a self-check checklist
-after executing a task is recommended**: each time you produce an output
+Don't try to apply all 18 at once. **We recommend using it as a
+self-check checklist after executing a task**: each time you produce an output
 or feature, first narrow down "which of these 18 are relevant to this
 output" (not all apply — e.g., a purely informational-lookup output only
 weakly involves the dismissal/correction concepts in G7–G9), then check
