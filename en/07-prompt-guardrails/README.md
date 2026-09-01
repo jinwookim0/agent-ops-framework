@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:f0087a2e8b2b own=sha256:a88e846a6748 -->
+<!-- translated-from: ssot=sha256:f0087a2e8b2b own=sha256:ec4cc7760be9 -->
 # Prompt Guardrails — a 3-Layer Defense (Executable Code, Ready to Copy and Use)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../../ko/07-prompt-guardrails/README.md)**
 
-**Version**: 1.3.1
-**Content hash**: sha256:9a57a0425751 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.3.2
+**Content hash**: sha256:263ceccd126b (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 verified with an actual live block test (a
 publish attempt with a test secret pattern was actually refused; a `git
@@ -163,7 +163,7 @@ these going in)**:
   paths.txt`) that this template doesn't — copying this folder wholesale
   into a new project won't bring that capability along.
 
-This list existing isn't a reason to distrust this code — stating
+That this list exists isn't a reason to distrust this code — stating
 plainly what's been checked and what hasn't is this whole framework's
 principle, applied here the same way as everywhere else.
 

@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:9d4acf694edb own=sha256:8f33a88b20d5 -->
+<!-- translated-from: ssot=sha256:9d4acf694edb own=sha256:01a341e7a5e3 -->
 # agent-ops-framework Blueprint — What It Is and How It Grows
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/BLUEPRINT.md)**
@@ -254,7 +254,7 @@ into the SSOT**:
    "point precisely at where a conflict might be, so a human/AI doesn't
    have to diff two full documents from scratch every time."
 
-**A single file's SSOT can rarely be flipped.** For example, if a
+**In rare cases, a single file's SSOT can be flipped.** For example, if a
 particular crystal originated from an English-speaking contributor's
 own independent research, it's fine for that one file to have `en/` as
 its SSOT and `ko/` as the translation — just put the stamp on the other

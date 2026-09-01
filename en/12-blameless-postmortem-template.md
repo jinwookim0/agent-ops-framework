@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:c392fd28a787 own=sha256:df2b1764f9e1 -->
+<!-- translated-from: ssot=sha256:13b5c8e99300 own=sha256:4212831185a5 -->
 # Blameless Postmortem Template — Based on Google SRE Practice
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/12-blameless-postmortem-template.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:875e23b68c96 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.1
+**Content hash**: sha256:e98c77e63603 (of the body below, excluding the stamp comment, this line, and the version line)
 
 It's inevitable that an AI agent will make mistakes (hallucination, a
 wrong judgment call, a safeguard malfunctioning, etc.). The problem isn't
@@ -74,8 +74,8 @@ verification steps — not naming a person or a specific AI run).
 | ... | ... | ... | not started/in progress/done |
 
 Each action item must actually contribute to "preventing recurrence" — a
-"we'll be more careful" style resolution of intent is not accepted as an
-action item (only structural, code, or process changes count).
+"we'll be more careful"-style pledge doesn't count as an action item
+(only structural, code, or process changes do).
 ```
 
 ## AI-agent-specific rules
@@ -85,7 +85,8 @@ action item (only structural, code, or process changes count).
    mistake through."
 2. **Record reproducibility** — note whether the same mistake reproduces
    with the same input (a deterministic failure) or occurs only
-   probabilistically (see the related determinism principle) — a mistake
+   probabilistically (see
+   [18-determinism-and-reproducibility.md](18-determinism-and-reproducibility.md)) — a mistake
    that doesn't reproduce needs a different kind of defense (sampled
    verification, after-the-fact audits).
 3. **The "reproduced twice" rule**: When an incident with the same root

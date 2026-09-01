@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:70f7eaf2fec0 own=sha256:40adfa959dc3 -->
+<!-- translated-from: ssot=sha256:06727e9e706f own=sha256:40adfa959dc3 -->
 # Application Deadline Rule — Research Should Always Come With an Application Deadline
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/24-application-deadline-rule.md)**

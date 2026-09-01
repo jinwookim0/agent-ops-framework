@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:7109e8bbecfc own=sha256:0a96cbf75825 -->
+<!-- translated-from: ssot=sha256:7109e8bbecfc own=sha256:5714c99f1382 -->
 # Decision Rights Allocation — When Multiple People Share the Same AI Agent
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/20-decision-rights-raci.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:d92bee4da759 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:fc6a7a60f89e (of the body below, excluding the stamp comment, this line, and the version line)
 
 The crystals so far, especially
 [05-autonomous-agent-operating-principles.md](05-autonomous-agent-operating-principles.md),
@@ -52,9 +52,10 @@ question "who is accountable" disappear.
 ## Why "A is always human" is a non-negotiable rule
 
 Applying RACI's core rule ("exactly one Accountable") to AI agents, the
-most common failure is **implicitly letting it default to "the AI is in
-charge"** — without explicit assignment, when an incident occurs you
-end up in a state where "no one was ultimately accountable."
+most common failure is **leaving the Accountable assignment to default,
+implicitly, to "the AI is in charge"** — without explicit assignment,
+when an incident occurs you end up in a state where "no one was
+ultimately accountable."
 [12-blameless-postmortem-template.md](12-blameless-postmortem-template.md)'s
 rule "don't close the loop with 'the AI made a mistake'" is exactly the
 after-the-fact response to this problem — RACI prevents the problem

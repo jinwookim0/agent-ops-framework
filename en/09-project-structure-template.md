@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:0c0d29b48282 own=sha256:728d024b0115 -->
+<!-- translated-from: ssot=sha256:0c0d29b48282 own=sha256:e031612822f4 -->
 # Project Structure Template for AI-Agent-Managed Projects — A Five-Layer Architecture
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/09-project-structure-template.md)**
 
-**Version**: 1.0.2
-**Content hash**: sha256:9b1a07e076cd (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.3
+**Content hash**: sha256:84df0c54e6cb (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 Draws on the C4 model's (arc42) zoom-level
 concept, and the 5-layer structure/13-step order is a post-hoc write-up
@@ -13,9 +13,9 @@ grew in.
 
 This captures both the **overall view (what exists)** and **how to
 actually build it (schema and ordering)** — the starting premise of this
-template is that an overview alone doesn't let you reconstruct the thing.
-It borrows the "zoom levels" (Context → Container → Component) from the
-[C4 model](https://arc42.org/overview/).
+template is that an overview alone doesn't let you reconstruct the
+system — a structure that borrows the "zoom levels" (Context → Container
+→ Component) from the [C4 model](https://arc42.org/overview/).
 
 ## 1. Architecture — five layers
 

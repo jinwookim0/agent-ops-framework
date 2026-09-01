@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:a49ec9f9ac1b own=sha256:da473c057dab -->
+<!-- translated-from: ssot=sha256:a49ec9f9ac1b own=sha256:7b2ac5c66411 -->
 # Execution-Mode Escalation Ladder — When to Move Up to Parallel or Split Execution
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/36-execution-mode-escalation-ladder.md)**
 
-**Version**: 1.0.1
-**Content hash**: sha256:6d54b1c1a461 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.0.2
+**Content hash**: sha256:d5c335eb4e7a (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟡 Field-tested through repeated use inside a single skill in the source project (has a passing eval-case record), but whether this exact four-tier ladder holds up in other projects or teams hasn't been checked — no external standard was compared against; this is an internally repeated, verified practice from within this one project.
 
@@ -32,7 +32,7 @@ Higher levels are more powerful but cost more to set up — **start at L0, and m
 
 ## Accuracy lever (usable right away at L0, no escalation needed)
 
-Judging alone means you can't see your own blind spots — for an important output, having something (yourself, or a separate execution unit) "try to refute this result" is the cheapest accuracy lever usable directly within L0, without escalating.
+Judging alone means you can't see your own blind spots — for an important output, having yourself (or a separate execution unit) "try to refute this result" is the cheapest accuracy lever usable directly within L0, without escalating.
 
 ## Creativity lever — multiple independent attempts, then synthesize ("judge panel")
 

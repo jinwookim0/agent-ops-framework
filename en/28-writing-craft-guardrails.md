@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:6ef20ffbec9f own=sha256:de043f2c1f07 -->
+<!-- translated-from: ssot=sha256:6ef20ffbec9f own=sha256:51977a460ae4 -->
 # Writing Craft Guardrails — Removing the "AI Smell"
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/28-writing-craft-guardrails.md)**
 
-**Version**: 1.3.0
-**Content hash**: sha256:dda0ea91259f (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.3.1
+**Content hash**: sha256:9b651fe8f939 (of the body below, excluding the stamp comment, this line, and the version line)
 
 Text output produced by an AI agent is usually **factually correct but no
 fun to read**. [01-definition-of-done.md](01-definition-of-done.md) and
@@ -130,10 +130,10 @@ Literature Research* No. 69 (2022), pp. 541-581 — confirmed via the
 paper's KCI abstract page; the full text wasn't opened. The abstract
 itself states that "그녀" ("she") entered Korean specifically to meet a
 translation need during language modernization — newspapers and
-literature tested and coined the word, following the same path Japanese
-took in coining "彼女" to correspond to Western "she." So "그녀" itself
-started out as a product of translationese. (Several linguistics papers
-also note that even "그" only settled into its modern third-person-pronoun
+literature tested their way to the word over the course of East Asian
+language modernization. So "그녀" itself started out as a product of
+translationese. (Several linguistics papers also note that even "그" only
+settled into its modern third-person-pronoun
 role after early-20th-century modern fiction, a claim repeated often
 enough to be worth flagging, though this crystal hasn't opened those
 papers directly.)
@@ -362,7 +362,7 @@ copyrightable material in the first place.
 | Vonnegut (1980) | Titles of 4 of 7 rules (a few words each) | Held by International Paper Co., actively rights-managed (many reprints carry "reprinted with permission") | Only rule titles were quoted — short, low in original expression, not the essay's actual prose |
 | Kawasaki (2005) | The rule itself (10 slides / 20 minutes / 30pt), described, not quoted | Held by Kawasaki personally | A numeric rule is a fact/idea, not expression — never copyrightable to begin with |
 | Lee O-deok (1992) | No quote at all — only a Wikipedia-sourced summary | Original never opened; copyright status not checked | Nothing was carried over from the book itself — this was never a quotation |
-| Kim 2012 | One definition sentence + 4 example pairs | Published by NIKL, but authored by an outside professor — no KOGL open-license mark found on this issue's colophon | Meets all three Article 28 tests (detailed in the answer this table follows) — safe independent of whether KOGL applies |
+| Kim 2012 | One definition sentence + 4 example pairs | Published by NIKL, but authored by an outside professor — no KOGL open-license mark found on this issue's colophon | Meets all three Article 28 tests (detailed in the answer above) — safe independent of whether KOGL applies |
 | Chen & Lee (2022) | The abstract's core claim, summarized in this crystal's own words | KCI abstract page; full text not opened | No sentence from the abstract was quoted verbatim — facts and ideas aren't copyrightable material |
 | Park (2012) | Statistics only | KCI abstract page; full text not opened | Numbers and statistics are facts, not copyrightable expression |
 | Kubernetes localization guide | A 4-row example table, reproduced as-is | CC BY 4.0 — reuse explicitly permitted | The license itself permits this; source (repo, URL, license) credited |
