@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:c392fd28a787 own=sha256:df2b1764f9e1 -->
 # Blameless Postmortem Template — Based on Google SRE Practice
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/12-blameless-postmortem-template.md)**

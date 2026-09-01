@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:18691f465941 own=sha256:4ac0cd5edd98 -->
 # Spec-First Implementation — The Actual Effect of Writing the Plan First and Building to It
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/21-spec-first-implementation.md)**

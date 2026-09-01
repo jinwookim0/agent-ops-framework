@@ -1,10 +1,10 @@
-<!-- translated-from: 2ae1d3292bfb069ca2638579e004c085d3c029ff -->
+<!-- translated-from: ssot=sha256:f0087a2e8b2b own=sha256:17c66f0df960 -->
 # Prompt Guardrails — a 3-Layer Defense (Executable Code, Ready to Copy and Use)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../../ko/07-prompt-guardrails/README.md)**
 
-**Version**: 1.2.0
-**Content hash**: sha256:3d61d0981f58 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.3.0
+**Content hash**: sha256:c0b341cf8ce4 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 verified with an actual live block test (a
 publish attempt with a test secret pattern was actually refused; a `git
@@ -131,23 +131,32 @@ these going in)**:
   stamp value itself last changed, so re-stamping without actually
   re-translating clears the signal — the same fundamental limit as the
   distinction between a checksum and a signature.
-- **Fragile to git history rewrites**: commit-hash-based stamps all go
-  meaningless at once after a rebase/squash/history cleanup (e.g. using
-  BFG to purge a secret that was committed by mistake — exactly the kind
-  of remediation this scanner might prompt). **Confirmed by a real
-  incident and partially mitigated, 2026-09-01**: two squashes in one
-  session left 37 of 44 `translated-from` stamps in this repo pointing
-  at a commit no longer reachable from HEAD — `git log -1
-  --format=%ct <hash>` kept "succeeding" (returning a plausible-looking
-  timestamp) for the dangling, not-yet-garbage-collected commit object,
-  so nothing looked wrong locally for a while. Added a
-  `git merge-base --is-ancestor`-based reachability check plus a
-  `--repair` flag to `agent-ops-framework-translation-sync-check.py` to
-  detect and fix this mechanically — but that's automating the recovery
-  after the fact, not making history rewriting itself safe: running
-  `--repair` as an immediate follow-up commit after any rewrite is still
-  an operational rule a human has to actually follow
-  (`docs/directive-registry.md` row 1).
+- **Used to be fragile to git history rewrites — resolved by a ground-up
+  redesign, 2026-09-01**: this item was originally filed as a structural
+  limit that couldn't be fully closed; correcting that here, since it
+  actually was closed. What happened: two squashes in one session left
+  37 of 44 `translated-from` stamps in this repo pointing at a commit no
+  longer reachable from HEAD — `git log -1 --format=%ct <hash>` kept
+  "succeeding" (returning a plausible-looking timestamp) for the
+  dangling, not-yet-garbage-collected commit object, so nothing looked
+  wrong locally for a while. **First response** (a `git merge-base
+  --is-ancestor`-based reachability check plus a `--repair` flag)
+  automated detection and recovery, but left the root problem standing —
+  history rewriting itself was still unsafe, and "a human has to
+  remember to run `--repair` after every rewrite" is exactly the pattern
+  this folder criticizes elsewhere (a documented rule is powerless the
+  moment someone forgets to run it — the same lesson behind this
+  README's own layer-2-vs-layer-3 distinction above). **Actual fix**:
+  redesigned the `translated-from` stamp from a git commit hash to a
+  **content hash** (sha256 of the SSOT's body + sha256 of the
+  translation's own body — the same mechanism
+  `agent-ops-framework-version-check.py` already used for ko/ crystals'
+  own self-consistency) so it no longer references any git object at
+  all — no squash, rebase, or force-push can break it. Verified live, not
+  just argued: reproducing the same squash in a scratch clone broke
+  37/44 stamps before the redesign and 0/44 after. Full rationale in
+  `scripts/agent-ops-framework-translation-sync-check.py`'s "Why
+  content-hash, not commit-hash" section.
 - **Drift between the live deployment and this template**: the actually
   deployed `.claude/hooks/guard-secrets.sh` has confidential-path-
   blocking logic (`confidential-paths.txt`/`pending-human-review-

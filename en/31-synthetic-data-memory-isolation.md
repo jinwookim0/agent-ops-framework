@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:a93d40e24ade own=sha256:fc16b6c46e50 -->
 # Synthetic Data ↔ Persistent Memory Isolation — When Fake Eval Inputs Masquerade as Real History
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/31-synthetic-data-memory-isolation.md)**

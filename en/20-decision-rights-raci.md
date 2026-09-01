@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:7109e8bbecfc own=sha256:42e1a67798b6 -->
 # Decision Rights Allocation — When Multiple People Share the Same AI Agent
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/20-decision-rights-raci.md)**

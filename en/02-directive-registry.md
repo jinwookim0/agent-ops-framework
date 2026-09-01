@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:359a4a9684f8 own=sha256:ac708ecdabcd -->
 # Directive Registry — How to Accumulate and Index User Directives (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/02-directive-registry.md)**

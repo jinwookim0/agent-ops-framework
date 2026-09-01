@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:279908309083 own=sha256:0df82eec6b30 -->
 # Writing Craft Guardrails — Removing the "AI Smell"
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/28-writing-craft-guardrails.md)**

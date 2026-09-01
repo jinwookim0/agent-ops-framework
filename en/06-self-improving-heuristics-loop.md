@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:c041a6cceceb own=sha256:5116a65de89c -->
 # Self-Improving Tool-Use Rules — A Miniature Toolformer Loop (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/06-self-improving-heuristics-loop.md)**

@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:a49ec9f9ac1b own=sha256:4007a0c5f36d -->
 # Execution-Mode Escalation Ladder — When to Move Up to Parallel or Split Execution
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/36-execution-mode-escalation-ladder.md)**

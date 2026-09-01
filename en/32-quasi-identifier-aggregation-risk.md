@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:d77df4a1f7f4 own=sha256:641b01a14983 -->
 # Quasi-Identifier Combination Risk — Individually Safe Information Becomes Identifying When Aggregated
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/32-quasi-identifier-aggregation-risk.md)**

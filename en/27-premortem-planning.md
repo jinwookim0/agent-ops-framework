@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:7e660c371482 own=sha256:642c5f934452 -->
 # Premortem — Assuming Failure Before Execution, as a Technique
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/27-premortem-planning.md)**

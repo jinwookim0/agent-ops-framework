@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:aded8b982c88 own=sha256:6d924490f2f8 -->
 # Disclaimer Template
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/DISCLAIMER.md)**

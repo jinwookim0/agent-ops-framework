@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:744acb9a35cf own=sha256:66b8011ac1fb -->
 # Separating Personal OSS Work From Employer Confidentiality — What to Filter Out, and How
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/35-personal-oss-employer-confidentiality-separation.md)**

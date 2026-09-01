@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:0c0d29b48282 own=sha256:d9a60c68edf1 -->
 # Project Structure Template for AI-Agent-Managed Projects — A Five-Layer Architecture
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/09-project-structure-template.md)**

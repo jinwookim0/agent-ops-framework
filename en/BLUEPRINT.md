@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:9d4acf694edb own=sha256:191e7c3e4ae3 -->
 # agent-ops-framework Blueprint — What It Is and How It Grows
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/BLUEPRINT.md)**

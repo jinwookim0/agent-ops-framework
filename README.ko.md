@@ -1,4 +1,4 @@
-<!-- translated-from: 450fbf43aa4880aa2070c6e0aa452ffd304953fd -->
+<!-- translated-from: ssot=sha256:984be3625a3a own=sha256:9052aa7d54aa -->
 # agent-ops-framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

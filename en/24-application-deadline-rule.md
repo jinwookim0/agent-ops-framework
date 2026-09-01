@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:70f7eaf2fec0 own=sha256:c48bbf8c2d6a -->
 # Application Deadline Rule — Research Should Always Come With an Application Deadline
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/24-application-deadline-rule.md)**

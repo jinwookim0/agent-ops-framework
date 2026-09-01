@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:6083e43675d6 own=sha256:3b4d71beb9ff -->
 # Definition of Done — Completion Criteria for AI Agent Work (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/01-definition-of-done.md)**

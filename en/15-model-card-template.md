@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:515882bf5276 own=sha256:6718908b2e8b -->
 # System/Model Card Template — Documenting "What This AI Does," Not "How the Project Is Run"
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/15-model-card-template.md)**

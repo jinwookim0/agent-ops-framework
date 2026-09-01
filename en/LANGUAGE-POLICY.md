@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:ae6546a4db24 own=sha256:e02f55e7934b -->
 # Language Reference Policy — How an AI Decides Which Language Version to Read
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/LANGUAGE-POLICY.md)**

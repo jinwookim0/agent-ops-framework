@@ -2,8 +2,8 @@
 
 > 🌐 **[Read in English](../../en/07-prompt-guardrails/README.md)**
 
-**버전**: 1.2.0
-**콘텐츠 해시**: sha256:bc739b9c1b9f (본문 기준, 이 두 줄 제외)
+**버전**: 1.3.0
+**콘텐츠 해시**: sha256:c6f30dff4809 (본문 기준, 이 두 줄 제외)
 
 **검증 강도**: 🟢 실제 라이브 차단 검증까지 완료(테스트 시크릿 패턴으로
 Artifact 발행 시도 → 실제 거부 확인, git push 시도 → 실제 차단 확인).
@@ -96,20 +96,28 @@ NUL 구분(`-z`/`xargs -0`)으로 교체해 차단, `guard-secrets.sh`의 예측
   `agent-ops-framework-translation-sync-check.py`는 스탬프 값이 마지막
   으로 바뀐 시점만 추적해서, 재번역 없이 스탬프만 새로 찍으면 신호가
   사라진다 — 이것도 체크섬과 서명의 차이와 같은 근본적 한계다.
-- **git 히스토리 재작성에 취약**: 커밋 해시 기반 스탬프는 rebase/squash/
-  히스토리 정리(예: 실수로 커밋된 시크릿을 BFG로 지우는 것 — 바로 이
-  스캐너가 유도할 만한 조치) 한 번에 전부 무의미해진다. **2026-09-01
-  실제 사고로 확인·부분 완화**: 한 세션 안에서 두 차례 squash를 거치며
-  실제로 `translated-from` 스탬프 44개 중 37개가 도달 불가능한(orphan)
-  커밋을 가리키게 됐다 — `git log -1 --format=%ct <해시>`가 아직
-  gc되지 않은 dangling 커밋에도 "성공"해 조용히 통과하는 바람에 로컬에서는
-  한동안 티가 안 났다. `agent-ops-framework-translation-sync-check.py`에
-  `git merge-base --is-ancestor` 기반 도달가능성 검사와 `--repair`
-  옵션을 추가해 깨진 스탬프를 기계적으로 감지·복구하게 했다 — 단, 이건
-  사고 발생 뒤 복구를 자동화한 것이지 히스토리 재작성 자체를 안전하게
-  만드는 게 아니다: 재작성할 때마다 `--repair`를 후속 커밋으로 반드시
-  실행해야 한다는 운영 규칙은 여전히 사람이 지켜야 한다
-  (`docs/directive-registry.md` 1번 항목).
+- **git 히스토리 재작성에 취약했던 문제 — 2026-09-01 근본 재설계로 해소**:
+  이 항목은 원래 "구조적 한계라 완전 해소 불가능"으로 분류돼 있었지만,
+  실제로 해소됐으므로 정정한다. 경위: 한 세션 안에서 두 차례 squash를
+  거치며 `translated-from` 스탬프 44개 중 37개가 도달 불가능한(orphan)
+  커밋을 가리키게 된 게 실제로 발견됐다 — `git log -1 --format=%ct <해시>`가
+  아직 gc되지 않은 dangling 커밋에도 "성공"해 조용히 통과하는 바람에
+  로컬에서는 한동안 티가 안 났다. **1차 대응**(`git merge-base
+  --is-ancestor` 기반 도달가능성 검사 + `--repair` 옵션)은 감지·복구를
+  자동화했을 뿐, 히스토리 재작성 자체가 여전히 위험하다는 근본 문제는
+  남겨뒀다 — "재작성할 때마다 사람이 `--repair`를 기억해서 실행해야
+  한다"는 건 이 폴더 자신이 다른 곳에서 이미 비판하는 바로 그 패턴이다
+  (문서화된 규칙은 실행을 잊으면 무력하다 — 이 README 맨 위 "왜 3단인가"
+  절의 2차/3차 구분과 같은 교훈). **근본 수정**: `translated-from` 스탬프를
+  git 커밋 해시가 아니라 **콘텐츠 해시**(SSOT 본문의 sha256 + 번역본
+  자기 본문의 sha256, 둘 다 `agent-ops-framework-version-check.py`가
+  ko/ 크리스탈 자기 일관성에 이미 쓰던 것과 같은 방식)로 통째로 재설계해,
+  git 객체를 아예 참조하지 않게 만들었다 — squash/rebase/force-push
+  무엇을 해도 콘텐츠 해시는 깨질 수 없다. 같은 squash를 스크래치 클론에서
+  재현해 실제로 검증: 재설계 전엔 37/44가 깨졌던 동일한 조작이, 재설계
+  후엔 0/44 — 이론이 아니라 라이브로 확인됨. 자세한 내용은
+  `scripts/agent-ops-framework-translation-sync-check.py`의 "Why
+  content-hash, not commit-hash" 절 참고.
 - **live 배포판과 이 템플릿 사이 드리프트**: 실제 배포된 `.claude/
   hooks/guard-secrets.sh`는 이 템플릿에 없는 대외비 경로 차단 로직
   (confidential-paths.txt/pending-human-review-paths.txt)을 추가로

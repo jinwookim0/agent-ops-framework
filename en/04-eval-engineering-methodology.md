@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:f85891b0fc18 own=sha256:419e95f76f31 -->
 # Eval Engineering Methodology (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/04-eval-engineering-methodology.md)**

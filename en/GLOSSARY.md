@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:407a42314a84 own=sha256:eebc0a6ad194 -->
 # Glossary — What This Folder's Recurring Terms Mean
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/GLOSSARY.md)**

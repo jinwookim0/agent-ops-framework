@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:d1baa4d6670f own=sha256:540d0706fab2 -->
 # Determinism and Reproducibility — Why the Same Input Produces a Different Answer, and What to Do About It
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/18-determinism-and-reproducibility.md)**

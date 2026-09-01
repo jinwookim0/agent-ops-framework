@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:0a4cb6bd140b own=sha256:aa812842dfa0 -->
 # Project-Level Confidentiality Protection — What Pattern-Based Secret Detection Can't Catch
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/23-confidential-project-protection.md)**

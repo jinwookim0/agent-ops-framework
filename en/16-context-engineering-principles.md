@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:5aa3dabcb594 own=sha256:a1108d56c042 -->
 # Context Engineering Principles — Designing What the Agent Sees
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/16-context-engineering-principles.md)**

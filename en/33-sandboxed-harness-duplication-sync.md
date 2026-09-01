@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:d348531845ec own=sha256:84d4adec329c -->
 # Duplicate Harnesses in Sandboxed Executors — When Imports Aren't Available, Duplicate Honestly and Diff Mechanically
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/33-sandboxed-harness-duplication-sync.md)**

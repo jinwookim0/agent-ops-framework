@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:1c950bfcdc25 own=sha256:7cfe56cdf102 -->
 # Chaos Engineering for Agents — Deliberately Breaking Things Before an Incident Does
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/19-chaos-engineering-for-agents.md)**

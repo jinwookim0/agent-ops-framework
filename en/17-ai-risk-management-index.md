@@ -1,4 +1,4 @@
-<!-- translated-from: 24ff2d937cafd2df5e890906de2370839ccbc3e8 -->
+<!-- translated-from: ssot=sha256:aaa08460cae1 own=sha256:44fef448cecf -->
 # AI Risk Management 4-Function Index — Reorganizing the Other Crystals Around the NIST AI RMF Skeleton
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/17-ai-risk-management-index.md)**

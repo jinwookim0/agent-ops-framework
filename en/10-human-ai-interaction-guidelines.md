@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:8533de630be7 own=sha256:2f6b179184ec -->
 # The 18 Human-AI Interaction Principles — A Checklist Applying the Microsoft Research Standard
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/10-human-ai-interaction-guidelines.md)**

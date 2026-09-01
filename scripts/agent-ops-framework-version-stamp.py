@@ -18,9 +18,13 @@ someone had actually bumped it. This combines two axes to fix both:
   judgment, 100% mechanically reproducible. Computed **independent of
   this repository's git history**, so even a crystal file copied out of
   this repo entirely (the "porting" scenario in BLUEPRINT.md section 7)
-  can be diffed byte-for-byte against the original — this is exactly
-  what covers the gap left by the git-commit-hash-based `translated-from`
-  stamp, which becomes meaningless once a file leaves this repo.
+  can be diffed byte-for-byte against the original. This same
+  git-independence is exactly why
+  agent-ops-framework-translation-sync-check.py's `translated-from`
+  stamp was redesigned (2026-09-01) to use this same kind of content
+  hash instead of a git commit hash — a commit hash stops meaning
+  anything the moment history is rewritten (squash/rebase) or a file
+  leaves this repo; a content hash never can.
 
 Hash scope: the entire body excluding the two version/hash header lines
 (so the hash never has to reference itself).

@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:f08fce007f95 own=sha256:33bf7233f198 -->
 # Agent Cost & Budget Management — A Different Axis From Observability
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/29-agent-cost-and-budget-management.md)**

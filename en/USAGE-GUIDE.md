@@ -1,4 +1,4 @@
-<!-- translated-from: 4012aa8221da5116b7a08a3dc42a3bee069eb8ad -->
+<!-- translated-from: ssot=sha256:a09c83513844 own=sha256:d0babee86a57 -->
 # Usage Guide — Five Perspectives: Planning, Design, Implementation, Improvement, Reference
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/USAGE-GUIDE.md)**

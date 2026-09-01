@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:c616e3fa2a18 own=sha256:db667fff9f3d -->
 # Self-Experiment Reporting Standard — Qualitative + Quantitative + Confidence, plus Pre-registration and Process Tracing
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/34-self-experiment-reporting-standard.md)**

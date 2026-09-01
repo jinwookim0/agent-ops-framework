@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:0248f3a35b7b own=sha256:ea050161bb00 -->
 # Module Format — Lifting a Single Feature Straight Into Another Project
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/08-module-format.md)**

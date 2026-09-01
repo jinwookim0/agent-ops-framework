@@ -1,4 +1,4 @@
-<!-- translated-from: 41dbe0b7277a76464b2540d6c39c560c5f594d56 -->
+<!-- translated-from: ssot=sha256:c06a3601e007 own=sha256:c2d6b67de540 -->
 # The Metric Trap — A Measure Used as a Target Stops Being a Good Measure
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/37-target-metric-gaming-safeguards.md)**

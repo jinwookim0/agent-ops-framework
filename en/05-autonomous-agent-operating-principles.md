@@ -1,4 +1,4 @@
-<!-- translated-from: 4012aa8221da5116b7a08a3dc42a3bee069eb8ad -->
+<!-- translated-from: ssot=sha256:abfd06d804c3 own=sha256:fb07b4d50162 -->
 # Autonomous AI Agent Operating Principles (Domain-Neutral Template)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/05-autonomous-agent-operating-principles.md)**

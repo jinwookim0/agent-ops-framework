@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:e704507ce2ab own=sha256:a3c83962d4c1 -->
 # Shared Context Lifecycle Management — Compaction, Archiving, and Session Restarts
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/30-shared-context-lifecycle-management.md)**

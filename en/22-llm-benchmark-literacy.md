@@ -1,4 +1,4 @@
-<!-- translated-from: 6e950e781878be4cc28ed8b43fc53f97a78cc81b -->
+<!-- translated-from: ssot=sha256:0d2aa911d7b2 own=sha256:99458e3c55e8 -->
 # How to Read LLM Benchmarks — What They Measure, What They Miss, and How Much to Trust Them
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/22-llm-benchmark-literacy.md)**
