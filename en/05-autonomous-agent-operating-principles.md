@@ -66,14 +66,27 @@ next action:
 not the same as re-securing external evidence (re-searching, re-querying) —
 these have different effects. What the original Self-Refine paper (Madaan et
 al. 2023, [arXiv:2303.17651](https://arxiv.org/abs/2303.17651)) actually
-measured is that a loop where the same model critiques and revises itself
-improves substantially on open-ended tasks, but **the stronger the model
-already is, the more sharply the improvement from self-critique alone
-shrinks (+4.8 points for a weaker model vs. +0.7 for a stronger one, on a
-5-point scale)**, and on tasks with a single correct answer, it barely
-helped at all (93 → 93, with that model responding "it's already fine" in
-94% of cases). By contrast, combining retrieval-based external evidence
-(RAG, Lewis et al. 2020,
+measured (main-text Table 1 plus Appendix H.1's Table 9, both checked
+directly — re-verified 2026-09-01) is that a loop where the same model
+critiques and revises itself improves substantially on open-ended tasks
+(dialogue generation, sentiment reversal, etc.), but **on tasks with a
+single correct answer (math problems), pure self-critique barely helped at
+all regardless of model size** — GPT-3.5 stayed flat at 64.1 → 64.1,
+ChatGPT went 74.8 → 75.0, GPT-4 went 92.9 → 93.1 (a 0-100 solve-rate
+scale, Table 1). ChatGPT's feedback itself said "it's already fine" in 94%
+of cases (main text, §3.3 — a separate observation from GPT-4's numbers).
+**The improvement gap only actually opened up once oracle feedback was
+added** — an external signal telling the model whether its current answer
+was correct — and under that condition the weaker model (the GPT-3.5
+tier, +4.8 points) improved more than the stronger one (GPT-4, +0.7
+points) (Table 9, Appendix H.1 — percentage-point deltas on a 0-100
+solve-rate scale, not a "5-point scale" as an earlier version of this
+document mis-stated). In other words, the real finding isn't "weaker
+models self-critique better" — it's that **pure self-critique barely
+helps on single-correct-answer tasks, and only actually re-securing
+external evidence (whether an oracle signal or retrieval) produces real
+improvement**. Consistent with that, combining retrieval-based external
+evidence (RAG, Lewis et al. 2020,
 [arXiv:2005.11401](https://arxiv.org/abs/2005.11401)) was strongly
 preferred over pure generation without retrieval on factuality evaluation
 (42.7% vs. 7.1%). **Conclusion**: where possible, don't let the

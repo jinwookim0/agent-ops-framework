@@ -2,8 +2,8 @@
 
 > 🌐 **[Read in English](../en/17-ai-risk-management-index.md)**
 
-**버전**: 1.1.0
-**콘텐츠 해시**: sha256:5556dcd96d16 (본문 기준, 이 두 줄 제외)
+**버전**: 1.2.0
+**콘텐츠 해시**: sha256:bda0bde1ef91 (본문 기준, 이 두 줄 제외)
 
 이 크리스탈은 새 내용을 추가하지 않는다 — 대신 다른 크리스탈들이
 **국제적으로 통용되는 리스크 관리 골격 안에서 각각 어디에 해당하는지**
@@ -88,7 +88,10 @@ planning.md](27-premortem-planning.md)(실행 전에 낙관 없이 실패를 미
 (벤치마크 수치의 신뢰도·오염·절대vs상대를 읽는 법), [26-grounding-validity-
 audit.md](26-grounding-validity-audit.md)(이미 써놓은 근거가 지금도
 맞는지 주기적으로 재대조), [34-self-experiment-reporting-standard.md](34-self-experiment-reporting-standard.md)
-(정해진 케이스가 없는 자가 실험 결과를 정직하게 측정·보고).
+(정해진 케이스가 없는 자가 실험 결과를 정직하게 측정·보고),
+[37-target-metric-gaming-safeguards.md](37-target-metric-gaming-safeguards.md)
+(측정 지표 자체를 목표로 최적화했을 때 진짜 목표와 어긋나는 위험 — 지표
+설계 시점의 측정 신뢰성).
 
 ### Manage — "발견된 리스크를 실제로 어떻게 줄이는가"
 실무 질문: 발견된 취약점·부채를 어떤 순서로 처리하는가? 재발을 어떻게

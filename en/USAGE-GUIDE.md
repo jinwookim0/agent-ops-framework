@@ -150,6 +150,7 @@ original project actually ran into.
 | "I'm about to open-source a personal project and I'm worried my employer's confidential information is mixed in" | [35-personal-oss-employer-confidentiality-separation.md](35-personal-oss-employer-confidentiality-separation.md) |
 | "How do I honestly report the results of an ad-hoc experiment that has no predefined test case?" | [34-self-experiment-reporting-standard.md](34-self-experiment-reporting-standard.md) |
 | "I'm deciding, by gut feel every time, whether to do this task alone and sequentially or escalate it to parallelization/separate execution" | [36-execution-mode-escalation-ladder.md](36-execution-mode-escalation-ladder.md) |
+| "If I optimize this goal/completion-criterion exactly as written, I suspect it'll get gamed into hitting the metric instead of the real outcome" | [37-target-metric-gaming-safeguards.md](37-target-metric-gaming-safeguards.md) |
 | "I want to add a new crystal but don't know the criteria / how do I reflect another project's evolution into this folder?" | [BLUEPRINT.md](BLUEPRINT.md) |
 
 ## Related documents

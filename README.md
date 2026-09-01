@@ -9,7 +9,7 @@
 
 **A free, copy-paste collection of "how to run an AI-agent project" rules — written so that anyone, from a curious high-schooler to a working AI engineer, can pick up exactly the piece they need.**
 
-This page (and its [Korean translation](README.ko.md)) is a short landing page. The full, file-by-file map of all 36 crystals — with a description and a verification badge for each — lives one level deeper, in **[`en/README.md`](en/README.md)** (English) or **[`ko/README.md`](ko/README.md)** (Korean, the source of truth for that deeper content); both say the same thing, so read whichever you're comfortable in.
+This page (and its [Korean translation](README.ko.md)) is a short landing page. The full, file-by-file map of all 37 crystals — with a description and a verification badge for each — lives one level deeper, in **[`en/README.md`](en/README.md)** (English) or **[`ko/README.md`](ko/README.md)** (Korean, the source of truth for that deeper content); both say the same thing, so read whichever you're comfortable in.
 
 ---
 
@@ -33,7 +33,7 @@ Two things worth knowing before you dive in:
 
 ## Start here (in roughly this order)
 
-If you're adding this to a project for the first time, don't try to read all 36 crystals — read these, in this order, and pick up the rest only when a document's own "why this matters" section actually applies to you:
+If you're adding this to a project for the first time, don't try to read all 37 crystals — read these, in this order, and pick up the rest only when a document's own "why this matters" section actually applies to you:
 
 1. **[`07-prompt-guardrails/`](ko/07-prompt-guardrails/)** — do this *before* your first task that touches personal data, not after. This one is different from the rest: it's not a principle to read, it's **working code you copy and run** (a hook, a scanner, a masking script).
 2. **[`01-definition-of-done.md`](ko/01-definition-of-done.md)** — once you have more than a handful of tasks going.
@@ -42,9 +42,9 @@ If you're adding this to a project for the first time, don't try to read all 36 
 5. **[`09-project-structure-template.md`](ko/09-project-structure-template.md)** — when you're designing (or redesigning) the project's structure itself.
 6. **[`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md)** and **[`04-eval-engineering-methodology.md`](ko/04-eval-engineering-methodology.md)** — the first time you need to seriously measure output quality, not just eyeball it.
 
-## The full map — 36 crystals in 9 categories
+## The full map — 37 crystals in 9 categories
 
-Every crystal number is a permanent ID (the order it was added, not a ranking — see `ko/README.md`'s "번호는 추가 순서다, 중요도가 아니다" section for why; GitHub's auto-generated anchor slugs for Korean headings aren't reliable enough to link to directly, so this points at the file, not a fragment). Below is the category-level map; for the complete file-by-file table with a description and a verification badge for each of the 36, see **[`en/README.md`](en/README.md)** (or [`ko/README.md`](ko/README.md) — identical content).
+Every crystal number is a permanent ID (the order it was added, not a ranking — see `ko/README.md`'s "번호는 추가 순서다, 중요도가 아니다" section for why; GitHub's auto-generated anchor slugs for Korean headings aren't reliable enough to link to directly, so this points at the file, not a fragment). Below is the category-level map; for the complete file-by-file table with a description and a verification badge for each of the 37, see **[`en/README.md`](en/README.md)** (or [`ko/README.md`](ko/README.md) — identical content).
 
 | Category | Answers the question | Example crystals |
 |---|---|---|

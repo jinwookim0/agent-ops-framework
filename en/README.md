@@ -76,7 +76,7 @@ The remaining crystals are worth reading once the "why this is needed"
 opening of each document actually applies to your own project — there's no
 need to bring all of them in at once ([USAGE-GUIDE.md](USAGE-GUIDE.md)'s
 "Planning perspective" walks through the same ordering in more detail). We
-don't rank all 36 crystals into one master priority order — what's needed
+don't rank all 37 crystals into one master priority order — what's needed
 first genuinely differs project to project, and forcing a single overall
 ranking would hide that difference rather than help.
 
@@ -149,6 +149,7 @@ much do you trust its results."
 | [18-determinism-and-reproducibility.md](18-determinism-and-reproducibility.md) | What causes the same input to yield a different answer, and how to handle it | 🟢 abstract verified (not the full original text — stated explicitly in the document) |
 | [22-llm-benchmark-literacy.md](22-llm-benchmark-literacy.md) | How to read credibility, contamination, and absolute-vs-relative framing when handed an LLM benchmark number | 🟢 5 benchmark papers verified against the source |
 | [34-self-experiment-reporting-standard.md](34-self-experiment-reporting-standard.md) | How to honestly report a self-experiment (hypothesis testing) that has no predefined test case, across three elements: qualitative, quantitative, and confidence | 🟡 the sample-size principle verified against the source; the confidence-marker system is an original design |
+| [37-target-metric-gaming-safeguards.md](37-target-metric-gaming-safeguards.md) | Why optimizing a proxy metric breaks its correlation with the true goal (Goodhart's law), and countermeasures like multiple metrics and trip wires | 🟢 verified against the source (all of Amodei et al. 2016's mitigations, DeepMind's real-world examples) |
 
 ### Safety & Security — defending against information leakage — what leaks and how
 
@@ -221,18 +222,19 @@ whether it actually overlaps with an existing crystal, (2) check whether
 verifiable primary sources exist for it, (3) if it doesn't fit any category
 in this table, decide whether to create a new category or whether it's out
 of scope. Once a category exceeds 6-7 crystals, it's time to split it.
-**The Quality & Verification category has reached that boundary at 7
-(01, 04, 13, 18, 21, 22, 34), and the Governance & Decision-making
-category has reached it at 6 (02, 05, 17, 20, 24, 25)** — the next time a candidate comes
-up for addition to either of these two categories, decide whether to split
-first before adding (for Quality & Verification, e.g., "judging
-completeness" vs. "measurement/evidence interpretation"; for Governance &
-Decision-making, e.g., "governance of knowledge/directives themselves" vs.
-"governance of execution autonomy"). **Safety & Security actually reached 8
-and was split into "defending against information leakage" (07, 23, 31, 32,
-35) and "defending judgment & reasoning" (03, 14, 26)** — the numbers stayed
-the same; only the table's category membership was divided (applying
-exactly the split rule from [BLUEPRINT.md](BLUEPRINT.md) section 5).
+**Quality & Verification and Safety & Security already organize their
+tables along two axes each** — the numbers stayed the same; only the
+table's category membership was divided ([BLUEPRINT.md](BLUEPRINT.md)
+section 5's split rule). Quality & Verification splits into "judging
+completeness" (01, 13, 21 — 3) vs. "measurement/evidence interpretation"
+(04, 18, 22, 34, 37 — 5); Safety & Security splits into "defending
+against information leakage" (07, 23, 31, 32, 35 — 5) vs. "defending
+judgment & reasoning" (03, 14, 26 — 3) — neither axis is at 6-7 yet, so
+no further split is needed. **Governance & Decision-making hasn't been
+split and has reached the 6-7 boundary at 6 (02, 05, 17, 20, 24, 25)** —
+the next time a candidate comes up for addition to this category, decide
+whether to split first (e.g., "governance of knowledge/directives
+themselves" vs. "governance of execution autonomy").
 
 ## Usage · Blueprint · Risk Analysis
 

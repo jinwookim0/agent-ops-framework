@@ -103,7 +103,9 @@ absolute-vs-relative framing), [26-grounding-validity-audit.md](26-grounding-val
 (periodically re-checking whether an already-written guide's citations
 still hold), [34-self-experiment-reporting-standard.md](34-self-experiment-reporting-standard.md)
 (honestly measuring and reporting a self-experiment that has no
-predefined test case).
+predefined test case), [37-target-metric-gaming-safeguards.md](37-target-metric-gaming-safeguards.md)
+(the risk that optimizing a measurement itself as the target diverges
+from the true goal — measurement reliability at metric-design time).
 
 ### Manage — "How do you actually reduce a risk once it's found?"
 Practical questions: In what order do you address discovered
