@@ -44,10 +44,17 @@ BLOCK=0
 # Commit-message-only patterns — deliberately not merged with the
 # file-content patterns (public-repo-check.sh already owns those); kept
 # to the minimum that actually caused a real problem in commit messages.
+#
+# False positive found live, 2026-09-02: the very commit that added this
+# hook got blocked by its own check, because its message explained the
+# hook ("this hook catches 'Claude-Session:'") by quoting the string
+# itself -- not an actual leak, caught on the first real push. A real
+# trailer is always followed by the URL, so require that shape too, to
+# tell "a sentence describing the pattern" apart from "an actual leak."
 check_message() {
   local sha="$1" msg hits
   msg=$(git log -1 --format=%B "$sha")
-  hits=$(printf '%s' "$msg" | grep -inE 'claude-session:|/(Users|home)/[A-Za-z0-9_.-]+/|-----BEGIN [A-Z ]*PRIVATE KEY-----' || true)
+  hits=$(printf '%s' "$msg" | grep -inE 'claude-session:\s*https://claude\.ai/code/session_|/(Users|home)/[A-Za-z0-9_.-]+/|-----BEGIN [A-Z ]*PRIVATE KEY-----' || true)
   if [ -n "$hits" ]; then
     echo "🚫 Commit $sha's message has a banned pattern:"
     echo "$hits" | sed 's/^/    /'

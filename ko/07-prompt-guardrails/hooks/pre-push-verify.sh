@@ -35,10 +35,16 @@ BLOCK=0
 # 커밋 메시지 채널 전용 패턴 — 파일 내용용 패턴(public-repo-check.sh가
 # 이미 담당)과 굳이 다시 합치지 않고, 커밋 메시지에서 실제로 문제가 됐던
 # 것 위주로 최소한만 둔다.
+#
+# 2026-09-02 라이브로 발견한 오탐: 이 훅 자체를 추가한 커밋의 메시지가
+# "이 훅은 'Claude-Session:'을 잡는다"처럼 그 패턴을 설명하느라 문자열
+# 자체를 인용해서, 실제 유출이 아닌데도 걸렸다 — 첫 실제 push에서 바로
+# 재현됨. 실제 트레일러는 항상 뒤에 URL이 붙으므로, 그 URL 형태까지
+# 요구해 "설명하는 문장"과 "진짜 유출"을 구분한다.
 check_message() {
   local sha="$1" msg hits
   msg=$(git log -1 --format=%B "$sha")
-  hits=$(printf '%s' "$msg" | grep -inE 'claude-session:|/(Users|home)/[A-Za-z0-9_.-]+/|-----BEGIN [A-Z ]*PRIVATE KEY-----' || true)
+  hits=$(printf '%s' "$msg" | grep -inE 'claude-session:\s*https://claude\.ai/code/session_|/(Users|home)/[A-Za-z0-9_.-]+/|-----BEGIN [A-Z ]*PRIVATE KEY-----' || true)
   if [ -n "$hits" ]; then
     echo "🚫 커밋 $sha 메시지에 금지 패턴:"
     echo "$hits" | sed 's/^/    /'
