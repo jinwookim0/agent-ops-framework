@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:6ef20ffbec9f own=sha256:51977a460ae4 -->
+<!-- translated-from: ssot=sha256:ae005365fb14 own=sha256:b4cc9d35bfac -->
 # Writing Craft Guardrails — Removing the "AI Smell"
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/28-writing-craft-guardrails.md)**
 
-**Version**: 1.3.1
-**Content hash**: sha256:9b651fe8f939 (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.4.0
+**Content hash**: sha256:3a2f934ae429 (of the body below, excluding the stamp comment, this line, and the version line)
 
 Text output produced by an AI agent is usually **factually correct but no
 fun to read**. [01-definition-of-done.md](01-definition-of-done.md) and
@@ -256,6 +256,22 @@ well-regarded blogs, encyclopedia-style commentary on prose style):
    understandable after cutting connective stock phrases and softening
    language, cut them (a direct application of Orwell's "cut if you can"
    rule).
+5. **Inflated word choice, unearned trust rhetoric, and false universals**
+   — three faces of the same problem, overstating what actually happened
+   (a real case, found and fixed in this repo's own root README): (a) a
+   word that makes something sound more dramatic than it actually was
+   (calling a mistake or ordinary trial and error an "incident"), (b) a
+   sentence that pins trust on a single unverified fact ("that history is
+   *why* the rule can be trusted") — let the already-designated place for
+   trust (a verification badge, whether a source was actually checked)
+   carry that weight instead, and (c) a word that rules out any exception
+   ("every," "all," "without exception") when exceptions actually exist —
+   this crystal collection itself recognizes two grounding paths, (a) real
+   project history and (b) an external paper or spec
+   ([BLUEPRINT.md](BLUEPRINT.md) section 1), so "every crystal started
+   from a real incident" is false the moment it's read as ruling out path
+   (b). Say "most" or "some of these" instead when the fact actually
+   splits that way.
 
 ## Self-check checklist
 
@@ -268,6 +284,14 @@ well-regarded blogs, encyclopedia-style commentary on prose style):
       phrases (Orwell)? — if so, cut them.
 - [ ] Is there a sentence still in passive voice that could be active
       (Strunk & White, Orwell)?
+- [ ] Is any single word inflated to sound more dramatic than what
+      actually happened (e.g. calling a mistake or trial and error an
+      "incident")? And is there a sentence claiming trust or confidence
+      as rhetoric with nothing backing it — if so, replace it with the
+      actual evidence (a verification badge, etc.) or cut it.
+- [ ] Does a word rule out any exception ("every," "all," "without
+      exception") when exceptions actually exist — if so, say "most" or
+      "some of these" instead, matching what's actually true.
 - [ ] If this piece's structure is identical, word for word, to other
       output in the same series, can you explain why it has to be
       identical?
