@@ -28,7 +28,7 @@ Each rule here started as a real mistake, a real fix, or a real design decision 
 *Full detail on what "strip the story" and the 6 gates actually check lives in [BLUEPRINT.md](ko/BLUEPRINT.md) — this diagram shows the shape of the process, not every rule.*
 
 Two things worth knowing before you dive in:
-- **Korean (`ko/`) is the source of truth, not because English isn't supported, but for a practical reason**: while this collection is still actively growing, keeping two languages perfectly in sync on every edit would cost more than it's worth. `en/` is translated deliberately and kept in sync by an automated two-way check (`agent-ops-framework-translation-sync-check.py`) — you can read either one, they say the same thing.
+- **Korean (`ko/`) is the source of truth for one practical reason.** While this collection is still actively growing, keeping two languages perfectly in sync on every edit would cost more than it's worth — that's the entire reason; it says nothing about whether English is supported. `en/` is translated deliberately and kept in sync by an automated two-way check (`agent-ops-framework-translation-sync-check.py`) — you can read either one, they say the same thing.
 - **Nothing here is "trust me."** Every crystal states which primary source backs it and how thoroughly that source was actually checked — the same discipline the crystals themselves ask you to apply to your own project's claims (see [`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md)).
 
 ## Start here (in roughly this order)
