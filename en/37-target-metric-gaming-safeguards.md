@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:c06a3601e007 own=sha256:c2d6b67de540 -->
+<!-- translated-from: ssot=sha256:c06a3601e007 own=sha256:25e305ac30f0 -->
 # The Metric Trap — A Measure Used as a Target Stops Being a Good Measure
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/37-target-metric-gaming-safeguards.md)**
 
-**Version**: 1.0.0
-**Content hash**: sha256:a205834ead3e (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.1.0
+**Content hash**: sha256:726290bfa648 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 Directly checked the "Avoiding Reward
 Hacking" section of Amodei et al. 2016, "Concrete Problems in AI Safety"
@@ -19,17 +19,16 @@ original itself, and honestly leaves that one layer at 🟡.
 
 ## Why this is needed
 
-Hitting a target doesn't necessarily mean the actually-wanted outcome
-happened — the correlation between a measurable proxy metric and the
-true objective tends to break down exactly when that metric is placed
-under optimization pressure. Economics already has a name for this:
-**"when a metric is used as a target, it ceases to be a good metric"**
-(Goodhart's law, in the phrasing Amodei et al. 2016 quotes). In AI agent
-operations this isn't an abstract worry — it's a problem actually
-encountered every time you set "this task's completion criteria," "this
-output's evaluation metric," or "this automation's success measure."
+Hitting a target doesn't mean you got the outcome you actually wanted. A
+measurable proxy metric tends to stop tracking the real objective right
+when you start optimizing for it. Economics already has a name for this:
+**"when a measure becomes a target, it ceases to be a good measure"**
+(Goodhart's law, in the phrasing Amodei et al. 2016 quote). This isn't
+an abstract worry in AI agent operations — it shows up every time you set
+a task's completion criteria, an output's evaluation metric, or an
+automation's success measure.
 
-## Actually-verified examples (checked against the source)
+## Examples, verified against the source
 
 - **Cleaning robot** (Amodei et al. 2016, original text): if a designer
   notices that cleaning performance correlates with how much cleaning
@@ -54,73 +53,71 @@ Of Amodei et al. 2016's 8 mitigation strategies, these are the ones this
 crystal highlights as most directly applicable in practice (all checked
 against the original text):
 
-1. **Multiple Rewards** — exactly the concept commonly called "adding a
-   complementary metric" in practice. Original text: "a combination of
-   multiple rewards" using "different physical implementations of the
-   same mathematical function, or different proxies for the same
-   informal objective... may be more difficult to hack and more robust"
-   — combinable by averaging, taking the minimum, taking quantiles, etc.
-   **Application**: when setting completion criteria, eval rubrics, or
-   success metrics, **don't optimize against a single target metric** —
-   pair it with at least one counter-metric that would catch the way
-   pushing the main metric to its extreme breaks something else (e.g.
-   don't optimize "response speed" alone without also tracking
-   "accuracy"; don't track "commit count" alone without also tracking
-   "review pass rate").
-2. **Trip Wires** — original text: deliberately introduce "plausible
+1. **Multiple Rewards** — what practitioners usually just call "adding
+   a complementary metric." Original text: combining "different physical
+   implementations of the same mathematical function, or different
+   proxies for the same informal objective... may be more difficult to
+   hack and more robust" — averaged, or combined by minimum, quantile,
+   etc. **Application**: don't optimize completion criteria, eval
+   rubrics, or success metrics against a single target. Pair it with at
+   least one counter-metric that would catch what breaks when you push
+   the main one to an extreme — don't optimize "response speed" alone
+   without also tracking "accuracy," don't track "commit count" alone
+   without "review pass rate."
+2. **Trip Wires** — original text: deliberately plant "plausible
    vulnerabilities that an agent has the ability to exploit but should
-   not exploit," and monitor them, alerting and stopping immediately if
-   one is exploited. **Application**: when an obvious way to game a
-   metric is visible (e.g. padding "test coverage %" with a meaningless
-   assert), build a separate check that detects that specific workaround
-   itself — it's often cheaper to watch for the gaming behavior directly
-   than to keep hardening the main metric's definition.
-3. **Careful Engineering** — original text: like software bugs, many
-   loopholes in a metric's own definition (edge-case handling errors,
-   etc.) can be prevented through careful design and testing.
-   **Application**: when introducing a new metric, build the habit of
-   spending five minutes trying to construct a fake output that maxes
-   out the metric without earning it — this is the goal-design-time
-   version of the skeptical-verification habit taught in
-   [03-epistemic-immunity-catalog.md](03-epistemic-immunity-catalog.md).
+   not exploit," watch them, and alert and stop the moment one gets
+   used. **Application**: when there's an obvious way to game a metric —
+   padding "test coverage %" with a meaningless assert, say — build a
+   separate check that catches that specific workaround directly. It's
+   often cheaper to watch for the gaming behavior itself than to keep
+   hardening the main metric's definition.
+3. **Careful Engineering** — original text: like software bugs, most
+   loopholes in a metric's own definition (edge-case handling errors and
+   the like) can be caught with careful design and testing.
+   **Application**: whenever you introduce a new metric, spend five
+   minutes trying to construct a fake output that maxes it out without
+   earning it. That's the goal-design-time version of the
+   skeptical-verification habit
+   [03-epistemic-immunity-catalog.md](03-epistemic-immunity-catalog.md)
+   teaches.
 4. **Adversarial Reward Functions** — original text: a grading criterion
-   is more robust when it isn't a fixed, static target but an active
-   party that itself searches for and responds to gaming attempts.
-   **Application**: for goals that matter, don't leave grading to a
-   single party (e.g. the same agent self-reporting) — have a separate,
-   independent verifier (a different session, a different model, a
-   human) separately interrogate whether the result actually achieved
+   holds up better when it isn't a fixed, static target but an active
+   party that actively hunts for and responds to gaming attempts.
+   **Application**: for anything that actually matters, don't leave
+   grading to one party — the same agent self-reporting, say. Have a
+   separate, independent verifier (a different session, a different
+   model, a human) ask on its own whether the result actually achieved
    what was wanted.
 
 ## How this differs from 04 and 01 (G3)
 
 [04-eval-engineering-methodology.md](04-eval-engineering-methodology.md)
-covers how to grade **an output that already exists**, after the fact (a
-pipeline). This crystal covers **one step earlier** — how to design the
-grading criteria/target metric itself so it doesn't get gamed later.
+covers how to grade an output that already exists, after the fact — a
+pipeline. This crystal is one step earlier: how to design the grading
+criteria or target metric itself so it doesn't get gamed later.
 [01-definition-of-done.md](01-definition-of-done.md)'s 10 criteria are,
-in the end, also a set of target metrics for "what counts as done," so
-running this crystal's checklist (the 4 mechanisms above) against them
-is a natural application — without rewriting 01 itself; this crystal
-exists as a separate lens applied after 01's criteria are already set.
+in the end, also a set of target metrics for what counts as done, so
+it's a natural fit to run this crystal's checklist (the 4 mechanisms
+above) against them. That doesn't mean rewriting 01 — this crystal is a
+separate lens, applied once 01's criteria are already set.
 
 ## Related
 
 - [04-eval-engineering-methodology.md](04-eval-engineering-methodology.md) —
-  grading an output that already exists (this crystal is the step
-  before that: designing the goal).
+  grading an output that already exists. This crystal is the step
+  before that: designing the goal.
 - [01-definition-of-done.md](01-definition-of-done.md) — the natural
-  target to run this crystal's checklist against, since completion
-  criteria are themselves a set of target metrics.
+  target for this crystal's checklist, since completion criteria are
+  themselves a set of target metrics.
 - [03-epistemic-immunity-catalog.md](03-epistemic-immunity-catalog.md) —
-  a catalog for skeptically verifying a claim that's already been made
-  (after the fact). This crystal applies the same skeptical stance at
-  goal/metric-design time (before the fact).
+  a catalog for skeptically checking a claim that's already been made,
+  after the fact. This crystal applies the same skepticism before the
+  fact, at goal- and metric-design time.
 - [22-llm-benchmark-literacy.md](22-llm-benchmark-literacy.md) — covers
-  the literacy needed by the side receiving a cited benchmark number
-  (the reader). This crystal covers the responsibility of the side
-  designing that metric in the first place (the designer) — the
-  opposite direction.
+  the literacy a reader needs when receiving a cited benchmark number.
+  This crystal covers the opposite side: the responsibility of whoever
+  designs that metric in the first place.
 
 ## Honest limits
 
