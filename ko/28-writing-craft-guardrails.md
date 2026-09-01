@@ -2,8 +2,8 @@
 
 > 🌐 **[Read in English](../en/28-writing-craft-guardrails.md)**
 
-**버전**: 1.3.0
-**콘텐츠 해시**: sha256:1b698b4fe8b2 (본문 기준, 이 두 줄 제외)
+**버전**: 1.3.1
+**콘텐츠 해시**: sha256:ce7753fbea74 (본문 기준, 이 두 줄 제외)
 
 AI 에이전트가 만드는 텍스트 산출물은 대개 **사실은 맞는데 읽는 맛이 없다**.
 [01-definition-of-done.md](01-definition-of-done.md)와
@@ -161,9 +161,9 @@ should..."류 문장을 "당신은 ~해야 한다"로 기계적으로 옮기는 
 최대 오픈소스 프로젝트 중 하나가 학술 논문과 무관하게 실무에서 똑같은
 문제를 발견하고 똑같은 해법에 도달한 셈이다.
 
-🟢 GitHub 자체의 공식 문서 레포지토리(`github/docs`, 코드 라이선스
-MIT)의 "Writing content to be translated" 가이드 — 원문을 직접 열람해
-확인. 두 규칙을 명시한다: (1) "Lots of stacked modifiers can lead to
+🟢 GitHub 자체의 공식 문서 레포지토리(`github/docs`, 문서 본문은 CC BY
+4.0 · 코드는 별도로 MIT)의 "Writing content to be translated" 가이드 —
+원문을 직접 열람해 확인. 두 규칙을 명시한다: (1) "Lots of stacked modifiers can lead to
 incorrect translations because it's not easy to determine what modifies
 what" — 수식어를 겹겹이 쌓지 말라는 규칙으로, 아래 "반대 방향" 절이 이
 프로젝트 자신의 이력으로 남긴 "주어-동사 사이 수식어 덩어리" 문제와

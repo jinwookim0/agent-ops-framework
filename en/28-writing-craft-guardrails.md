@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:39b3a270a5da own=sha256:972ed876bea8 -->
+<!-- translated-from: ssot=sha256:c9a4ee6654b4 own=sha256:2a2dc275bc1c -->
 # Writing Craft Guardrails — Removing the "AI Smell"
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/28-writing-craft-guardrails.md)**
 
-**Version**: 1.2.0
-**Content hash**: sha256:c7bac17e97ea (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.2.1
+**Content hash**: sha256:618ce59f6e19 (of the body below, excluding the stamp comment, this line, and the version line)
 
 Text output produced by an AI agent is usually **factually correct but no
 fun to read**. [01-definition-of-done.md](01-definition-of-done.md) and
@@ -187,9 +187,10 @@ open-source projects in the world independently ran into the same
 problems, in practice, with no reference to any academic paper, and
 landed on the same fixes.
 
-🟢 GitHub's own official documentation repository (`github/docs`, code
-under MIT), in its "Writing content to be translated" guide — read
-directly in the original. It states two rules: (1) "Lots of stacked
+🟢 GitHub's own official documentation repository (`github/docs`, prose
+content under CC BY 4.0, code samples separately under MIT), in its
+"Writing content to be translated" guide — read directly in the
+original. It states two rules: (1) "Lots of stacked
 modifiers can lead to incorrect translations because it's not easy to
 determine what modifies what" — exactly the modifier-stacked-between-
 subject-and-verb problem this project's own history section below
