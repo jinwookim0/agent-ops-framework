@@ -1,0 +1,47 @@
+name: Crystal verification
+
+# Runs this repo's own verification scripts on every PR and push to main.
+# Two different behaviors on purpose, not an inconsistency:
+#
+# - The three agent-ops-framework-*.py scripts are intentionally advisory
+#   (exit code 0 always, per their own docstrings) -- they surface findings
+#   in the PR checks log without blocking the merge. That's deliberate:
+#   "does this signal actually need action" (e.g. is a STALE translation
+#   worth re-translating right now) is a human judgment call (see
+#   ko/BLUEPRINT.md section 4), and turning that into an automatic
+#   pass/fail would make the gate a rubber stamp -- exactly what this
+#   framework's own admission process argues against.
+# - public-repo-check.sh is the one step that DOES fail the build (it
+#   exits 1 on any match) -- a detected email/phone/secret-key-shaped
+#   pattern in a diff isn't a judgment call, it's exactly the "obvious
+#   mistake" this scanner exists to catch before it's merged into public
+#   history.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history -- translation-sync-check.py needs git log
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Content-hash self-consistency (agent-ops-framework-version-check.py)
+        run: python3 scripts/agent-ops-framework-version-check.py
+
+      - name: Translation sync -- STALE / DIVERGED (agent-ops-framework-translation-sync-check.py)
+        run: python3 scripts/agent-ops-framework-translation-sync-check.py
+
+      - name: Origin-doc staleness (agent-ops-framework-sync-check.py)
+        run: python3 scripts/agent-ops-framework-sync-check.py
+
+      - name: Public-repo secret/PII scan (public-repo-check.sh)
+        run: bash ko/07-prompt-guardrails/scripts/public-repo-check.sh

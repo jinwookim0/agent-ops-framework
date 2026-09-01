@@ -1,0 +1,208 @@
+<!-- translated-from: f50ae882e38151ea4b5a844ad9a14dcd72e876ce -->
+# Convincing But Fake — A Catalog and How to Verify (Domain-Neutral Template)
+
+> 🌐 **[한국어 원본 보기 (SSOT)](../ko/03-epistemic-immunity-catalog.md)**
+
+**Version**: 1.0.1
+**Content hash**: sha256:eb5e000604db (of the body below, excluding the stamp comment, this line, and the version line)
+
+**Verification strength**: 🟢 Inoculation Theory's core mechanism and
+Roozenbeek et al. 2022's sample size (n≈29,116) and core result were
+checked against the source. The 12 convincing-but-fake reasoning patterns
+themselves were generalized from cases the original project actually
+encountered.
+
+## In plain terms
+
+Some writing is logical, has numbers in it, and sounds like it's coming from
+an expert — and is nonetheless wrong or unsupported. This document catalogs
+those "convincing but fake" techniques, explains why each one is fake, and
+provides a verification method for spotting it. The goal isn't to learn how
+to deceive — it's to **train yourself not to be deceived.**
+
+## Why this approach works (basis)
+
+Inoculation Theory — the same principle as a medical vaccine: "prior exposure
+to a weak counterargument (a weakened version of the fake) builds resistance
+to a stronger version of the same persuasion later." This is the core
+mechanism. Empirical research (Roozenbeek et al. 2022, n≈29,116) found actual
+improvement in participants' ability to identify manipulation techniques.
+There are limits too — the effect decays within a few weeks without repeated
+exposure (booster exposure is needed).
+
+**Honest limit on the source link**: the author name, year, and sample
+size (n≈29,116) for this citation are confirmed, but a stable public link
+(DOI/PMC, etc.) isn't attached with confidence — access gated behind a
+login and search results resolving to the wrong paper have made that
+unreliable. The author, year, and core figure stay; a link isn't attached
+on a guess without confirming it (this document itself sets "can you name
+the source, sample, and method" as its own test for fake precision, so
+attaching a plausible-looking but unconfirmed link would violate that
+same standard). Add the link once a stable one is confirmed.
+
+## Principles of use (safety boundaries — must be followed)
+
+1. **Every fake example uses no real people, companies, events, or
+   statistics** — construct them on entirely fictional subjects only.
+2. **Every fake example is always wrapped in a "⚠️ The following is a fake
+   example" marker, immediately followed by "why it's fake"** — this
+   minimizes the risk of the example being lifted out and cited as if it
+   were real.
+3. Each entry's "why it's fake + how to verify it" section must be longer
+   than its "fake example" section — the goal isn't to maximize persuasive
+   power, it's to make the verification method actually usable.
+
+## Catalog (human rhetorical techniques)
+
+### 1. Mistaking verbosity for credibility (Verbosity-as-credibility)
+**Why it's fake**: if the claim survives after stripping out every modifier
+("multifaceted," "comprehensive," "holistic"), those modifiers weren't
+conveying information — they were staging a sense of credibility.
+**How to verify**: strip the modifiers and see if the claim still stands.
+
+### 2. False precision
+A standard term (also known as overprecision, fake precision, etc.). A
+number given to several decimal places creates the impression of "this was
+actually measured," but without a source, sample size, or method, it's only
+precise-looking, not actually measured. **How to verify**: whenever you see a
+number, check whether at least one of "sample size / measurement method /
+link to the original source" can be produced.
+
+### 3. Treating an ensemble average as an individual's outcome (ergodicity confusion)
+An "average" can be computed across many people (or many trials) at a single
+point in time (an ensemble average) — but "the outcome one person would
+experience by repeating the process" (a time average) can be mathematically
+different. This gap widens sharply in processes involving repeated
+multiplication (e.g. investment returns). **How to verify**: ask whether the
+"average" was measured across many people at once, or reflects one person's
+outcome across repeated trials.
+
+### 4. Citing plausible-sounding but nonexistent sources (fake citation)
+Attaching an institution name and a year makes something feel real, but
+without a paper title, authors, and a publication venue, it may just be
+mimicking the form of a citation. **How to verify**: check whether author
+name + paper title + venue/year are all present, and whether that
+combination was actually used to pull up the real source.
+
+### 5. Treating an anecdote as data (Anecdote-as-data)
+n=1 (a single case) doesn't even establish a direction. **How to verify**:
+ask "how many out of how many." A success story with no denominator isn't
+information by itself.
+
+## Fakes generated by the AI (agent) itself — an axis that deserves more emphasis
+
+A human's exaggeration usually gives itself away in tone — it sounds like
+someone "selling" something. An AI states fakes in the exact same fluent,
+composed tone it uses for facts — tone doesn't distinguish the two.
+
+### 6. Confident fabrication
+A sentence like "this pattern has been repeatedly confirmed in the relevant
+research," attached because it sounds plausible, without the AI having
+actually opened any source. When an AI produces this, it comes out without a
+single stumble, seamlessly — which paradoxically makes it more convincing.
+**How to verify**: every time a phrase like "according to research,"
+"generally," or "as is well known" appears, ask (yourself, or have the user
+ask) "was that source actually opened right now, in this instance, or did
+this come from an impression?" — the 🟢 verified against a primary source /
+🔵 vendor claim or conventional wisdom / ⚪ needs confirmation labeling
+scheme is exactly this defense in practice.
+
+### 7. Post-hoc rationalization (sycophancy)
+The AI settles on an answer first, then attaches logic afterward that makes
+it look like the "process" that led to that answer. RLHF (reinforcement
+learning from human feedback) is pointed to as the cause — it's suspected of
+having trained models to rate responses that agree with the user's existing
+beliefs more highly than responses that are simply accurate. **How to
+verify**: when an answer lines up exactly with an opinion the user already
+stated (especially after a leading question), flip the answer and ask again
+— if the answer flips along with it, the original answer may have been
+agreement rather than reasoning.
+
+### 8. Claiming tool use without verification (Fabricated Tool-Use Claims)
+Statements like "I checked the file" or "I ran the tests" can become
+detached from whether that tool call actually happened. **How to verify**:
+keep the tool call's result **as a log, not a claim** (the actual return
+value, a diff, etc.), and cite that log directly next to any sentence that
+says "done."
+
+## Stating something that varies by perspective or scale as if it were absolute truth
+
+Even when every individual sentence is true, hiding which perspective,
+scale, or point in time it was measured from can create an overall
+misleading impression — this is harder to catch because verifying each
+sentence individually doesn't catch it.
+
+### 9. Micro–macro reversal (Simpson's Paradox)
+A standard term. It's possible for A to look better than B in aggregate,
+while B actually beats A in most of the subgroups once you break it down (due
+to a hidden confounding variable). **How to verify**: whenever you see an
+"overall / on average" conclusion, check whether breaking it down by
+subgroup (department, time period, region) still points the same direction.
+
+### 10. Relative comparisons that hide the time axis
+A broader version of #3 (ergodicity confusion) — if the reference point or
+time period being measured against isn't disclosed, a sentence like "it grew
+/ it improved" can be true and still misleading (an illusion created by
+hiding the baseline). **How to verify**: always check "compared to what,
+from when to when."
+
+### 11. Blind trust in the study/paper's own validation (reproducibility)
+The very form of "research findings" can itself be an attack surface for #9
+and #10 (hiding perspective/scale). **How to verify**: always label which
+category a claim falls into — verified against a primary source, vendor
+claim, or conventional wisdom — this enforces the principle "don't blindly
+trust something just because it's called a study/paper" through explicit
+evidence-tier labeling.
+
+### 12. Blind trust in user input (User-Input Sycophancy)
+Where #7 (post-hoc rationalization) was "the AI tailors its answer to match
+the user's opinion," this is a narrower, more specific failure — **when a
+user offers a factual correction, the AI adopts that correction as fact
+immediately, without verification.** Just as the AI's own original claim
+being unfounded was a problem, "the user said so" is not, by itself, grounds
+either. **How to verify**: before immediately rewriting a sentence in
+response to a user's factual correction, the AI should ask itself — "did I
+actually verify the grounds for this correction myself, right now, or am I
+accepting it purely because the user said so?" If the latter, instead of
+deleting the pre-correction sentence, leave it as "unconfirmed" and verify it
+independently. The key is **applying the same standard (direct verification
+of grounds) symmetrically** to both the AI's own original claim and the
+user's corrected claim — the standard is whether there are grounds, not who
+said it.
+
+## Verification-method summary table
+
+| Technique | One-line verification |
+|---|---|
+| Verbosity | Does the claim survive with the modifiers stripped out? |
+| False precision | Can at least one of sample / method / source be produced? |
+| Ergodicity confusion | Was "average across many people" distinguished from "one person's repetition"? |
+| Fake citation | Was the original actually opened up via author/title/venue? |
+| Anecdote-as-data | Is there a denominator (how many out of the total)? |
+| Confident fabrication (AI) | Every time "according to research" appears, was it actually opened just now? |
+| Post-hoc rationalization (AI, sycophancy) | Does the answer stay the same when asked again with the framing flipped? |
+| Unverified tool-use claims (AI) | Is there an actual log (the tool's return value) next to "done"? |
+| Micro–macro reversal | Does the overall average still point the same direction when broken down by subgroup? |
+| Hidden time axis | Is "compared to what, from when" made explicit? |
+| Blind trust in research/papers | Is it labeled as verified-against-primary-source / vendor claim / conventional wisdom? |
+| Blind trust in user input | Was the user's correction re-verified against direct grounds, using the same standard as the AI's own claims? |
+
+## How to adopt and grow this catalog within a project
+
+**What not to do**: don't build a pipeline that mass-produces convincing
+fake content — that risk outweighs the benefit on its own.
+
+**What to do**: connect this catalog to eval-design review — when a grading
+pass actually falls for one of the items above, add that case to this
+catalog as a new entry. **The way this catalog grows is not "invent new
+entries" but "absorb cases that were actually found within the project"** —
+when the same technique is caught a second time (a signal that it's a
+pattern, not a coincidence), update both this catalog and the grading
+defense guidance together.
+
+When porting this in, carry over the 12 items' **general principles and
+verification methods as-is**, and add a section under each item where the
+project's own actual cases accumulate as they're found (an "actually
+confirmed in this project" section, as in the original repo) — a catalog
+with real cases in it gets referenced in practice far more than an abstract
+one.

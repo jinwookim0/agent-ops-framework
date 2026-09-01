@@ -1,0 +1,40 @@
+{
+  "//": "프로젝트 공통 프롬프트 가드레일. 개인정보/자격증명류가 애초에 컨텍스트(프롬프트)에 들어오지 못하도록 도구 레벨에서 차단한다. .claudeignore는 Claude Code에 존재하지 않는 기능이다(docs.claude.com 원문으로 직접 확인) — 실제 동등 기능은 이 permissions.deny(Read/Edit) 규칙이다. shared/local/** 은 예시 경로다 — 이 프로젝트에서 로컬 전용 민감 파일을 두는 실제 디렉터리 이름으로 바꿔 쓴다.",
+  "permissions": {
+    "deny": [
+      "Read(shared/local/**)",
+      "Edit(shared/local/**)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Edit(.env)",
+      "Edit(.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/*_rsa)",
+      "Read(**/*_ed25519)",
+      "Read(**/*.key)",
+      "Read(**/.netrc)",
+      "Read(**/.git-credentials)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.kube/**)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.config/gcloud/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Artifact",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-secrets.sh" }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-secrets.sh" }
+        ]
+      }
+    ]
+  }
+}

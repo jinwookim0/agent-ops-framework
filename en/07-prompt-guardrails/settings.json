@@ -1,0 +1,40 @@
+{
+  "//": "Project-wide prompt guardrail. Blocks personal data/credentials at the tool level so they never enter context (the prompt) in the first place. .claudeignore is not a real Claude Code feature (confirmed directly against the docs.claude.com source) — the actual equivalent is this permissions.deny (Read/Edit) rule set. shared/local/** is an example path — replace it with whatever directory this project actually uses for local-only sensitive files.",
+  "permissions": {
+    "deny": [
+      "Read(shared/local/**)",
+      "Edit(shared/local/**)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Edit(.env)",
+      "Edit(.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/*_rsa)",
+      "Read(**/*_ed25519)",
+      "Read(**/*.key)",
+      "Read(**/.netrc)",
+      "Read(**/.git-credentials)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.kube/**)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.config/gcloud/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Artifact",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-secrets.sh" }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-secrets.sh" }
+        ]
+      }
+    ]
+  }
+}

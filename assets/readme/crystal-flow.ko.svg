@@ -1,0 +1,107 @@
+<svg viewBox="0 0 760 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="크리스탈이 만들어지는 과정: 실제 사고 또는 반복된 결정에서 서사를 제거한 뒤, BLUEPRINT.md의 6개 게이트를 통과해야 한다. 통과 못 하면 설계상 의도로 편입하지 않는다. 통과하면 ko/에 새 크리스탈(SSOT)이 생기고, en/ 번역은 선택 사항이며, 결국 자신의 프로젝트에 그대로 복사된다.">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1117"/>
+      <stop offset="100%" stop-color="#151c24"/>
+    </linearGradient>
+    <pattern id="facets" width="52" height="52" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="52" stroke="#5fd0d2" stroke-opacity="0.05" stroke-width="1"/>
+      <line x1="26" y1="0" x2="26" y2="52" stroke="#ffffff" stroke-opacity="0.025" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b95a3"/>
+    </marker>
+    <filter id="shadow-d" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow-d" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; fill: #e4e7ec; }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; fill: #5fd0d2; }
+    .title { font-size: 20px; font-weight: 700; fill: #f3f5f7; }
+    .sub { fill: #8b95a3; font-size: 12px; }
+    .lbl { font-size: 14px; font-weight: 600; }
+    .edge { stroke: #55606f; stroke-width: 2; fill: none; }
+    .edge-dashed { stroke: #55606f; stroke-width: 2; fill: none; stroke-dasharray: 6 5; }
+    .chip-text { font-size: 12px; font-weight: 700; }
+  </style>
+
+  <!-- card -->
+  <rect x="1" y="1" width="758" height="658" rx="28" fill="url(#bgGrad)" stroke="#2a3540" stroke-width="1.5"/>
+  <rect x="1" y="1" width="758" height="658" rx="28" fill="url(#facets)"/>
+
+  <!-- gem mark -->
+  <g transform="translate(380,26)" stroke="#5fd0d2" stroke-width="1.4" fill="none" stroke-linejoin="round">
+    <polygon points="0,-9 8,-2 5,9 -5,9 -8,-2"/>
+    <line x1="0" y1="-9" x2="0" y2="9"/>
+    <line x1="-8" y1="-2" x2="8" y2="-2"/>
+  </g>
+
+  <text x="380" y="56" text-anchor="middle" class="eyebrow">AGENT-OPS-FRAMEWORK</text>
+  <text x="380" y="80" text-anchor="middle" class="title">크리스탈이 만들어지는 과정</text>
+
+  <!-- A -->
+  <rect x="260" y="110" width="240" height="58" rx="10" fill="#1a212b" stroke="#3d4757" stroke-width="1.5" filter="url(#shadow-d)"/>
+  <text x="380" y="134" text-anchor="middle" class="lbl">실제 사고 또는</text>
+  <text x="380" y="152" text-anchor="middle" class="lbl">반복된 결정</text>
+  <path class="edge" d="M380,168 L380,204" marker-end="url(#arrow-d)"/>
+
+  <!-- B -->
+  <rect x="280" y="204" width="200" height="50" rx="10" fill="#1a212b" stroke="#3d4757" stroke-width="1.5" filter="url(#shadow-d)"/>
+  <text x="380" y="235" text-anchor="middle" class="lbl">서사 제거</text>
+  <path class="edge" d="M380,254 L380,276" marker-end="url(#arrow-d)"/>
+
+  <!-- C diamond -->
+  <polygon points="380,276 530,344 380,412 230,344" fill="#132326" stroke="#3d4757" stroke-width="1.5" filter="url(#shadow-d)"/>
+  <text x="380" y="338" text-anchor="middle" class="lbl">6개 게이트</text>
+  <text x="380" y="356" text-anchor="middle" class="lbl">통과?</text>
+
+  <!-- C -> X -->
+  <path class="edge" d="M230,344 L138,344 L138,374" marker-end="url(#arrow-d)"/>
+  <rect x="152" y="324" width="58" height="22" rx="11" fill="#0c1117" stroke="#e08a7d" stroke-width="1.2"/>
+  <text x="181" y="339" text-anchor="middle" class="chip-text" fill="#e08a7d">아니오</text>
+
+  <!-- X -->
+  <rect x="50" y="374" width="176" height="60" rx="10" fill="#2b1a18" stroke="#e08a7d" stroke-width="1.5" stroke-dasharray="6 5" filter="url(#shadow-d)"/>
+  <text x="138" y="401" text-anchor="middle" class="lbl" fill="#f3b5a9">편입 안 함</text>
+  <text x="138" y="419" text-anchor="middle" class="sub">설계상 의도, 누락 아님</text>
+
+  <!-- C -> D -->
+  <path class="edge" d="M380,412 L380,446" marker-end="url(#arrow-d)"/>
+  <rect x="398" y="416" width="34" height="22" rx="11" fill="#0c1117" stroke="#5fd0d2" stroke-width="1.2"/>
+  <text x="415" y="431" text-anchor="middle" class="chip-text" fill="#5fd0d2">예</text>
+
+  <!-- D (accept, glowing) -->
+  <rect x="270" y="446" width="220" height="60" rx="10" fill="#0f2e2c" stroke="#5fd0d2" stroke-width="2" filter="url(#glow-d)"/>
+  <text x="380" y="473" text-anchor="middle" class="lbl" fill="#9df0f1">ko/에 새 크리스탈</text>
+  <text x="380" y="491" text-anchor="middle" class="sub">SSOT(원본)</text>
+
+  <!-- D -> E -->
+  <path class="edge-dashed" d="M490,476 L556,476" marker-end="url(#arrow-d)"/>
+  <rect x="505" y="452" width="46" height="22" rx="11" fill="#0c1117" stroke="#7d8794" stroke-width="1.2"/>
+  <text x="528" y="467" text-anchor="middle" class="chip-text" fill="#9aa3b2">선택</text>
+
+  <!-- E -->
+  <rect x="556" y="446" width="154" height="60" rx="10" fill="#1a212b" stroke="#5c6674" stroke-width="1.5" stroke-dasharray="6 5" filter="url(#shadow-d)"/>
+  <text x="633" y="473" text-anchor="middle" class="lbl">en/으로</text>
+  <text x="633" y="491" text-anchor="middle" class="sub">번역</text>
+
+  <!-- D -> F -->
+  <path class="edge" d="M380,506 L380,554" marker-end="url(#arrow-d)"/>
+
+  <!-- E -> F -->
+  <path class="edge" d="M633,506 L633,584 L500,584" marker-end="url(#arrow-d)"/>
+
+  <!-- F -->
+  <rect x="270" y="554" width="220" height="60" rx="10" fill="#1a212b" stroke="#3d4757" stroke-width="1.5" filter="url(#shadow-d)"/>
+  <text x="380" y="581" text-anchor="middle" class="lbl">프로젝트에</text>
+  <text x="380" y="599" text-anchor="middle" class="sub">그대로 복사</text>
+</svg>
