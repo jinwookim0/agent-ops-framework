@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:d82d375e1914 own=sha256:85e35a1a51f5 -->
+<!-- translated-from: ssot=sha256:d82d375e1914 own=sha256:9a8450f57f29 -->
 # agent-ops-framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -92,7 +92,7 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Contributor Covenant v2.1 원문 |
 | [`LICENSE`](LICENSE) | MIT |
 
-## 이것은 아닌 것
+## 이 저장소가 아닌 것
 
 - 프로젝트의 실제 콘텐츠를 대체하지 않는다 — 그건 여전히 100% 그 프로젝트의 몫이다.
 - 독립적으로 재검증된 별도의 무언가가 아니다 — 각 크리스탈은 그 원본 프로젝트 *안에서* 일어난 검증을 요약한 것이고, 검증 배지는 정확히 그만큼만 확인됐다는 뜻이지 그 이상이 아니다.
