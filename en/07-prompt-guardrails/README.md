@@ -1,10 +1,10 @@
-<!-- translated-from: ssot=sha256:9d86ca460d1e own=sha256:7d7e95a5d539 -->
+<!-- translated-from: ssot=sha256:be9c0d9ad936 own=sha256:4c9892a9c9ec -->
 # Prompt Guardrails — a 3-Layer Defense (Executable Code, Ready to Copy and Use)
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../../ko/07-prompt-guardrails/README.md)**
 
-**Version**: 1.4.0
-**Content hash**: sha256:5f2b4492985a (of the body below, excluding the stamp comment, this line, and the version line)
+**Version**: 1.5.0
+**Content hash**: sha256:df4aeb4db3f9 (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 verified with an actual live block test (a
 publish attempt with a test secret pattern was actually refused; a `git
@@ -105,6 +105,16 @@ splitting — reproduced live) by switching to NUL-delimited listing
 (`-z`/`xargs -0`), and replaced `guard-secrets.sh`'s predictable
 `/tmp/*.$$` temp-file paths (a symlink-preemption risk on a shared
 multi-user host) with `mktemp`.
+
+**FIXED (2026-09-01, found in a self-review before open-source
+release)**: `settings.json`'s `permissions.deny` only covered rsa and
+ed25519 among SSH key formats — missing ecdsa/dsa key files
+(`*_ecdsa`, `*_dsa`) that can sit outside `~/.ssh/` (e.g. a
+project-root deploy key), PKCS#12/Java keystore files (`*.pfx`,
+`*.p12`, `*.jks`, `*.keystore`), and `~/.npmrc`/`~/.pypirc`/
+`~/.cargo/credentials` — easily overlooked files that hold plaintext
+npm/PyPI/Cargo registry auth tokens. Added identically to both the ko
+and en `settings.json`.
 
 **FIXED (2026-09-01, found while directly checking whether CI actually
 passes)**: `public-repo-check.sh` is `verify.yml`'s only build-blocking

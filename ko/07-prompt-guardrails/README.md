@@ -2,8 +2,8 @@
 
 > 🌐 **[Read in English](../../en/07-prompt-guardrails/README.md)**
 
-**버전**: 1.4.0
-**콘텐츠 해시**: sha256:64b908f76a86 (본문 기준, 이 두 줄 제외)
+**버전**: 1.5.0
+**콘텐츠 해시**: sha256:f50eaddbb850 (본문 기준, 이 두 줄 제외)
 
 **검증 강도**: 🟢 실제 라이브 차단 검증까지 완료(테스트 시크릿 패턴으로
 Artifact 발행 시도 → 실제 거부 확인, git push 시도 → 실제 차단 확인).
@@ -76,6 +76,15 @@ word-splitting 때문에 검사에서 조용히 빠지던 것 — 라이브 재�
 NUL 구분(`-z`/`xargs -0`)으로 교체해 차단, `guard-secrets.sh`의 예측
 가능한 `/tmp/*.$$` 임시 파일 경로(다중 사용자 환경 심볼릭 링크 선점
 위험)를 `mktemp`로 교체.
+
+**FIX됨(2026-09-01, 오픈소스 공개 전 자체 보안 리뷰로 발견)**:
+`settings.json`의 `permissions.deny`가 SSH 키 형식 중 rsa·ed25519만
+막고 있었다 — 같은 디렉터리 밖(프로젝트 루트 등)에 있을 수 있는
+ecdsa·dsa 키 파일(`*_ecdsa`, `*_dsa`), PKCS#12/Java 키스토어(`*.pfx`,
+`*.p12`, `*.jks`, `*.keystore`), `~/.npmrc`·`~/.pypirc`·
+`~/.cargo/credentials`(각각 npm/PyPI/Cargo 레지스트리 인증 토큰이
+평문으로 들어있는, 흔히 간과되는 파일)는 빠져 있었다. ko/en
+`settings.json` 양쪽에 동일하게 추가.
 
 **FIX됨(2026-09-01, CI 실제 통과 여부를 직접 확인하다가 발견)**:
 `public-repo-check.sh`가 `verify.yml`의 유일한 빌드-차단 조건인데, "검토
