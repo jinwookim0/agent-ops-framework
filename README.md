@@ -44,12 +44,14 @@ If you're adding this to a project for the first time, don't try to read all 37 
 
 ## See it applied
 
-**[`examples/issue-triage-agent/`](examples/issue-triage-agent/)** — a
-small, runnable demo agent (no API key needed) with a
-[`CASE-STUDY.md`](examples/issue-triage-agent/CASE-STUDY.md) that walks
-through 15 crystals and points at the exact file/line each one shaped —
-not a description of what a crystal says, but what actually changed in
-real code because of it.
+**[`examples/`](examples/)** — two small, runnable demo agents (no API
+key needed), covering 25 of the 37 crystals between them with real,
+checkable code: [`issue-triage-agent/`](examples/issue-triage-agent/) (a
+reactive per-item classifier) and
+[`research-digest-agent/`](examples/research-digest-agent/) (an
+autonomous, self-improving loop). Each has a `CASE-STUDY.md` pointing at
+the exact file/line a crystal shaped — not a description of what a
+crystal says, but what actually changed in real code because of it.
 
 ## The full map — 37 crystals in 9 categories
 

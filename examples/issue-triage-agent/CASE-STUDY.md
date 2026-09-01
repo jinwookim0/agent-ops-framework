@@ -244,9 +244,12 @@ auto-resolution number as unambiguously good news.
 ## What's honestly out of scope
 
 This demo does not exercise every crystal it plausibly could — no chaos
-engineering (19), no blameless postmortem (12, because nothing has failed
-in production yet — there is no production), no model card (15, because
-`classify()` isn't a trained model), no confidential-project separation
-(23, because this whole project is public by design). Crystals were
+engineering (19) or blameless postmortem (12; nothing has failed here —
+there is no production, no fault was ever injected into this agent —
+see [`examples/research-digest-agent/`](../research-digest-agent/) for
+where both are actually demonstrated live instead, on a different
+agent), no model card (15, because `classify()` isn't a trained model),
+no confidential-project separation (23, because this whole project is
+public by design). Crystals were
 chosen for depth over count: 15 crystals each doing real, checkable work
 beats 37 crystals each represented by a token paragraph.

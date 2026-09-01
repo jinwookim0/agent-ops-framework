@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:984be3625a3a own=sha256:9052aa7d54aa -->
+<!-- translated-from: ssot=sha256:a912dc8b70ae own=sha256:c2c803323f40 -->
 # agent-ops-framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -45,12 +45,14 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 
 ## 적용된 모습으로 보기
 
-**[`examples/issue-triage-agent/`](examples/issue-triage-agent/)** — API 키
-없이 바로 돌려볼 수 있는 작은 데모 에이전트다.
-[`CASE-STUDY.md`](examples/issue-triage-agent/CASE-STUDY.md)(영어)가 15개
-크리스탈이 실제 코드의 어느 파일·어느 줄을 바꿨는지 하나씩 짚어준다 —
-크리스탈이 뭐라고 말하는지 요약한 게 아니라, 그 크리스탈 때문에 실제로
-무엇이 달라졌는지를 보여준다.
+**[`examples/`](examples/)** — API 키 없이 바로 돌려볼 수 있는 작은 데모
+에이전트 두 개가 37개 크리스탈 중 25개를 실제로 동작하는 코드로 보여준다:
+[`issue-triage-agent/`](examples/issue-triage-agent/)(반응형 개별 항목
+분류기)와 [`research-digest-agent/`](examples/research-digest-agent/)(자율
+반복·자가개선형 루프). 각각의 `CASE-STUDY.md`(영어)가 크리스탈이 실제
+코드의 어느 파일·어느 줄을 바꿨는지 하나씩 짚어준다 — 크리스탈이 뭐라고
+말하는지 요약한 게 아니라, 그 크리스탈 때문에 실제로 무엇이 달라졌는지를
+보여준다.
 
 ## 전체 지도 — 9개 카테고리, 37개 크리스탈
 
