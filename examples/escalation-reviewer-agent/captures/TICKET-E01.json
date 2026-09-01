@@ -1,0 +1,7 @@
+{
+  "ticket_id": "TICKET-E01",
+  "captured_at": "2026-09-01",
+  "raw_response_verbatim": "{\"category\": \"billing\", \"confidence\": 0.6, \"reasoning\": \"The ticket reports two distinct issues: a duplicate charge for the pro plan (a billing dispute) and a blank PDF export (a separate product bug); since only one category can be assigned, billing is the more urgent/actionable issue but this is really a compound ticket that should be split so the export bug isn't lost.\", \"oversight_gate\": \"confirm\"}",
+  "subagent_tokens": 20141,
+  "duration_ms": 9238
+}

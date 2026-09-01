@@ -1,0 +1,7 @@
+{
+  "ticket_id": "TICKET-E03",
+  "captured_at": "2026-09-01",
+  "raw_response_verbatim": "{\"category\": \"needs-more-info\", \"confidence\": 0.55, \"reasoning\": \"The ticket references \\\"the thing\\\" and being \\\"broken again\\\" without naming any product, feature, error message, or prior occurrence, so there isn't enough detail to confirm this is a bug versus something else entirely.\", \"oversight_gate\": \"ask\"}",
+  "subagent_tokens": 20056,
+  "duration_ms": 5214
+}

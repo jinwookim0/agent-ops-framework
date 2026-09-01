@@ -44,14 +44,20 @@ If you're adding this to a project for the first time, don't try to read all 37 
 
 ## See it applied
 
-**[`examples/`](examples/)** — two small, runnable demo agents (no API
-key needed), covering 25 of the 37 crystals between them with real,
-checkable code: [`issue-triage-agent/`](examples/issue-triage-agent/) (a
-reactive per-item classifier) and
+**[`examples/`](examples/)** — three worked demo agents. Two are
+runnable with zero setup (no API key), covering 25 of the 37 crystals
+with real, checkable code:
+[`issue-triage-agent/`](examples/issue-triage-agent/) (a reactive
+per-item classifier) and
 [`research-digest-agent/`](examples/research-digest-agent/) (an
-autonomous, self-improving loop). Each has a `CASE-STUDY.md` pointing at
-the exact file/line a crystal shaped — not a description of what a
-crystal says, but what actually changed in real code because of it.
+autonomous, self-improving loop). The third,
+[`escalation-reviewer-agent/`](examples/escalation-reviewer-agent/), is
+different in kind — the one place a **real** LLM agent was actually
+invoked (isolated, scoped to its own task) and governed by this
+framework's principles, including a real, unscripted security finding.
+Each has a `CASE-STUDY.md` pointing at the exact file/line a crystal
+shaped — not a description of what a crystal says, but what actually
+changed because of it.
 
 ## The full map — 37 crystals in 9 categories
 

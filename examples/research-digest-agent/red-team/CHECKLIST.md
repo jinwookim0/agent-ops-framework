@@ -89,3 +89,10 @@ risk (LLM08) are out of scope per the threat-modeling section above — this
 agent doesn't execute generated code, doesn't call downstream tools with
 its output, and has no vector store. Noted explicitly rather than silently
 omitted, per this crystal's own emphasis on stating what wasn't checked.
+
+**Also worth knowing**: `detect_injection()` here is deterministic code —
+by construction, it cannot be reasoned into ignoring its own logic. See
+[`examples/escalation-reviewer-agent/red-team/RESULT.md`](../../escalation-reviewer-agent/red-team/RESULT.md)
+for the same LLM01 threat tested against **real, non-deterministic
+reasoning** instead — a genuinely different kind of test, with a real
+(not scripted) partial gap found.
