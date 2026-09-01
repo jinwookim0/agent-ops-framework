@@ -1,10 +1,10 @@
-<!-- translated-from: PENDING -->
+<!-- translated-from: 41dbe0b7277a76464b2540d6c39c560c5f594d56 -->
 # The Metric Trap — A Measure Used as a Target Stops Being a Good Measure
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/37-target-metric-gaming-safeguards.md)**
 
 **Version**: 1.0.0
-**Content hash**: sha256:PENDING (of the body below, excluding the stamp comment, this line, and the version line)
+**Content hash**: sha256:a205834ead3e (of the body below, excluding the stamp comment, this line, and the version line)
 
 **Verification strength**: 🟢 Directly checked the "Avoiding Reward
 Hacking" section of Amodei et al. 2016, "Concrete Problems in AI Safety"
