@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:ff384308aac9 own=sha256:47a42941c233 -->
+<!-- translated-from: ssot=sha256:1fdddb74d8b5 own=sha256:da1c97ffa276 -->
 # agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 핵심 모음(Structural Crystals)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
