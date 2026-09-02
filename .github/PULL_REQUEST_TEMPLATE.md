@@ -30,8 +30,15 @@ time.)
       (name it in the description above).
 - [ ] **G4 — Fits a category**: it fits one of the existing categories in
       `ko/README.md`, or I'm proposing a new one and explaining why.
-- [ ] **G5 — Passes the public-safety check**: I ran `ko/RISK-ANALYSIS.md`'s
-      4-question decision tree against this content.
+- [ ] **G5 — Passes the public-safety check**: if this pattern comes from
+      *this repo's own* origin project, I ran `ko/RISK-ANALYSIS.md`'s
+      4-question decision tree against it. If it comes from a *different*
+      project or employer of mine, I instead checked it against
+      `ko/35-personal-oss-employer-confidentiality-separation.md`'s
+      judgment — I understand `07-prompt-guardrails/`'s automated scanner
+      only catches pattern-matchable credentials/PII, not confidential
+      business information or unreleased technology described abstractly
+      (see `CONTRIBUTING.md`'s "Before you draft" section).
 - [ ] **G6 — Has a usage trigger**: I can write one line for
       `ko/USAGE-GUIDE.md` in the form "when you're in this situation, read
       this crystal."

@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:9d4acf694edb own=sha256:01a341e7a5e3 -->
+<!-- translated-from: ssot=sha256:46ceca71979c own=sha256:79d8ffd728be -->
 # agent-ops-framework Blueprint — What It Is and How It Grows
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/BLUEPRINT.md)**
@@ -45,7 +45,7 @@ dropped).
 | G2 | Is domain knowledge minimized | Does the document still stand fully on its own once dates, specific project names, and user quotes are stripped out (see section 1 above)? `RISK-ANALYSIS.md` is the only explicit exception to this gate |
 | G3 | Does it meaningfully avoid overlapping with existing crystals | At least one existing crystal must actually be reread and cross-checked (Chesterton's Fence — don't create something new without first confirming why it wasn't already there) |
 | G4 | Can it be placed in a category | Does it fit into one of the existing 7 categories, or is it different enough an axis to warrant a new one? Once a category exceeds 6-7 crystals, review whether to split it before adding (README.md, "Principles for when scale grows") |
-| G5 | Public-release safety | Re-apply `RISK-ANALYSIS.md`'s 4-question decision tree to the new crystal, to confirm it doesn't drag in the original project's confidential or competitive information |
+| G5 | Public-release safety | (When the origin project extracts a crystal from itself) re-apply `RISK-ANALYSIS.md`'s 4-question decision tree, to confirm it doesn't drag in the origin project's own confidential or competitive information. (When an outside contributor proposes a crystal drawn from a different project or employer of their own) `RISK-ANALYSIS.md` is specific to the origin project and can't be reused as-is — apply [35-personal-oss-employer-confidentiality-separation.md](35-personal-oss-employer-confidentiality-separation.md)'s judgment (content specificity + what the employment relationship actually permits) to your own situation instead. Either way, **the automated scanner ([07-prompt-guardrails/](07-prompt-guardrails/)) only catches pattern-matchable credentials and personal data** — confidential business information, unreleased technology, or strategy that no pattern can catch still needs a human judgment call at this gate |
 | G6 | Usage-guide update | Can at least one line be added to `USAGE-GUIDE.md` in the form "in this situation, use this crystal"? If you can't fill that in, it's a sign it's still unclear when this would actually get used in practice |
 
 ## 3. Growth process — 4 stages from discovery to integration

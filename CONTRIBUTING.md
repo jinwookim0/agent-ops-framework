@@ -29,8 +29,11 @@ crystal must clear all six gates:
    checked against, and why this is different).
 4. **Fits a category**, or justifies a new one, without pushing any
    category past 6-7 entries without considering a split.
-5. **Passes the public-safety check** — see [`ko/RISK-ANALYSIS.md`](ko/RISK-ANALYSIS.md)'s
-   four-question tree.
+5. **Passes the public-safety check.** [`ko/RISK-ANALYSIS.md`](ko/RISK-ANALYSIS.md)'s
+   four-question tree is specific to *this repo's own* origin project —
+   if your proposed crystal is drawn from a different project or employer
+   of your own, that document isn't the right tool; see "Before you draft:
+   this covers more than credentials" below instead.
 6. **Gets a `ko/USAGE-GUIDE.md` line** — "when you're in this situation,
    read this crystal." If you can't write that line, the crystal's
    real-world trigger probably isn't clear yet.
@@ -38,6 +41,33 @@ crystal must clear all six gates:
 If a candidate doesn't clear all six, it doesn't go in — that's by
 design, not an oversight. See [`ko/README.md`](ko/README.md)'s "why
 crystal" section for why this bar exists.
+
+## Before you draft: this covers more than credentials
+
+If the pattern you're about to write up came from your day job or a
+project that isn't this one, run
+[`ko/35-personal-oss-employer-confidentiality-separation.md`](ko/35-personal-oss-employer-confidentiality-separation.md)'s
+judgment against it **before you start drafting**, not after — reworking
+a draft that already has your employer's specifics baked into its
+phrasing costs a lot more than checking first.
+
+This matters because of what actually gets caught automatically and what
+doesn't: `public-repo-check.sh` (the CI step that fails a build, see
+below) only catches things that match a *pattern* — credential-shaped
+strings, emails, phone numbers. It has no way to recognize that a
+"generic-sounding" workflow step is actually your employer's unreleased
+product feature, a specific pricing strategy, or a competitive advantage
+described just abstractly enough to look domain-neutral. That kind of
+leak passes every automated check clean and still shouldn't be merged —
+catching it is a human judgment call, on you, before you open the PR, not
+something CI can verify after the fact.
+
+Gate 2 (domain-knowledge minimization) already asks you to strip dates,
+project names, and quotes — that's a necessary step but not a sufficient
+one here: a pattern can be fully anonymized and still, in substance,
+reveal how a specific company solves a problem it would rather competitors
+not know. If that's a live concern for what you're proposing, treat it as
+a separate check from gate 2, not a rewording of it.
 
 ## How to propose one
 
