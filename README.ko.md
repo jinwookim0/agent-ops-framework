@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:8a0930824505 own=sha256:9c54ac7037fd -->
+<!-- translated-from: ssot=sha256:ff384308aac9 own=sha256:47a42941c233 -->
 # agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 핵심 모음(Structural Crystals)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -36,7 +36,7 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 
 ## 먼저 볼 것 (대략 이 순서로)
 
-이걸 처음 프로젝트에 들여온다면 37개 크리스탈을 전부 한 번에 읽으려 하지 말 것 — 아래를 이 순서로 보고, 나머지는 각 문서 자신의 "왜 필요한가" 절이 실제로 자기 상황에 해당될 때만 챙긴다:
+이걸 처음 프로젝트에 들여온다면 37개 크리스탈을 전부 한 번에 읽으려 하지 말 것 — 아래를 이 순서로 보고, 나머지는 각 문서 자신의 "왜 필요한가" 절이 실제로 자기 상황에 해당될 때만 챙긴다. 읽을 목록보다 0단계부터 그대로 따라가는 실행 체크리스트가 필요하면 [`ko/GETTING-STARTED.md`](ko/GETTING-STARTED.md)([`en/GETTING-STARTED.md`](en/GETTING-STARTED.md))로 바로 가도 된다.
 
 1. **[`07-prompt-guardrails/`](ko/07-prompt-guardrails/)** — 개인정보를 다루는 첫 작업이 생기기 *전에* 반드시 먼저. 이건 다른 것들과 다르다 — 읽을 원칙이 아니라 **그대로 복사해서 실행하는 코드**다(훅, 스캐너, 마스킹 스크립트).
 2. **[`01-definition-of-done.md`](ko/01-definition-of-done.md)** — 작업이 몇 개를 넘어가기 시작하면.
@@ -83,6 +83,7 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 
 | 문서 | 무엇을 위한 것인가 |
 |---|---|
+| [`ko/GETTING-STARTED.md`](ko/GETTING-STARTED.md) | 내 프로젝트에 처음 도입할 때 0단계부터 순서대로 실행하는 단계별 절차 |
 | [`ko/BLUEPRINT.md`](ko/BLUEPRINT.md) | 이 폴더가 무엇이고, 새 크리스탈이 통과해야 하는 6개 게이트, 편입 후보가 자동으로 어떻게 발견되는가 |
 | [`ko/USAGE-GUIDE.md`](ko/USAGE-GUIDE.md) | 기획·설계·구현·개선·참조 단계에서 실제로 어떻게 쓰는가 |
 | [`ko/RISK-ANALYSIS.md`](ko/RISK-ANALYSIS.md) | 이 모음집이 추출되기 전에 거친 공개 안전성 검토 |

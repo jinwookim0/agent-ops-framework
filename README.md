@@ -35,7 +35,7 @@ Two things worth knowing before you dive in:
 
 ## Start here (in roughly this order)
 
-If you're adding this to a project for the first time, don't try to read all 37 crystals — read these, in this order, and pick up the rest only when a document's own "why this matters" section actually applies to you:
+If you're adding this to a project for the first time, don't try to read all 37 crystals — read these, in this order, and pick up the rest only when a document's own "why this matters" section actually applies to you. Prefer a literal step-by-step checklist over a reading list? Skip straight to [`ko/GETTING-STARTED.md`](ko/GETTING-STARTED.md) (or [`en/GETTING-STARTED.md`](en/GETTING-STARTED.md)).
 
 1. **[`07-prompt-guardrails/`](ko/07-prompt-guardrails/)** — do this *before* your first task that touches personal data, not after. This one is different from the rest: it's not a principle to read, it's **working code you copy and run** (a hook, a scanner, a masking script).
 2. **[`01-definition-of-done.md`](ko/01-definition-of-done.md)** — once you have more than a handful of tasks going.
@@ -82,6 +82,7 @@ Every crystal number is a permanent ID (the order it was added, not a ranking �
 
 | Document | What it's for |
 |---|---|
+| [`ko/GETTING-STARTED.md`](ko/GETTING-STARTED.md) | The step-by-step procedure to follow, from Step 0, the first time you adopt this into your own project |
 | [`ko/BLUEPRINT.md`](ko/BLUEPRINT.md) | What this folder is, the 6-gate quality bar a new crystal must clear, and how candidates get found automatically |
 | [`ko/USAGE-GUIDE.md`](ko/USAGE-GUIDE.md) | How to actually use this while planning, designing, building, improving, or referencing a project |
 | [`ko/RISK-ANALYSIS.md`](ko/RISK-ANALYSIS.md) | The public-safety review this collection went through before being extracted |

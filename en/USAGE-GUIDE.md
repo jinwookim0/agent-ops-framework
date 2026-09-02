@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:a09c83513844 own=sha256:d0babee86a57 -->
+<!-- translated-from: ssot=sha256:6db9b778a492 own=sha256:0a4eb6fc6c52 -->
 # Usage Guide — Five Perspectives: Planning, Design, Implementation, Improvement, Reference
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/USAGE-GUIDE.md)**
@@ -7,6 +7,12 @@ This lays out what and how to use, from each of five perspectives, when
 introducing this framework (`agent-ops-framework/`) into a new project.
 There's no need to read it in order — just read whichever section matches
 the stage you're at right now.
+
+> If you're in the middle of bringing this folder into a project for the
+> first time and need the literal, in-order "what do I do starting from
+> Step 0" procedure, read
+> [GETTING-STARTED.md](GETTING-STARTED.md) first — this document explains
+> by perspective, that one is a step-by-step checklist.
 
 ## Planning perspective — "why and when should we adopt this"
 
@@ -155,6 +161,8 @@ original project actually ran into.
 
 ## Related documents
 
+- [GETTING-STARTED.md](GETTING-STARTED.md) — the step-by-step procedure to
+  follow from Step 0 when first adopting this
 - [README.md](README.md) — overview of this whole folder
 - [RISK-ANALYSIS.md](../ko/RISK-ANALYSIS.md) — risk analysis for open-source
   release
