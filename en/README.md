@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:97f194798b37 own=sha256:08805af59755 -->
+<!-- translated-from: ssot=sha256:fd4c21f1286f own=sha256:e4ce95354dfd -->
 # agent-ops-framework — A Collection of Structural Crystals for Operating AI-Agent Projects
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/README.md)**
@@ -69,7 +69,9 @@ at first" is shown separately, as a priority list below — it supplies
 ordering information without renumbering anything.
 
 **What to look at first when introducing this into a new project (roughly
-in this order)**:
+in this order)**: if you'd rather have a step-by-step, do-this-then-that
+checklist instead of the list below, go straight to
+[GETTING-STARTED.md](GETTING-STARTED.md).
 1. [07-prompt-guardrails/](07-prompt-guardrails/) — must come **before**
    the first task that touches personal data (adding it after the fact
    means erasing something already exposed — a much more expensive job).
@@ -254,6 +256,9 @@ themselves" vs. "governance of execution autonomy").
 
 ## Usage · Blueprint · Risk Analysis
 
+- [GETTING-STARTED.md](GETTING-STARTED.md) — the step-by-step procedure
+  to follow, from Step 0, the first time you adopt this into your own
+  project.
 - [BLUEPRINT.md](BLUEPRINT.md) — what this folder itself is, what criteria
   (an admission gate) a new crystal must pass to be added, and how those
   admission candidates get discovered automatically.
