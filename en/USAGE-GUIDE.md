@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:4e3c584c1ebe own=sha256:7d5aac23e0f0 -->
+<!-- translated-from: ssot=sha256:6db9b778a492 own=sha256:0a4eb6fc6c52 -->
 # Usage Guide — Five Perspectives: Planning, Design, Implementation, Improvement, Reference
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/USAGE-GUIDE.md)**
@@ -10,7 +10,7 @@ the stage you're at right now.
 
 > If you're in the middle of bringing this folder into a project for the
 > first time and need the literal, in-order "what do I do starting from
-> step 1" procedure, read
+> Step 0" procedure, read
 > [GETTING-STARTED.md](GETTING-STARTED.md) first — this document explains
 > by perspective, that one is a step-by-step checklist.
 
@@ -162,7 +162,7 @@ original project actually ran into.
 ## Related documents
 
 - [GETTING-STARTED.md](GETTING-STARTED.md) — the step-by-step procedure to
-  follow from step 1 when first adopting this
+  follow from Step 0 when first adopting this
 - [README.md](README.md) — overview of this whole folder
 - [RISK-ANALYSIS.md](../ko/RISK-ANALYSIS.md) — risk analysis for open-source
   release

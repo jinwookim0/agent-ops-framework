@@ -81,7 +81,7 @@ Every crystal number is a permanent ID (the order it was added, not a ranking â€
 
 | Document | What it's for |
 |---|---|
-| [`ko/GETTING-STARTED.md`](ko/GETTING-STARTED.md) | The step-by-step procedure to follow, from step 1, the first time you adopt this into your own project |
+| [`ko/GETTING-STARTED.md`](ko/GETTING-STARTED.md) | The step-by-step procedure to follow, from Step 0, the first time you adopt this into your own project |
 | [`ko/BLUEPRINT.md`](ko/BLUEPRINT.md) | What this folder is, the 6-gate quality bar a new crystal must clear, and how candidates get found automatically |
 | [`ko/USAGE-GUIDE.md`](ko/USAGE-GUIDE.md) | How to actually use this while planning, designing, building, improving, or referencing a project |
 | [`ko/RISK-ANALYSIS.md`](ko/RISK-ANALYSIS.md) | The public-safety review this collection went through before being extracted |

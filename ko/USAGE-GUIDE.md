@@ -6,7 +6,7 @@
 무엇을 어떻게 쓰는지 정리한다. 순서대로 읽을 필요는 없다 — 지금 어느
 단계에 있는지에 따라 해당 절만 봐도 된다.
 
-> 처음 이 폴더를 프로젝트에 들여오는 중이라 "1번부터 순서대로 뭘 해야
+> 처음 이 폴더를 프로젝트에 들여오는 중이라 "0단계부터 순서대로 뭘 해야
 > 하는지" 실행 절차가 필요하면 [GETTING-STARTED.md](GETTING-STARTED.md)를
 > 먼저 본다 — 이 문서는 관점별 설명이고, 그쪽은 단계별 체크리스트다.
 
@@ -142,7 +142,7 @@
 
 ## 관련 문서
 
-- [GETTING-STARTED.md](GETTING-STARTED.md) — 처음 도입할 때 1번부터
+- [GETTING-STARTED.md](GETTING-STARTED.md) — 처음 도입할 때 0단계부터
   따라가는 단계별 절차
 - [README.md](README.md) — 이 폴더 전체 개요
 - [RISK-ANALYSIS.md](RISK-ANALYSIS.md) — 오픈소스 공개 시 리스크 분석

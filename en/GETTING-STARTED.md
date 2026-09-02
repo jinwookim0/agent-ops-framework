@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:497099c4f933 own=sha256:867453b26394 -->
+<!-- translated-from: ssot=sha256:8f3ac9aad3bb own=sha256:cab2bead2017 -->
 # Getting Started — the step-by-step path to actually adopting this in your project
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/GETTING-STARTED.md)**
@@ -106,8 +106,8 @@ its own right. Add crystals one at a time, in this order, only once each
 one's actual trigger condition applies to your project:
 
 1. **[01-definition-of-done.md](01-definition-of-done.md)** — once you
-   pass 3–5 tasks and "this counts as done" starts meaning something
-   different to different people. Use the 10 criteria as a checklist,
+   pass 3–5 tasks and "this counts as done" starts meaning different
+   things to different people. Use the 10 criteria as a checklist,
    as-is.
 2. **[05-autonomous-agent-operating-principles.md](05-autonomous-agent-operating-principles.md)** —
    once the agent starts running repeatedly without a human checking

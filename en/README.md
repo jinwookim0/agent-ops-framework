@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:4ec6bb776a90 own=sha256:e5fb59587b1d -->
+<!-- translated-from: ssot=sha256:fd4c21f1286f own=sha256:e4ce95354dfd -->
 # agent-ops-framework — A Collection of Structural Crystals for Operating AI-Agent Projects
 
 > 🌐 **[한국어 원본 보기 (SSOT)](../ko/README.md)**
@@ -257,7 +257,7 @@ themselves" vs. "governance of execution autonomy").
 ## Usage · Blueprint · Risk Analysis
 
 - [GETTING-STARTED.md](GETTING-STARTED.md) — the step-by-step procedure
-  to follow, from step 1, the first time you adopt this into your own
+  to follow, from Step 0, the first time you adopt this into your own
   project.
 - [BLUEPRINT.md](BLUEPRINT.md) — what this folder itself is, what criteria
   (an admission gate) a new crystal must pass to be added, and how those
