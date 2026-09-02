@@ -31,6 +31,7 @@ Most rules here started as a real mistake, a real fix, or a real design decision
 Two things worth knowing before you dive in:
 - **Korean (`ko/`) is the source of truth for one practical reason.** While this collection is still actively growing, keeping two languages perfectly in sync on every edit would cost more than it's worth — that's the entire reason; it says nothing about whether English is supported. `en/` is translated deliberately and kept in sync by an automated two-way check (`agent-ops-framework-translation-sync-check.py`) — you can read either one, they say the same thing.
 - **Nothing here is "trust me."** Every crystal states which primary source backs it and how thoroughly that source was actually checked — the same discipline the crystals themselves ask you to apply to your own project's claims (see [`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md)).
+- **Thinking about contributing a crystal drawn from your day job or another project?** `07-prompt-guardrails/`'s automated scanner only catches pattern-matchable credentials and personal data — not your employer's confidential business information or unreleased technology described in general-sounding terms. That's a human judgment call, on you, before you draft anything — see [`CONTRIBUTING.md`](CONTRIBUTING.md)'s "Before you draft" section.
 
 ## Start here (in roughly this order)
 
@@ -87,7 +88,7 @@ Every crystal number is a permanent ID (the order it was added, not a ranking �
 | [`ko/DISCLAIMER.md`](ko/DISCLAIMER.md) | A ready-to-use disclaimer template for when you actually publish |
 | [`ko/LANGUAGE-POLICY.md`](ko/LANGUAGE-POLICY.md) | Which language an AI agent should default to reading, and the exceptions |
 | [`en/GLOSSARY.md`](en/GLOSSARY.md) | What this folder's recurring terms (crystal, story, domain-neutral, SSOT, gate, STALE/DIVERGED, ...) actually mean, in one place |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to propose or edit a crystal, the actual git/PR mechanics, and the bar a pull request needs to clear |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to propose or edit a crystal, the actual git/PR mechanics, the bar a pull request needs to clear, and — before you draft anything — how to check your own confidentiality obligations, not just credentials |
 | [`SECURITY.md`](SECURITY.md) | How to report a vulnerability, and what's actually in scope (the executable code in `07-prompt-guardrails/`) |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Contributor Covenant v2.1, verbatim |
 | [`LICENSE`](LICENSE) | MIT |

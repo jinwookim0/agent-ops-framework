@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:f4543ab79206 own=sha256:8b7c0f00015c -->
+<!-- translated-from: ssot=sha256:8a0930824505 own=sha256:9c54ac7037fd -->
 # agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 핵심 모음(Structural Crystals)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -32,6 +32,7 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 시작하기 전에 알아두면 좋은 두 가지:
 - **한국어(`ko/`)가 SSOT(원본)인 데는 실용적인 이유 하나가 있다.** 이 모음집이 계속 활발히 자라는 동안, 모든 수정마다 두 언어를 완벽히 동기화하는 건 비용이 더 큰 일이다 — 그게 전부이지, 영어 지원 여부와는 무관하다. `en/`은 필요할 때 의도적으로 번역되고, 양방향 자동 동기화 체크(`agent-ops-framework-translation-sync-check.py`)로 관리된다 — 어느 쪽을 읽어도 같은 내용이다.
 - **여기엔 "그냥 믿어라"가 없다.** 모든 크리스탈은 어떤 1차 자료가 근거이고 그 자료를 얼마나 철저히 확인했는지를 명시한다 — 크리스탈 자신이 프로젝트의 주장에도 똑같이 적용하라고 요구하는 바로 그 원칙이다([`03-epistemic-immunity-catalog.md`](ko/03-epistemic-immunity-catalog.md) 참고).
+- **자기 직장이나 다른 프로젝트에서 겪은 패턴을 크리스탈로 기여하려는가?** `07-prompt-guardrails/`의 자동 스캐너는 패턴 매칭 가능한 크리덴셜·개인정보만 잡는다 — 소속 조직의 기밀 영업정보나, 일반론처럼 서술된 비공개 기술은 안 걸린다. 이건 초안을 쓰기 전에 사람이 직접 판단할 일이다 — [`CONTRIBUTING.md`](CONTRIBUTING.md)의 "Before you draft" 절 참고.
 
 ## 먼저 볼 것 (대략 이 순서로)
 
@@ -88,7 +89,7 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 | [`ko/DISCLAIMER.md`](ko/DISCLAIMER.md) | 실제로 게시할 때 바로 쓸 수 있는 고지문 템플릿 |
 | [`ko/LANGUAGE-POLICY.md`](ko/LANGUAGE-POLICY.md) | AI 에이전트가 기본으로 어느 언어를 읽어야 하는지와 그 예외 |
 | [`ko/GLOSSARY.md`](ko/GLOSSARY.md) | 이 폴더가 반복해서 쓰는 용어(크리스탈, 서사, 도메인 무관, SSOT, 게이트, STALE/DIVERGED 등)의 뜻을 한곳에 모은 색인 |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | 크리스탈을 제안·수정하는 법, 실제 git/PR 절차, PR이 통과해야 하는 기준 |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | 크리스탈을 제안·수정하는 법, 실제 git/PR 절차, PR이 통과해야 하는 기준, 그리고 — 초안을 쓰기 전에 — 크리덴셜뿐 아니라 자기 소속 조직의 기밀 의무까지 점검하는 법 |
 | [`SECURITY.md`](SECURITY.md) | 취약점을 어떻게 보고하는지, 실제 스코프가 무엇인지(`07-prompt-guardrails/`의 실행 코드) |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Contributor Covenant v2.1 원문 |
 | [`LICENSE`](LICENSE) | MIT |
