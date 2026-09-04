@@ -25,6 +25,8 @@ Usage:
 
 Exit code: always 0 (advisory report).
 """
+from __future__ import annotations
+
 import pathlib
 import subprocess
 import sys

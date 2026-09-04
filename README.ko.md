@@ -1,4 +1,4 @@
-<!-- translated-from: ssot=sha256:1fdddb74d8b5 own=sha256:da1c97ffa276 -->
+<!-- translated-from: ssot=sha256:542b8ab49aa7 own=sha256:fd1bd5010965 -->
 # agent-ops-framework — AI 에이전트 프로젝트 운영을 위한 핵심 모음(Structural Crystals)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -48,7 +48,7 @@ AI 에이전트로 뭔가를 만든다고 하자 — 코딩 어시스턴트든, 
 ## 적용된 모습으로 보기
 
 [`examples/`](examples/) 안의 에이전트 둘은 API 키나 별도 설정 없이
-파이썬만으로 바로 돌아간다. [`issue-triage-agent/`](examples/issue-triage-agent/)는
+Python 3.9 이상으로 바로 돌아간다. [`issue-triage-agent/`](examples/issue-triage-agent/)는
 들어오는 티켓을 분류하고,
 [`research-digest-agent/`](examples/research-digest-agent/)는 반복
 실행되면서 스스로 휴리스틱을 갱신해나간다. 이 둘의 코드에서만 37개

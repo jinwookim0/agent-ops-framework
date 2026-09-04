@@ -39,6 +39,8 @@ This script never decides what counts as a "substantive change" — the
 bump level must always be chosen explicitly by whoever calls it (there
 is no default, so as not to create a silent automatic judgment).
 """
+from __future__ import annotations
+
 import argparse
 import hashlib
 import pathlib
