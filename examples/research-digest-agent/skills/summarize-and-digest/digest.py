@@ -33,6 +33,8 @@ Usage:
 Exit code: always 0 (advisory report, same convention as this repo's
 scripts/*.py checkers).
 """
+from __future__ import annotations
+
 import argparse
 import json
 import pathlib

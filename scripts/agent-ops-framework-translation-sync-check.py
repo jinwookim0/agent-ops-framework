@@ -115,6 +115,8 @@ Exit code: 0 normally. STALE/DIVERGED remain advisory (0) — whether a
 signal needs action is a human judgment call (BLUEPRINT.md section 4),
 and this hasn't changed. --restamp/--restamp-all also exit 0 on success.
 """
+from __future__ import annotations
+
 import argparse
 import hashlib
 import pathlib

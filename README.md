@@ -46,8 +46,8 @@ If you're adding this to a project for the first time, don't try to read all 37 
 
 ## See it applied
 
-Two agents in [`examples/`](examples/) run with nothing but Python — no
-API key, no setup.
+Two agents in [`examples/`](examples/) run with nothing but Python 3.9+ —
+no API key, no setup.
 [`issue-triage-agent/`](examples/issue-triage-agent/) classifies
 incoming tickets; [`research-digest-agent/`](examples/research-digest-agent/)
 runs on a recurring loop and updates its own heuristics as it goes.
